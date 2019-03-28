@@ -1,0 +1,101 @@
+section{
+    padding: 80px 0;
+}
+
+.dark{
+    background: #252525;
+}
+
+.bg-cinza{
+    background: #efefef;
+}
+
+.banner{
+    /*background: #5a6268;*/
+    margin: 50px 0 0 0;
+    position: relative;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../img/img01.jpg');
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+}
+
+.detalhes img{
+    margin: 0 0 20px 0;
+    position: relative;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+}
+
+.text-logo{
+    color: #da843b;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+    color: #da843b;
+}
+
+.laranja-destaque{
+    background: #8B4513;
+}
+
+.laranja-fundo{
+    /*background: #FFDEAD;*/
+    background: #FFDEAD;
+}
+
+.btn-banner{
+    background:#da843b;
+    border:#da843b;
+}
+
+.fa-address-card, .fa-users, .fa-chart-pie, .fa-check-double{
+    color: #28a745;
+    opacity: 0.2;
+}
+
+
+.lista > li{
+    font-size: 12px;
+}
+
+.lista > li > a{
+     color: #efefef;
+
+ }
+
+.lista > li > a:hover{
+    color: #8B4513;
+}
+
+.titulo-rodape{
+    color: #efefef;
+}
+
+input#empresa.form-control, input#nome.form-control, input#email.form-control, input#fone.form-control, textarea#mensagem.form-control{
+    color: #da843b;
+    border-radius: 20px;
+    margin-top: -5px;
+}
+
+.form-group > textarea{
+    border-radius: 20px;
+}
+
+.btn-form-contato{
+    border-radius: 18px;
+}
+
+.section-servico{
+    margin-bottom: -80px;
+}
+
+.text-small{
+    font-weight: bold;
+    color: #6b9dbb;
+}
+
+p#sobre-passo1{
+    line-height: 30px;
+}
