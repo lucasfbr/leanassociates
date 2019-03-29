@@ -39,14 +39,14 @@ elixir((mix) => {
 
     /* CSS ADMIN */
     mix.styles([
-        './node_modules/bootstrap/dist/css/bootstrap.css',
+        './node_modules/bootstrap/dist/css/bootstrap.min.css',
         './resources/assets/admin/css/style-pagina.css',
-    ],'public/css/admin-styles.css');
+    ],'public/admin/css/styles.css');
 
     /* JS ADMIN */
     mix.scripts([
         './node_modules/jquery/dist/jquery.slim.js',
-        './node_modules/bootstrap/dist/js/bootstrap.js',
+        './node_modules/bootstrap/dist/js/bootstrap.min.js',
     ],'public/admin/js/scripts.js');
 
 });

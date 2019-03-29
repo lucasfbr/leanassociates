@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/bin/yarn install
+  /usr/bin/node /usr/bin/yarn install
 
 PATH: 
   /home/vagrant/.composer/vendor/bin:/usr/local/go/bin:/home/vagrant/.rbenv/plugins/ruby-build/bin:/home/vagrant/.rbenv/shims:/home/vagrant/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/vagrant/.dotnet/tools
@@ -8,13 +8,13 @@ Yarn version:
   1.13.0
 
 Node version: 
-  8.11.3
+  10.15.1
 
 Platform: 
   linux x64
 
 Trace: 
-  Error: EPROTO: protocol error, copyfile '/home/vagrant/.cache/yarn/v4/npm-@fortawesome-fontawesome-free-5.8.1-cbafbfe8894c4e3e3c3a9da6774e249ac1f2da8b/node_modules/@fortawesome/fontawesome-free/svgs/brands/spotify.svg' -> '/home/vagrant/leanassociates/node_modules/@fortawesome/fontawesome-free/svgs/brands/spotify.svg'
+  Error: EPROTO: protocol error, copyfile '/home/vagrant/.cache/yarn/v4/npm-@fortawesome-fontawesome-free-5.8.1-cbafbfe8894c4e3e3c3a9da6774e249ac1f2da8b/node_modules/@fortawesome/fontawesome-free/svgs/brands/spotify.svg' -> '/home/vagrant/Leanassociates/node_modules/@fortawesome/fontawesome-free/svgs/brands/spotify.svg'
 
 npm manifest: 
   {
@@ -25,7 +25,7 @@ npm manifest:
     },
     "devDependencies": {
       "@fortawesome/fontawesome-free": "^5.8.0",
-      "bootstrap": "4.2.1",
+      "bootstrap": "^4.0.0",
       "gulp": "^3.9.1",
       "jquery": "^3.1.0",
       "laravel-elixir": "^6.0.0-14",

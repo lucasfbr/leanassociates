@@ -11,9 +11,9 @@
 |
 */
 
-/*Route::get('/', function () {
-    return view('site/index');
-});*/
+Route::get('/teste', function () {
+    return view('teste');
+});
 
 /*Route::get('/email/{id}', function ($id) {
     $user = \App\User::findOrFail($id);
