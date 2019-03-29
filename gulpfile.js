@@ -16,7 +16,8 @@ require('laravel-elixir-vue-2');
 elixir((mix) => {
 
     //mix.webpack('./resources/assets/site/js/app.js', 'public/js/app.js');
-    mix.webpack('./resources/assets/site/js/index.js', 'public/js/index.js');
+    mix.webpack('./resources/assets/site/js/index.js', 'public/js/index.js')
+       .webpack('./resources/assets/admin/js/index.js', 'public/admin/js/index.js');
 
     mix.copy([
        './node_modules/@fortawesome/fontawesome-free/webfonts'
@@ -31,9 +32,21 @@ elixir((mix) => {
 
     mix.scripts([
         './node_modules/@fortawesome/fontawesome-free/js/all.js',
-        './node_modules/startbootstrap-scrolling-nav/vendor/bootstrap/js/bootstrap.js',
         './node_modules/startbootstrap-scrolling-nav/vendor/jquery/jquery.min.js',
         './node_modules/startbootstrap-scrolling-nav/vendor/jquery-easing/jquery.easing.min.js',
         './node_modules/startbootstrap-scrolling-nav/js/scrolling-nav.js'
     ],'public/js/scripts.js');
+
+    /* CSS ADMIN */
+    mix.styles([
+        './node_modules/bootstrap/dist/css/bootstrap.css',
+        './resources/assets/admin/css/style-pagina.css',
+    ],'public/css/admin-styles.css');
+
+    /* JS ADMIN */
+    mix.scripts([
+        './node_modules/jquery/dist/jquery.slim.js',
+        './node_modules/bootstrap/dist/js/bootstrap.js',
+    ],'public/admin/js/scripts.js');
+
 });
