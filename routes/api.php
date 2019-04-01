@@ -18,3 +18,6 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:api');
 
 Route::post('contato/registrar', 'site\homeController@contato');
+
+
+//Route::post('/login', 'Auth\LoginController@login');

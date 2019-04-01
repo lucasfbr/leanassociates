@@ -17,7 +17,10 @@ elixir((mix) => {
 
     //mix.webpack('./resources/assets/site/js/app.js', 'public/js/app.js');
     mix.webpack('./resources/assets/site/js/index.js', 'public/js/index.js')
-       .webpack('./resources/assets/admin/js/index.js', 'public/admin/js/index.js');
+       .webpack('./resources/assets/admin/js/login.js', 'public/admin/js/login.js')
+       .webpack('./resources/assets/admin/js/register.js', 'public/admin/js/register.js')
+       .webpack('./resources/assets/admin/js/email.js', 'public/admin/js/email.js')
+       .webpack('./resources/assets/admin/js/resetpassword.js', 'public/admin/js/resetpassword');
 
     mix.copy([
        './node_modules/@fortawesome/fontawesome-free/webfonts'

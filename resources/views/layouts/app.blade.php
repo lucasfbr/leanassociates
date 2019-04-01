@@ -34,14 +34,17 @@
             <ul class="navbar-nav">
               @if (Auth::guest())  
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
+                    <a class="nav-link" href="{{ url('/login') }}">Login</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Cadastro</a>
+                    <a class="nav-link" href="{{ url('/register') }}">Cadastro</a>
                   </li>
               @else
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
+                    <a class="nav-link" href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout </a> 
+                     <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;"> 
+                        {{ csrf_field() }} 
+                      </form> 
                   </li>
               @endif    
             </ul>
@@ -50,8 +53,10 @@
 
         @yield('content')
 
-
-
+     @stack('applogin')
+     @stack('appregister')
+     @stack('appemail')
+     @stack('appresetpassword')
     <!-- Scripts -->
      <script src="{{ asset('admin/js/scripts.js') }}"></script>
 </body>
