@@ -20,7 +20,7 @@ elixir((mix) => {
        .webpack('./resources/assets/admin/js/login.js', 'public/admin/js/login.js')
        .webpack('./resources/assets/admin/js/register.js', 'public/admin/js/register.js')
        .webpack('./resources/assets/admin/js/email.js', 'public/admin/js/email.js')
-       .webpack('./resources/assets/admin/js/resetpassword.js', 'public/admin/js/resetpassword');
+       .webpack('./resources/assets/admin/js/resetpassword.js', 'public/admin/js/resetpassword.js');
 
     mix.copy([
        './node_modules/@fortawesome/fontawesome-free/webfonts'
