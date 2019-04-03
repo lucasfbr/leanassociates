@@ -6,7 +6,7 @@
         <div class="col-xs-12 col-md-6">
 
             <div id="appRegister">
-                <register></register>
+                <register csrf="{{csrf_token()}}" emailerror="{{$errors->first('email')}}" passworderror="{{$errors->has('password')}}"></register>
             </div>
 
         </div>
