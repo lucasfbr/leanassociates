@@ -40,16 +40,28 @@ elixir((mix) => {
         './node_modules/startbootstrap-scrolling-nav/js/scrolling-nav.js'
     ],'public/js/scripts.js');
 
+    /* COPY ADMIN */
+    mix.copy([
+       './node_modules/startbootstrap-sb-admin/vendor/fontawesome-free/webfonts'
+    ], 'public/admin/fonts');
+
     /* CSS ADMIN */
     mix.styles([
-        './node_modules/bootstrap/dist/css/bootstrap.min.css',
+        './node_modules/startbootstrap-sb-admin/vendor/fontawesome-free/css/fontawesome.min.css',
+        './node_modules/startbootstrap-sb-admin/vendor/datatables/dataTables.bootstrap4.css',
+        './node_modules/startbootstrap-sb-admin/css/sb-admin.css',
         './resources/assets/admin/css/style-pagina.css',
     ],'public/admin/css/styles.css');
 
     /* JS ADMIN */
     mix.scripts([
-        './node_modules/jquery/dist/jquery.slim.js',
-        './node_modules/bootstrap/dist/js/bootstrap.min.js',
+        './node_modules/startbootstrap-sb-admin/vendor/fontawesome-free/js/all.js',
+        './node_modules/startbootstrap-sb-admin/vendor/jquery/jquery.min.js',
+        './node_modules/startbootstrap-sb-admin/vendor/bootstrap/js/bootstrap.bundle.min.js',
+        './node_modules/startbootstrap-sb-admin/vendor/jquery-easing/jquery.easing.min.js',
+        './node_modules/startbootstrap-sb-admin/js/sb-admin.min.js',
     ],'public/admin/js/scripts.js');
+
+    
 
 });
