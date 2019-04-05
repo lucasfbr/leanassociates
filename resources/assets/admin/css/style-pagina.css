@@ -1,3 +1,7 @@
+body{
+	background: #efefef;
+}
+
 .login-mt{
 	margin-top: 100px;
 }
@@ -8,4 +12,12 @@
 
 .card-header.personal{
 	background: #545b62;
+}
+
+.destaque1{
+	background: #6b9dbb;
+}
+
+.destaque2{
+	background: #C0C0C0;
 }

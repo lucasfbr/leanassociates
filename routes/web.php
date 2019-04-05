@@ -29,4 +29,4 @@ Route::get('/sobre', 'site\sobreController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'admin\HomeController@index');

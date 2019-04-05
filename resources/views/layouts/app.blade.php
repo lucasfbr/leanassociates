@@ -23,8 +23,6 @@
 </head>
 <body>
 
-
-
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <a class="navbar-brand" href="#"><img src="{{ asset('img/logo-lean2.png') }}" width="40"/><span class="ml-1 text-default">Lean Associates</span></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

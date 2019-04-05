@@ -55,7 +55,7 @@
 
 
         },
-        props: ['csrf','emailerror', 'passworderror'],
+        props: ['csrf','emailerror'],
         data(){
             return{
                 dados: {
