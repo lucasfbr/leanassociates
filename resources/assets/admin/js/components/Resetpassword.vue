@@ -1,13 +1,15 @@
 <template>
     <div>
+
         <div class="card">
             <div class="card-header personal">
                 <div class="h5 text-default">Redefinir Senha</div>
             </div>
-
+            
             <div class="card-body">       
                 <form id="formResetPassword" method="POST" action="/password/reset" class="needs-validation" :class="error" novalidate>
                     <input type="hidden" name="_token" v-bind:value="csrf">
+                    <input type="hidden" name="token" v-bind:value="token"> 
                     <div class="form-group">
                         <label for="email" class="text-default">E-mail</label>
                         <input type="text" class="form-control" v-model="email" name="email" id="email" aria-describedby="emailHelp" required  autofocus>
@@ -39,8 +41,9 @@
     export default {
         mounted() {
 
+            
         },
-        props: ['csrf'],
+        props: ['csrf','token', 'responseError'],
         data(){
             return{
                 email: '',
@@ -54,7 +57,11 @@
                 errorMsg: {
                     email: '',
                     password: ''
-                }
+                },
+                alert:{
+                    status: 'fade',
+                    msg: ''
+                }   
             }
         },
         methods:{

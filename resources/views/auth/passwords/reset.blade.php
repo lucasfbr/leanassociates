@@ -7,7 +7,7 @@
 
                 <div id="appResetpassword">
                     
-                  <resetpassword csrf="{{csrf_token()}}"></resetpassword>
+                  <resetpassword csrf="{{csrf_token()}}" token="{{$token}}" responseError="{{$errors->first()}}"></resetpassword>
 
                 </div>
             </div>

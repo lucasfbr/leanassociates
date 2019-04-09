@@ -42,7 +42,7 @@
         mounted() {
             if(this.emailerror == 1 || this.passworderror == 1){
                 this.alert.status = 'show'
-                this.alert.msg = 'Usuário ou enha inválidos'
+                this.alert.msg = 'Usuário ou senha inválidos'
             }
         },
         props: ['csrf','emailerror', 'passworderror'],
