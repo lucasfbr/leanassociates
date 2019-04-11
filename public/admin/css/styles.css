@@ -10955,6 +10955,15 @@ body{
 	background: #C0C0C0;
 }
 
+.breadcrumb {
+	background: #343a40;
+	color: #fff;
+}
+
+.sidebar {
+	background: #343a40;
+}
+
 footer.sticky-footer{
 	background: #343a40;
 	color: #fff;
