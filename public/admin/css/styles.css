@@ -10954,4 +10954,9 @@ body{
 .destaque2{
 	background: #C0C0C0;
 }
+
+footer.sticky-footer{
+	background: #343a40;
+	color: #fff;
+}
 /*# sourceMappingURL=styles.css.map */

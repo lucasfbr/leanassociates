@@ -28,7 +28,9 @@
                         <div class=""></div>
                     </div>
                     <button type="submit" @click.prevent="validar($event)" class="btn btn-secondary">Entrar</button>
+                    <a href="/register" class="btn btn-link text-primary">Cadastre-se</a>
                     <a href="/password/reset" class="btn btn-link text-secondary">Esqueceu sua senha?</a>
+
 
                 </form>
                             

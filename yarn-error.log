@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /usr/bin/yarn add startbootstrap-sb-admin
+  /usr/local/bin/node /usr/bin/yarn add startbootstrap-sb-admin@^5.0.3
 
 PATH: 
   /home/vagrant/.composer/vendor/bin:/usr/local/go/bin:/home/vagrant/.rbenv/plugins/ruby-build/bin:/home/vagrant/.rbenv/shims:/home/vagrant/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/vagrant/.dotnet/tools
@@ -8,13 +8,13 @@ Yarn version:
   1.13.0
 
 Node version: 
-  10.15.1
+  8.11.3
 
 Platform: 
   linux x64
 
 Trace: 
-  Error: EPROTO: protocol error, copyfile '/home/vagrant/.cache/yarn/v4/npm-@fortawesome-fontawesome-free-5.8.1-cbafbfe8894c4e3e3c3a9da6774e249ac1f2da8b/node_modules/@fortawesome/fontawesome-free/svgs/brands/spotify.svg' -> '/home/vagrant/Leanassociates/node_modules/@fortawesome/fontawesome-free/svgs/brands/spotify.svg'
+  Error: EPROTO: protocol error, copyfile '/home/vagrant/.cache/yarn/v4/npm-@fortawesome-fontawesome-free-5.8.1-cbafbfe8894c4e3e3c3a9da6774e249ac1f2da8b/node_modules/@fortawesome/fontawesome-free/svgs/brands/spotify.svg' -> '/home/vagrant/leanassociates/node_modules/@fortawesome/fontawesome-free/svgs/brands/spotify.svg'
 
 npm manifest: 
   {
@@ -33,6 +33,7 @@ npm manifest:
       "laravel-elixir-webpack-official": "^1.0.2",
       "lodash": "^4.16.2",
       "startbootstrap-scrolling-nav": "^4.1.2",
+      "startbootstrap-sb-admin": "^5.0.3",
       "vue": "^2.0.1",
       "vue-resource": "^1.0.3"
     }
