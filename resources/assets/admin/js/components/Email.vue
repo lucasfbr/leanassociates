@@ -1,6 +1,13 @@
 <template>
     
     <div>
+
+        <div class="alert alert-success alert-dismissible" :class="alert.status" role="alert">
+            {{alert.msg}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         <div class="card">
                 <div class="card-header personal">
                     <div class="h5 text-default">Confirme seu e-mail</div>
@@ -28,15 +35,24 @@
 <script>
     export default {
         mounted() {
-            console.log('Component mounted.')
+
+            if(this.status != false){
+                console.log('status: ' + this.status)
+                this.alert.status = 'show'
+                this.alert.msg = 'Enviamos um link de redefinição de senha para seu e-mail'
+            }
         },
-        props: ['csrf'],
+        props: ['csrf','status'],
         data(){
             return{
                 email: '',
                 errorValidate: '',
                 errorFeedback: '',
-                errorMsg: ''
+                errorMsg: '',
+                alert: {
+                    status: 'fade',
+                    msg: ''
+                }
             }
         },
         methods:{

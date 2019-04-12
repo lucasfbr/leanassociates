@@ -10,7 +10,7 @@
             
             <div id="appEmail">
 
-                <email csrf="{{csrf_token()}}"></email>
+                <email csrf="{{csrf_token()}}" status="{{ session('status') }} "></email>
 
             </div>    
         </div>    

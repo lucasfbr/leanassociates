@@ -29,4 +29,11 @@ Route::get('/sobre', 'site\sobreController@index');
 
 Auth::routes();
 
-Route::get('/home', 'admin\HomeController@index');
+Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::get('/home', 'admin\HomeController@index')->name('home');
+    Route::get('/usuarios', 'admin\UsuarioController@index')->name('usuarios');
+    Route::get('/servicos', 'admin\ServicoController@index')->name('servicos');
+    Route::get('/mensagens', 'admin\MensagemController@index')->name('mensagens');
+});
+
+

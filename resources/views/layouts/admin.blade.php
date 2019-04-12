@@ -31,7 +31,7 @@
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
     @if (Auth::check())
-      <a class="navbar-brand mr-1" href="/home"><img src="{{ asset('img/logo-lean2.png') }}" width="40"/><span class="ml-1 text-default">Lean Associates</span></a>
+      <a class="navbar-brand mr-1" href="{{ route('admin.home') }}"><img src="{{ asset('img/logo-lean2.png') }}" width="40"/><span class="ml-1 text-default">Lean Associates</span></a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
@@ -88,7 +88,7 @@
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('admin.home') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span>
         </a>
@@ -113,17 +113,17 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('admin.usuarios') }}">
           <i class="fas fa-user fa-fw"></i>
           <span>Usuários</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('admin.servicos') }}">
           <i class="fas fa-fw fa-tasks"></i>
           <span>Serviços</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{ route('admin.mensagens') }}">
           <i class="fas fa-envelope fa-fw"></i>
           <span>Mensagens</span></a>
       </li>
