@@ -13,7 +13,6 @@
 
   <div class="card mb-3">
     <div class="card-header">
-      <i class="fas fa-user fa-fw"></i>
       Caixa de mensagens
     </div>
     <div class="card-body">

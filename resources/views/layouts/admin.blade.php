@@ -123,6 +123,11 @@
           <span>Serviços</span></a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.comofunciona') }}">
+          <i class="fas fa-fw fa-question-circle"></i>
+          <span>Como Funciona</span></a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.mensagens') }}">
           <i class="fas fa-envelope fa-fw"></i>
           <span>Mensagens</span></a>

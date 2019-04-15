@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::get('/usuarios', 'admin\UsuarioController@index')->name('usuarios');
     Route::get('/servicos', 'admin\ServicoController@index')->name('servicos');
     Route::get('/mensagens', 'admin\MensagemController@index')->name('mensagens');
+    Route::get('/comofunciona', 'admin\ComoFuncionaController@index')->name('comofunciona');
 });
 
 
