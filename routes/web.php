@@ -33,8 +33,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::get('/home', 'admin\HomeController@index')->name('home');
     Route::get('/usuarios', 'admin\UsuarioController@index')->name('usuarios');
 
-    Route::get('/servicos', 'admin\ServicoController@create')->name('servicos');
-    Route::post('/servicos', 'admin\ServicoController@store');
+    Route::get('/servicos', 'admin\ServicoController@index')->name('servicos');
+    Route::get('/servicos/create', 'admin\ServicoController@create')->name('servicos.create');
+    Route::post('/servicos/store', 'admin\ServicoController@store')->name('servicos.store');
+    Route::get('/servicos/{id}', 'admin\ServicoController@edit')->name('servicos.edit');
+    Route::post('/servicos/update', 'admin\ServicoController@update')->name('servicos.update');
 
     Route::get('/mensagens', 'admin\MensagemController@index')->name('mensagens');
     Route::get('/comofunciona', 'admin\ComoFuncionaController@index')->name('comofunciona');
