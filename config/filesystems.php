@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => 'local',
+    'default' => 'meu_disco',
 
     /*
     |--------------------------------------------------------------------------
@@ -46,6 +46,11 @@ return [
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
+        ],
+
+        'meu_disco' => [
+            'driver' => 'local',
+            'root' => public_path(),
         ],
 
         'public' => [
