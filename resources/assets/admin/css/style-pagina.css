@@ -35,3 +35,9 @@ footer.sticky-footer{
 	background: #343a40;
 	color: #fff;
 }
+
+#icone{
+	color: #28a745;
+    opacity: 0.2;
+    font-size: 48px;
+}

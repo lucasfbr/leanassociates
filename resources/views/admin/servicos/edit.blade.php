@@ -6,7 +6,7 @@
     <li class="breadcrumb-item">
       <a href="">Dashboard</a>
     </li>
-    <li class="breadcrumb-item">Serviços</li>
+    <li class="breadcrumb-item"><a href="{{route('admin.servicos')}}">Serviços</a></li>
     <li class="breadcrumb-item">Editar</li>
   </ol>
 

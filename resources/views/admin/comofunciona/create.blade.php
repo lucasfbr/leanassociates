@@ -6,7 +6,7 @@
     <li class="breadcrumb-item">
       <a href="">Dashboard</a>
     </li>
-    <li class="breadcrumb-item"><a href="{{route('admin.servicos')}}">Serviços</a></li>
+    <li class="breadcrumb-item"><a href="{{route('admin.comofunciona')}}">Como Funciona</a></li>
     <li class="breadcrumb-item">Novo</li>
   </ol>
 
@@ -27,11 +27,11 @@
             @endif
             <div class="card">
               <div class="card-header personal">
-                  <div class="h5 text-default">Novo Serviço</div>
+                  <div class="h5 text-default">Novo Registro</div>
               </div>
 
               <div class="card-body">       
-                  <form id="cadServico" method="POST" action="{{route('admin.servicos.store')}}" class="needs-validation {{ $errors->any() ? ' was-validated' : '' }}" novalidate 
+                  <form id="cadServico" method="POST" action="{{route('admin.comofunciona.store')}}" class="needs-validation {{ $errors->any() ? ' was-validated' : '' }}" novalidate 
                     enctype="multipart/form-data">
                       {{csrf_field()}}
                       <input type="hidden" name="user_id" id="user_id" value={{auth()->user()->id}}>
@@ -42,12 +42,13 @@
                       </div>
                       <div class="form-group">
                           <label for="descricao" class="text-default">Descrição</label>
-                          <textarea class="form-control" name="descricao" id="descricao" cols="30" rows="10" required>{{ old('descricao') }}</textarea>
-                         <div class="valid-feedback {{$errors->has('descricao') ? 'invalid-feedback' : ''}}">{{ $errors->first('descricao') }}</div>
+                          <textarea class="form-control" name="texto" id="texto" cols="30" rows="10" required>{{ old('descricao') }}</textarea>
+                         <div class="valid-feedback {{$errors->has('texto') ? 'invalid-feedback' : ''}}">{{ $errors->first('texto') }}</div>
                       </div>
                       <div class="form-group">
-                          <label for="img" class="text-default">Foto</label>
-                          <input type="file" class="form-control" name="img" id="img" required>
+                          <label for="img" class="text-default">Icone</label>
+                          <input type="text" class="form-control" name="img" id="img" required>
+                          <small id="iconeHelp" class="form-text text-muted">Digite a classe do icone ex: <strong>fas fa-address-book</strong>. <a target="_blank" href="https://fontawesome.com/icons?d=gallery">Icones disponíveis</a> </small>
                           <div class="valid-feedback {{$errors->has('img') ? 'invalid-feedback' : ''}}">{{ $errors->first('img') }}</div>
                       </div>
                       <button type="submit" class="btn btn-secondary">Cadastrar</button>

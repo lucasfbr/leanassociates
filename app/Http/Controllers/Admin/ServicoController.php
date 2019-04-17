@@ -65,6 +65,14 @@ class ServicoController extends Controller
         return redirect()->back()->with('erro','Ocorreu algum erro ao cadastrar o serviço, tente novamente mais tarde');
     }
 
+    public function detail($id){
+
+        $servico = Servico::find($id);
+
+        return view('admin.servicos.detail', compact('servico'));
+
+    }
+
     public function delete($id){
 
         $servico = Servico::find($id);

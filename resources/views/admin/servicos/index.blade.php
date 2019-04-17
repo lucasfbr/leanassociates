@@ -50,6 +50,7 @@
                 <h5 class="card-title">{{$servico->titulo}}</h5>
                 <p class="card-text">{{str_limit($servico->descricao, 70)}}</p>
                 <a href='{{url("admin/servicos/$servico->id")}}' class="btn-sm btn-secondary">Editar</a>
+                <a href='{{url("admin/servicos/detail/$servico->id")}}' class="btn-sm btn-info">Detalhes</a>
                 <a href='{{url("admin/servicos/delete/$servico->id")}}' class="btn-sm btn-danger">Excluir</a>
               </div>
             </div>

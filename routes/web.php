@@ -38,10 +38,18 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::post('/servicos/store', 'admin\ServicoController@store')->name('servicos.store');
     Route::get('/servicos/{id}', 'admin\ServicoController@edit')->name('servicos.edit');
     Route::post('/servicos/update/{id}', 'admin\ServicoController@update')->name('servicos.update');
+    Route::get('/servicos/detail/{id}', 'admin\ServicoController@detail')->name('servicos.detail');
     Route::get('/servicos/delete/{id}', 'admin\ServicoController@delete')->name('servicos.delete');
 
-    Route::get('/mensagens', 'admin\MensagemController@index')->name('mensagens');
     Route::get('/comofunciona', 'admin\ComoFuncionaController@index')->name('comofunciona');
+    Route::get('/comofunciona/create', 'admin\ComoFuncionaController@create')->name('comofunciona.create');
+    Route::post('/comofunciona/store', 'admin\ComoFuncionaController@store')->name('comofunciona.store');
+    Route::get('/comofunciona/{id}', 'admin\ComoFuncionaController@edit')->name('comofunciona.edit');
+    Route::post('/comofunciona/update/{id}', 'admin\ComoFuncionaController@update')->name('comofunciona.update');
+    Route::get('/comofunciona/detail/{id}', 'admin\ComoFuncionaController@detail')->name('comofunciona.detail');
+    Route::get('/comofunciona/delete/{id}', 'admin\ComoFuncionaController@delete')->name('comofunciona.delete');
+
+    Route::get('/mensagens', 'admin\MensagemController@index')->name('mensagens');
 });
 
 
