@@ -7,7 +7,7 @@
       <a href="">Dashboard</a>
     </li>
     <li class="breadcrumb-item">Serviços</li>
-    <li class="breadcrumb-item">Novo</li>
+    <li class="breadcrumb-item">Editar</li>
   </ol>
 
  
@@ -27,22 +27,22 @@
             @endif
             <div class="card">
               <div class="card-header personal">
-                  <div class="h5 text-default">Novo Serviço</div>
+                  <div class="h5 text-default">Edição do Serviço</div>
               </div>
 
               <div class="card-body">       
-                  <form id="cadServico" method="POST" action="{{route('admin.servicos.store')}}" class="needs-validation {{ $errors->any() ? ' was-validated' : '' }}" novalidate 
+                  <form id="cadServico" method="POST" action='{{url("admin/servicos/update/$servico->id")}}' class="needs-validation {{ $errors->any() ? ' was-validated' : '' }}" novalidate
                     enctype="multipart/form-data">
                       {{csrf_field()}}
                       <input type="hidden" name="user_id" id="user_id" value={{auth()->user()->id}}>
                       <div class="form-group">
                           <label for="titulo" class="text-default">Titulo</label>
-                          <input type="text" class="form-control" name="titulo" id="titulo" value="{{ old('titulo') }}" required autofocus>
+                          <input type="text" class="form-control" name="titulo" id="titulo" value="{{ $servico->titulo }}" required autofocus>
                           <div class="valid-feedback {{$errors->has('titulo') ? 'invalid-feedback' : ''}}">{{ $errors->first('titulo') }}</div>
                       </div>
                       <div class="form-group">
                           <label for="descricao" class="text-default">Descrição</label>
-                          <textarea class="form-control" name="descricao" id="descricao" cols="30" rows="10" required>{{ old('descricao') }}</textarea>
+                          <textarea class="form-control" name="descricao" id="descricao" cols="30" rows="10" required>{{ $servico->descricao }}</textarea>
                          <div class="valid-feedback {{$errors->has('descricao') ? 'invalid-feedback' : ''}}">{{ $errors->first('descricao') }}</div>
                       </div>
                       <div class="form-group">
@@ -50,7 +50,7 @@
                           <input type="file" class="form-control" name="img" id="img" required>
                           <div class="valid-feedback {{$errors->has('img') ? 'invalid-feedback' : ''}}">{{ $errors->first('img') }}</div>
                       </div>
-                      <button type="submit" class="btn btn-secondary">Cadastrar</button>
+                      <button type="submit" class="btn btn-secondary">Editar</button>
 
                   </form>                 
               </div>

@@ -24,43 +24,43 @@
 
     <div class="card-body">
 
-      <div class="card-deck">
-        <div class="card">
-          <img src="{{ asset('img/manufatura-lean2.jpg') }}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
+      @if (session('sucesso'))
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          {{ session('sucesso') }}
         </div>
-        <div class="card">
-          <img src="{{ asset('img/manufatura-lean2.jpg') }}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
+      @elseif(session('erro'))
+        <div class="alert alert-danger alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          {{ session('erro') }}
         </div>
-        <div class="card">
-          <img src="{{ asset('img/manufatura-lean2.jpg') }}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      @endif
+
+      @if($servicos->isEmpty())
+          <p class="text-center h4">Nenhum Serviço cadastrado</p>
+      @else
+        @foreach($servicos as $key => $servico)
+          @if($key === 0 || $key === 3)
+            <div class="card-deck mb-2">
+          @endif
+
+            <div class="col-md-4 card text-center">
+              <img src='{{ asset("img/$servico->img") }}' class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{$servico->titulo}}</h5>
+                <p class="card-text">{{str_limit($servico->descricao, 70)}}</p>
+                <a href='{{url("admin/servicos/$servico->id")}}' class="btn-sm btn-secondary">Editar</a>
+                <a href='{{url("admin/servicos/delete/$servico->id")}}' class="btn-sm btn-danger">Excluir</a>
+              </div>
+            </div>
+
+          @if($key === 2 || $key === 5)
           </div>
-        </div>
-        <div class="card">
-          <img src="{{ asset('img/manufatura-lean2.jpg') }}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-      </div>
+          @endif
+        @endforeach
+      @endif
 
     </div>
-    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
   </div>
 
 @endsection
