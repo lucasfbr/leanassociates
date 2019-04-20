@@ -12,7 +12,7 @@ class ServicoController extends Controller
 
     public function index(){
 
-        $servicos = Servico::limit(6)->get();
+        $servicos = Servico::paginate(6);
 
          return view('admin.servicos.index', compact('servicos'));
     }

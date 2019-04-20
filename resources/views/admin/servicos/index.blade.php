@@ -9,8 +9,6 @@
     <li class="breadcrumb-item">Serviços</li>
   </ol>
 
-
-
   <div class="card mb-3">
     <div class="card-header">
 
@@ -48,20 +46,23 @@
               <img src='{{ asset("img/$servico->img") }}' class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">{{$servico->titulo}}</h5>
-                <p class="card-text">{{str_limit($servico->descricao, 70)}}</p>
+                <p class="card-text">{!! str_limit($servico->descricao, 70) !!}</p>
                 <a href='{{url("admin/servicos/$servico->id")}}' class="btn-sm btn-secondary">Editar</a>
                 <a href='{{url("admin/servicos/detail/$servico->id")}}' class="btn-sm btn-info">Detalhes</a>
                 <a href='{{url("admin/servicos/delete/$servico->id")}}' class="btn-sm btn-danger">Excluir</a>
               </div>
             </div>
-
           @if($key === 2 || $key === 5)
-          </div>
+            </div>
           @endif
         @endforeach
       @endif
-
     </div>
+      <div class="card-footer text-muted">
+          <nav aria-label="Page navigation example">
+          {{ $servicos->links() }}
+          </nav>
+      </div>
   </div>
 
 @endsection

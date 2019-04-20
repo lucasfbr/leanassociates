@@ -194,7 +194,10 @@
   @stack('appregister')
   @stack('appemail')
   @stack('appresetpassword')
+  @stack('ckeditor')
+
   <script src="{{ asset('admin/js/scripts.js') }}"></script>
+
 </body>
 
 </html>

@@ -12,9 +12,9 @@ class ComoFuncionaController extends Controller
     
      public function index(){
 
-        $comofunciona = ComoFunciona::limit(6)->get();
+        $comofunciona = ComoFunciona::paginate(6);
 
-         return view('admin.comofunciona.index', compact('comofunciona'));
+        return view('admin.comofunciona.index', compact('comofunciona'));
     }
 
     public function create(){

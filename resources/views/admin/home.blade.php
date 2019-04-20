@@ -80,7 +80,7 @@
           <div class="card-header">
             <i class="fas fa-user fa-fw"></i>
             Últimos usuários cadastrados
-        </div>
+          </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

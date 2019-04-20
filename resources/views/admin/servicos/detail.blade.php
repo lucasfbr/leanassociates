@@ -20,11 +20,11 @@
     <div class="card-body">
       
       <div class="row justify-content-md-center">
-        <div class="col-md-8 card text-center">
+        <div class="col-md-8 card">
             <img src='{{ asset("img/$servico->img") }}' class="card-img-top">
             <div class="card-body">
                 <h5 class="card-title">{{$servico->titulo}}</h5>
-                <p class="card-text">{{$servico->descricao}}</p>
+                <p class="card-text">{!! $servico->descricao !!}</p>
             </div>
         </div>
       </div>

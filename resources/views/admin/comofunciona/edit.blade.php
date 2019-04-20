@@ -42,7 +42,7 @@
                       </div>
                       <div class="form-group">
                           <label for="descricao" class="text-default">Descrição</label>
-                          <textarea class="form-control" name="texto" id="texto" cols="30" rows="10" required>{{ $comofunciona->texto }}</textarea>
+                          <textarea class="form-control" id="editor-texto" name="texto" id="texto" cols="30" rows="10" required>{{ $comofunciona->texto }}</textarea>
                          <div class="valid-feedback {{$errors->has('texto') ? 'invalid-feedback' : ''}}">{{ $errors->first('texto') }}</div>
                       </div>
                       <div class="form-group">
@@ -61,6 +61,9 @@
 
   </div>
 
-
+  @push('ckeditor')
+      <script src="{{ asset('admin/ckeditor/ckeditor.js') }}"></script>
+      <script src="{{ asset('admin/js/script_default.js') }}"></script>
+  @endpush
 
 @endsection

@@ -45,6 +45,10 @@ elixir((mix) => {
        './node_modules/startbootstrap-sb-admin/vendor/fontawesome-free/webfonts'
     ], 'public/admin/fonts');
 
+    mix.copy([
+        './node_modules/ckeditor'
+    ], 'public/admin/ckeditor');
+
     /* CSS ADMIN */
     mix.styles([
         './node_modules/startbootstrap-sb-admin/vendor/fontawesome-free/css/fontawesome.min.css',
@@ -61,6 +65,11 @@ elixir((mix) => {
         './node_modules/startbootstrap-sb-admin/vendor/jquery-easing/jquery.easing.min.js',
         './node_modules/startbootstrap-sb-admin/js/sb-admin.min.js',
     ],'public/admin/js/scripts.js');
+
+    mix.scripts([
+        './resources/assets/admin/js/scripts.js',
+    ],'public/admin/js/script_default.js');
+
 
     
 

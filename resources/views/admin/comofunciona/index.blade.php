@@ -39,21 +39,21 @@
       @if($comofunciona->isEmpty())
           <p class="text-center h4">Nenhum registro cadastrado</p>
       @else
-        @foreach($comofunciona as $key => $comofunciona)
+        @foreach($comofunciona as $key => $comofun)
           @if($key === 0 || $key === 3)
             <div class="card-deck mb-2">
           @endif
 
             <div class="col-md-4 card text-center">
               <div class="card-img-top">
-               <span id="icone"><i class="{{$comofunciona->img}} fa-7x"></i></span>
+               <span id="icone"><i class="{{$comofun->img}} fa-7x"></i></span>
               </div>
               <div class="card-body">
-                <h5 class="card-title">{{$comofunciona->titulo}}</h5>
-                <p class="card-text">{{str_limit($comofunciona->texto, 70)}}</p>
-                <a href='{{url("admin/comofunciona/$comofunciona->id")}}' class="btn-sm btn-secondary">Editar</a>
-                <a href='{{url("admin/comofunciona/detail/$comofunciona->id")}}' class="btn-sm btn-info">Detalhes</a>
-                <a href='{{url("admin/comofunciona/delete/$comofunciona->id")}}' class="btn-sm btn-danger">Excluir</a>
+                <h5 class="card-title">{{$comofun->titulo}}</h5>
+                <p class="card-text">{!! str_limit($comofun->texto, 70)!!}</p>
+                <a href='{{url("admin/comofunciona/$comofun->id")}}' class="btn-sm btn-secondary">Editar</a>
+                <a href='{{url("admin/comofunciona/detail/$comofun->id")}}' class="btn-sm btn-info">Detalhes</a>
+                <a href='{{url("admin/comofunciona/delete/$comofun->id")}}' class="btn-sm btn-danger">Excluir</a>
               </div>
             </div>
 
@@ -62,8 +62,14 @@
           @endif
         @endforeach
       @endif
-
     </div>
+
+      <div class="card-footer text-muted">
+          <nav aria-label="Page navigation example">
+              {{ $comofunciona->links() }}
+          </nav>
+      </div>
+
   </div>
 
 @endsection

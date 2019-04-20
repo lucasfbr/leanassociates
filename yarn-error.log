@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/bin/yarn add startbootstrap-sb-admin@^5.0.3
+  /usr/local/bin/node /usr/bin/yarn
 
 PATH: 
   /home/vagrant/.composer/vendor/bin:/usr/local/go/bin:/home/vagrant/.rbenv/plugins/ruby-build/bin:/home/vagrant/.rbenv/shims:/home/vagrant/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/vagrant/.dotnet/tools
@@ -35,7 +35,8 @@ npm manifest:
       "startbootstrap-scrolling-nav": "^4.1.2",
       "startbootstrap-sb-admin": "^5.0.3",
       "vue": "^2.0.1",
-      "vue-resource": "^1.0.3"
+      "vue-resource": "^1.0.3",
+      "ckeditor": "4.11.0"
     }
   }
 
