@@ -11,12 +11,13 @@
 
   <div class="card mb-3">
     <div class="card-header">
-      <i class="fas fa-user fa-fw"></i>
-      Lista de usuários
+      <a class="btn btn-success btn-sm" href="#" role="button" title="Novo usuário">
+        Novo
+      </a>
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
           <thead>
           <tr>
             <th>Nome</th>
@@ -28,29 +29,35 @@
           </tr>
           </thead>
           <tbody>
+          @foreach($users as $user)
             <tr>
-              <td>Bruno Nash</td>
-              <td>Software Engineer</td>
-              <td>London</td>
-              <td>38</td>
-              <td>2011/05/03</td>
+              <td>{{title_case($user->name)}}</td>
+              <td>{{$user->estado}}</td>
+              <td>{{$user->cidade}}</td>
+              <td>{{tipoRole($user->role)}}</td>
+              <td>{{data_br($user->created_at)}}</td>
               <td>
+                <a class="btn btn-info btn-sm" href="#" role="button" title="Detalhes">
+                  <i class="fas fa-eye"></i>
+                </a>
                 <a class="btn btn-success btn-sm" href="#" role="button" title="Editar">
                   <i class="fas fa-edit"></i>
-                </a>
-                <a class="btn btn-primary btn-sm" href="#" role="button" title="Detalhes">
-                  <i class="fas fa-plus"></i>
                 </a>
                 <a class="btn btn-danger btn-sm" href="#" role="button" title="Excluir">
                   <i class="fas fa-trash-alt"></i>
                 </a>
               </td>
             </tr>
+          @endforeach
           </tbody>
         </table>
       </div>
     </div>
-    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    <div class="card-footer text-muted">
+      <nav aria-label="Page navigation example">
+        {{ $users->links() }}
+      </nav>
+    </div>
   </div>
 
 @endsection
