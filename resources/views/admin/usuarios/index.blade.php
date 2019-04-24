@@ -9,9 +9,21 @@
     <li class="breadcrumb-item active">Usuários</li>
   </ol>
 
+  @if (session('sucesso'))
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      {{ session('sucesso') }}
+    </div>
+  @elseif(session('erro'))
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      {{ session('erro') }}
+    </div>
+  @endif
+
   <div class="card mb-3">
     <div class="card-header">
-      <a class="btn btn-success btn-sm" href="#" role="button" title="Novo usuário">
+      <a class="btn btn-success btn-sm" href="{{route('admin.usuarios.create')}}" role="button" title="Novo usuário">
         Novo
       </a>
     </div>
@@ -37,13 +49,13 @@
               <td>{{tipoRole($user->role)}}</td>
               <td>{{data_br($user->created_at)}}</td>
               <td>
-                <a class="btn btn-info btn-sm" href="#" role="button" title="Detalhes">
+                <a class="btn btn-info btn-sm" href='{{url("admin/usuarios/detail/$user->id")}}' role="button" title="Detalhes">
                   <i class="fas fa-eye"></i>
                 </a>
-                <a class="btn btn-success btn-sm" href="#" role="button" title="Editar">
+                <a class="btn btn-success btn-sm" href='{{url("admin/usuarios/$user->id")}}' role="button" title="Editar">
                   <i class="fas fa-edit"></i>
                 </a>
-                <a class="btn btn-danger btn-sm" href="#" role="button" title="Excluir">
+                <a class="btn btn-danger btn-sm" href='{{url("admin/usuarios/delete/$user->id")}}' role="button" title="Excluir">
                   <i class="fas fa-trash-alt"></i>
                 </a>
               </td>

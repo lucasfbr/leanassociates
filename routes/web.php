@@ -30,8 +30,16 @@ Route::get('/sobre', 'site\sobreController@index');
 Auth::routes();
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], function () {
+
     Route::get('/home', 'admin\HomeController@index')->name('home');
+
     Route::get('/usuarios', 'admin\UsuarioController@index')->name('usuarios');
+    Route::get('/usuarios/create', 'admin\UsuarioController@create')->name('usuarios.create');
+    Route::post('/usuarios/store', 'admin\UsuarioController@store')->name('usuarios.store');
+    Route::get('/usuarios/{id}', 'admin\UsuarioController@edit')->name('usuarios.edit');
+    Route::post('/usuarios/update/{id}', 'admin\UsuarioController@update')->name('usuarios.update');
+    Route::get('/usuarios/detail/{id}', 'admin\UsuarioController@detail')->name('usuarios.detail');
+    Route::get('/usuarios/delete/{id}', 'admin\UsuarioController@delete')->name('usuarios.delete');
 
     Route::get('/servicos', 'admin\ServicoController@index')->name('servicos');
     Route::get('/servicos/create', 'admin\ServicoController@create')->name('servicos.create');
