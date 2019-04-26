@@ -41,7 +41,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::get('/usuarios/detail/{id}', 'admin\UsuarioController@detail')->name('usuarios.detail');
     Route::get('/usuarios/delete/{id}', 'admin\UsuarioController@delete')->name('usuarios.delete');
 
-    Route::get('/profile', 'admin\ProfileController@index')->name('profile');
+    Route::get('/formation', 'admin\FormationController@index')->name('formation');
 
     Route::get('/servicos', 'admin\ServicoController@index')->name('servicos');
     Route::get('/servicos/create', 'admin\ServicoController@create')->name('servicos.create');
