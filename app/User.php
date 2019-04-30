@@ -24,16 +24,6 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
-        'whatsapp',
-        'empresa',
-        'interesse',
-        'site',
-        'cep',
-        'uf',
-        'cidade',
-        'bairro',
-        'rua',
-        'numero',
         'status',
         'termos',
         'perfil',
@@ -47,4 +37,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function profile(){
+        return $this->hasOne(Profile::class);
+    }
 }

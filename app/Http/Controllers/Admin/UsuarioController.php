@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Profile;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -44,6 +45,9 @@ class UsuarioController extends Controller
         $usuario = User::create($request->all());
 
         if($usuario){
+
+            Profile::create(['user_id' => $usuario->id]);
+
             $this->msg[0] = 'sucesso';
             $this->msg[1] = 'Usuário cadastrado com sucesso!';
         }else{
