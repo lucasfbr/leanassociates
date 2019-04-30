@@ -64,11 +64,16 @@ elixir((mix) => {
         './node_modules/startbootstrap-sb-admin/vendor/bootstrap/js/bootstrap.bundle.min.js',
         './node_modules/startbootstrap-sb-admin/vendor/jquery-easing/jquery.easing.min.js',
         './node_modules/startbootstrap-sb-admin/js/sb-admin.min.js',
+        './node_modules/inputmask/dist/jquery.inputmask.bundle.js',
     ],'public/admin/js/scripts.js');
 
     mix.scripts([
         './resources/assets/admin/js/scripts.js',
     ],'public/admin/js/script_default.js');
+
+     mix.scripts([
+        './resources/assets/admin/js/mask.js',
+    ],'public/admin/js/mask.js');
 
 
     

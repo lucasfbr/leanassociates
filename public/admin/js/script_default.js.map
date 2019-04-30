@@ -1,1 +1,1 @@
-{"version":3,"sources":["scripts.js"],"names":[],"mappings":"AAAA;AACA;AACA","file":"script_default.js","sourcesContent":["//INICIO CKEDITOR\r\nCKEDITOR.replace('editor-texto');\r\n//FIM CKEDITOR"]}
+{"version":3,"sources":["scripts.js"],"names":[],"mappings":"AAAA;AACA;AACA","file":"script_default.js","sourcesContent":["//INICIO CKEDITOR\nCKEDITOR.replace('editor-texto');\n//FIM CKEDITOR"]}

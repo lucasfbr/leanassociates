@@ -190,13 +190,15 @@
     </div>
   </div>
   
+  <script src="{{ asset('admin/js/scripts.js') }}"></script>
+
   @stack('applogin')
   @stack('appregister')
   @stack('appemail')
   @stack('appresetpassword')
   @stack('ckeditor')
-
-  <script src="{{ asset('admin/js/scripts.js') }}"></script>
+  @stack('profile')
+  @stack('mask')
 
 </body>
 
