@@ -10,6 +10,14 @@ body{
     color: #da843b;
 }
 
+.text-default a{
+	color: #da843b;
+}
+
+.text-default a:hover{
+	color: #fff;
+}
+
 .card-header.personal{
 	background: #545b62;
 }

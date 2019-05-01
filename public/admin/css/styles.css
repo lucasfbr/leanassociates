@@ -10943,6 +10943,14 @@ body{
     color: #da843b;
 }
 
+.text-default a{
+	color: #da843b;
+}
+
+.text-default a:hover{
+	color: #fff;
+}
+
 .card-header.personal{
 	background: #545b62;
 }
@@ -10974,4 +10982,5 @@ footer.sticky-footer{
     opacity: 0.2;
     font-size: 48px;
 }
+
 /*# sourceMappingURL=styles.css.map */
