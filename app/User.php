@@ -41,4 +41,12 @@ class User extends Authenticatable
     public function profile(){
         return $this->hasOne(Profile::class);
     }
+
+    public function formation(){
+        return $this->hasMany(Formation::class);
+    }
+
+    public function experience(){
+        return $this->hasMany(Experience::class);
+    }
 }

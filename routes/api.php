@@ -19,5 +19,8 @@ Route::get('/user', function (Request $request) {
 
 Route::post('contato/registrar', 'site\homeController@contato');
 
+Route::get('formation', 'admin\FormationController@index');
+Route::post('formation', 'admin\FormationController@store');
+
 
 //Route::post('/login', 'Auth\LoginController@login');

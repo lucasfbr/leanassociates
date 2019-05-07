@@ -15,7 +15,17 @@ class CreateExperiencesTable extends Migration
     {
         Schema::create('experiences', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned();
+            $table->string('cargo');
+            $table->string('empresa');
+            $table->string('localidade');
+            $table->date('de');
+            $table->date('ate');
+            $table->text('descricao');
+            $table->string('link')->nullable();;
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

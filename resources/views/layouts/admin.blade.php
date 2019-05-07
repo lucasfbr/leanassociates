@@ -196,6 +196,7 @@
   @stack('appregister')
   @stack('appemail')
   @stack('appresetpassword')
+  @stack('appformation')
   @stack('ckeditor')
   @stack('profile')
   @stack('mask')

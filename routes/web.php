@@ -44,6 +44,10 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::get('/profile', 'admin\ProfileController@index')->name('profile');
     Route::post('/profile/update/{id}', 'admin\ProfileController@update')->name('profile.update');
 
+    Route::post('/formation/store', 'admin\FormationController@store')->name('formation.store');
+    Route::post('/formation/update/{id}', 'admin\FormationController@update')->name('formation.update');
+    Route::post('/formation/delete/{id}', 'admin\FormationController@delete')->name('formation.delete');
+
     Route::get('/servicos', 'admin\ServicoController@index')->name('servicos');
     Route::get('/servicos/create', 'admin\ServicoController@create')->name('servicos.create');
     Route::post('/servicos/store', 'admin\ServicoController@store')->name('servicos.store');

@@ -13,10 +13,12 @@
     <div class="row justify-content-md-center mt-5 mb-5">
 
         <div class="col-xs-12 col-md-10">
+
             @if (session('sucesso'))
                 <div class="alert alert-success alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     {{ session('sucesso') }}
+                    {{ session('status') }}
                 </div>
             @elseif(session('erro'))
                 <div class="alert alert-danger alert-dismissible" role="alert">
@@ -28,13 +30,16 @@
                 <div class="card-header personal">
                     <ul class="nav nav-pills text-default" id="pills-tab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link  active" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="true">Perfil</a>
+                            <a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="true">Perfil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="pills-interesse-tab" data-toggle="pill" href="#pills-interesse" role="tab" aria-controls="pills-interesse" aria-selected="false">Areas de interesse</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="pills-formation-tab" data-toggle="pill" href="#pills-formation" role="tab" aria-controls="pills-formation" aria-selected="false">Formação</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-experiencia-tab" data-toggle="pill" href="#pills-experiencia" role="tab" aria-controls="pills-experiencia" aria-selected="false">Experiência Proficional</a>
                         </li>
                     </ul>
                 </div>
@@ -563,7 +568,19 @@
                         </div>
 
                         <div class="tab-pane fade" id="pills-interesse" role="tabpanel" aria-labelledby="pills-interesse-tab">INTERESSE</div>
-                        <div class="tab-pane fade" id="pills-formation" role="tabpanel" aria-labelledby="pills-formation-tab">FORMATION</div>
+                        <div class="tab-pane fade" id="pills-formation" role="tabpanel" aria-labelledby="pills-formation-tab">
+                            <div id="appFormation">
+                                <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#addFormacaoModal">Add</button>
+                                <hr>
+                                <div id="listFormations"></div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="pills-experiencia" role="tabpanel" aria-labelledby="pills-experiencia-tab">EXPERIÊNCIA PROFISSIONAL</div>
+
+
+                    </div>
+
                 </div>
 
             </div>
@@ -574,9 +591,96 @@
 
     </div>
 
+
+    <!-- Adicionar formacao modal-->
+    <div class="modal fade" id="addFormacaoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Adicione uma nova formação ao seu curriculo</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form id="newFormation" method="post" action="{{url("admin/formation/store")}}">
+                    {{csrf_field()}}
+                    <div class="modal-body">
+                        FORM
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Listar formacao modal-->
+    <div class="modal fade" id="listFormacaoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detalhamento completo de sua formação</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    FORM
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="#">Salvar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Editar formacao modal-->
+    <div class="modal fade" id="editFormacaoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edite os dados de sua formação</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    FORM
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="#">Editar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Excluir formacao modal-->
+    <div class="modal fade" id="delFormacaoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Realmente deseja excluir essa formação?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Selecione "Excluir" para confirmar esta ação</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a id="fecharModal" class="btn btn-primary" href="#">Excluir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @push('profile')
       <script>
           $( document ).ready(function() {
+
 
                 $("#habilitaPassword").on('click', function () {    
 
@@ -661,6 +765,105 @@
                   }
               });
 
+
+              /*********************************************************************
+              * Inicio Requisições AJAX responsaveis pelos formulários de Formação *
+              **********************************************************************/
+              $(function () {
+
+                  $.ajaxSetup({
+                      headers: {
+                          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                      }
+                  });
+
+                  function list() {
+
+                      $.ajax({
+                          type: "GET",
+                          dataType: "json",
+                          url: "/api/formation",
+                          success: function (response) {
+
+                              var formations = "";
+
+                              $.each(response, function (key, value) {
+
+                                  formations += "<div class='card mb-3 cardFormation'>";
+                                  formations += "<div class='row no-gutters'>";
+                                  formations += "<div class='col-md-4 text-center mt-4'>";
+                                  formations += "<i class='fas fa-university fa-6x'></i>";
+                                  formations += "</div>";
+                                  formations += "<div class='col-md-8'>";
+                                  formations += "<div class='card-body'>";
+                                  formations += "<h5 class='card-title'>"+value.instituicao+"</h5>";
+                                  formations += "<p class='card-text'>"+value.formacao+"</p>";
+                                  formations += "<p class='card-text'>Início: "+value.de+ " Fim: " +value.ate+ "</p>";
+                                  formations += "<p class='card-text'>"+value.descricao+"</p>";
+                                  formations += "<p class='card-text d-flex justify-content-end'>";
+                                  formations += "<button type='button' class='btn btn-outline-primary btn-sm mr-1' data-toggle='modal' data-target='#listFormacaoModal'>Detalhes</button>"
+                                  formations += "<button type='button' class='btn btn-outline-success btn-sm mr-1' data-toggle='modal' data-target='#editFormacaoModal'>Editar</button>"
+                                  formations += "<button type='button' class='btn btn-outline-danger btn-sm' data-toggle='modal' data-target='#delFormacaoModal'>Excluir</button>"
+                                  formations += "</p>";
+                                  formations += "</div>";
+                                  formations += "</div>";
+                                  formations += "</div>";
+                                  formations += "</div>";
+                                  formations += "<hr>";
+                              });
+
+                              $('#listFormations').html(formations);
+                          },
+                          error: function (response) {
+                              console.log(response)
+                          }
+                      });
+                  }
+                  list();
+                  
+                  function saveData() {
+
+                      var user_id = $('#user_id').val();
+                      var instituicao = $('#instituicao').val();
+                      var de = $('#de').val();
+                      var ate = $('#ate').val();
+                      var descricao = $('#descricao').val();
+                      var link = $('#link').val();
+
+                      $.ajax({
+                          type: 'POST',
+                          dataType: 'json',
+                          data: {},
+                          url: '/api/formation',
+                          success: function (response) {
+                              list();
+                              clearData();
+                              $('#addFormacaoModal').modal('hide');
+
+                          },
+                          error: function (response) {
+                              console.log('ocorreu um erro');
+                              console.log(response);
+                          }
+
+                      });
+                  }
+                  
+                  function clearData() {
+                      $('#instituicao').val('');
+                      $('#formacao').val('');
+                      $('#de').val('');
+                      $('#ate').val('');
+                      $('#descricao').val('');
+                      $('#link').val('');
+                  }
+
+
+              });
+              /*********************************************************************
+               * Fim Requisições AJAX responsaveis pelos formulários de Formação   *
+               *********************************************************************/
+
            });
       </script>
 @endpush
@@ -669,6 +872,7 @@
 @push('mask')
     <script src="{{ asset('admin/js/mask.js') }}"></script>
 @endpush
+
 
 @endsection
 

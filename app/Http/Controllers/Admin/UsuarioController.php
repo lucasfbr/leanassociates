@@ -22,6 +22,7 @@ class UsuarioController extends Controller
         $users = User::paginate(10);
 
         return view('admin.usuarios.index', compact('users'));
+
     }
 
     public function create(){
