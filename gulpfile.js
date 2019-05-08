@@ -20,8 +20,7 @@ elixir((mix) => {
        .webpack('./resources/assets/admin/js/login.js', 'public/admin/js/login.js')
        .webpack('./resources/assets/admin/js/register.js', 'public/admin/js/register.js')
        .webpack('./resources/assets/admin/js/email.js', 'public/admin/js/email.js')
-       .webpack('./resources/assets/admin/js/resetpassword.js', 'public/admin/js/resetpassword.js')
-       .webpack('./resources/assets/admin/js/formation.js', 'public/admin/js/formation.js');
+       .webpack('./resources/assets/admin/js/resetpassword.js', 'public/admin/js/resetpassword.js');
 
     mix.copy([
        './node_modules/@fortawesome/fontawesome-free/webfonts'
@@ -50,11 +49,16 @@ elixir((mix) => {
         './node_modules/ckeditor'
     ], 'public/admin/ckeditor');
 
+    mix.copy([
+        './node_modules/bootstrap-datepicker/locales'
+    ], 'public/admin/locales/bootstrap-datepicker.pt-BR.min.js');
+
     /* CSS ADMIN */
     mix.styles([
         './node_modules/startbootstrap-sb-admin/vendor/fontawesome-free/css/fontawesome.min.css',
         './node_modules/startbootstrap-sb-admin/vendor/datatables/dataTables.bootstrap4.css',
         './node_modules/startbootstrap-sb-admin/css/sb-admin.css',
+        './node_modules/bootstrap-datepicker/css/bootstrap-datepicker.css',
         './resources/assets/admin/css/style-pagina.css',
     ],'public/admin/css/styles.css');
 
@@ -66,6 +70,7 @@ elixir((mix) => {
         './node_modules/startbootstrap-sb-admin/vendor/jquery-easing/jquery.easing.min.js',
         './node_modules/startbootstrap-sb-admin/js/sb-admin.min.js',
         './node_modules/inputmask/dist/jquery.inputmask.bundle.js',
+        './node_modules/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
     ],'public/admin/js/scripts.js');
 
     mix.scripts([

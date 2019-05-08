@@ -13,7 +13,7 @@ class UsuarioController extends Controller
 
     public function __construct()
     {
-        //objeto que cointerá as mensagens de retorno
+        //objeto que conterá as mensagens de retorno
         $this->msg = array();
     }
 

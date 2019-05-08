@@ -19,7 +19,7 @@ class FormationController extends Controller
 
     public function store(Request $request){
 
-        $formation = Formation::create($request->all);
+        $formation = Formation::create($request->all());
 
         return response()->json('ok',200);
 

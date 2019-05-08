@@ -602,14 +602,59 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <form id="newFormation" method="post" action="{{url("admin/formation/store")}}">
-                    {{csrf_field()}}
+                <form id="newFormation" method="post" class="needs-validation" novalidate >
                     <div class="modal-body">
-                        FORM
+                        <div class="form-group">
+                            <label for="instituicao" class="text-default">Instituição</label>
+                            <input type="text" class="form-control" name="instituicao" id="instituicao" required>
+                            <div class="valid-feedback"></div>
+                            <small id="instHelp" class="form-text text-muted">Instituição de ensino</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="formacao" class="text-default">Formação</label>
+                            <input type="text" class="form-control" name="formacao" id="formacao" required>
+                            <div class="valid-feedback"></div>
+                            <small id="formacaoHelp" class="form-text text-muted">Nome da formação</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="de" class="text-default">De</label>
+                            <div class="input-group date" data-provide="datepicker">
+                                <input type="text" name="de" id="de" class="form-control" required>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                            <div class="valid-feedback"></div>
+                            <small id="deHelp" class="form-text text-muted">Início da formação</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="ate" class="text-default">Até</label>
+                            <div class="input-group date" data-provide="datepicker">
+                                <input type="text" name="ate" id="ate" class="form-control" required>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                            <div class="valid-feedback"></div>
+                            <small id="ateHelp" class="form-text text-muted">Término da formação</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="descricao" class="text-default">Descrição</label>
+                            <textarea name="descricao" id="descricao" class="form-control" cols="10" rows="6"></textarea>
+                            <div class="valid-feedback"></div>
+                            <small id="descHelp" class="form-text text-muted">Especifique em detalhes sua formação</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="link" class="text-default">Link</label>
+                            <input type="text" class="form-control" name="link" id="link">
+                            <div class="valid-feedback"></div>
+                            <small id="linkHelp" class="form-text text-muted">link para documentos, sites, apresentações e vídeos externos</small>
+                        </div>
+                        <input type="hidden" id="user_id" class="user_id" value="{{$user->id}}">
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Salvar</button>
+                        <button id="cadFormacao" class="btn btn-primary">Salvar</button>
                     </div>
                 </form>
             </div>
@@ -771,6 +816,8 @@
               **********************************************************************/
               $(function () {
 
+                  $('#formationAlert').alert('close')
+
                   $.ajaxSetup({
                       headers: {
                           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -782,7 +829,7 @@
                       $.ajax({
                           type: "GET",
                           dataType: "json",
-                          url: "/api/formation",
+                          url: "formation",
                           success: function (response) {
 
                               var formations = "";
@@ -798,7 +845,7 @@
                                   formations += "<div class='card-body'>";
                                   formations += "<h5 class='card-title'>"+value.instituicao+"</h5>";
                                   formations += "<p class='card-text'>"+value.formacao+"</p>";
-                                  formations += "<p class='card-text'>Início: "+value.de+ " Fim: " +value.ate+ "</p>";
+                                  formations += "<p class='card-text'>Início: "+formatDate(value.de, 'pt-br')+ " Fim: " +formatDate(value.ate, 'pt-br')+ "</p>";
                                   formations += "<p class='card-text'>"+value.descricao+"</p>";
                                   formations += "<p class='card-text d-flex justify-content-end'>";
                                   formations += "<button type='button' class='btn btn-outline-primary btn-sm mr-1' data-toggle='modal' data-target='#listFormacaoModal'>Detalhes</button>"
@@ -820,25 +867,38 @@
                       });
                   }
                   list();
-                  
-                  function saveData() {
+
+                  $('#cadFormacao').click(function (e) {
+
+                      e.preventDefault();
 
                       var user_id = $('#user_id').val();
                       var instituicao = $('#instituicao').val();
-                      var de = $('#de').val();
-                      var ate = $('#ate').val();
+                      var formacao = $('#formacao').val();
+                      var de = formatDate($('#de').val());
+                      var ate = formatDate($('#ate').val());
                       var descricao = $('#descricao').val();
                       var link = $('#link').val();
+
+                      if(!validate(user_id,instituicao,formacao,de,ate)) return false;
 
                       $.ajax({
                           type: 'POST',
                           dataType: 'json',
-                          data: {},
-                          url: '/api/formation',
+                          data: {
+                              user_id:user_id,
+                              instituicao:instituicao,
+                              formacao:formacao,
+                              de:de,
+                              ate:ate,
+                              descricao:descricao,
+                              link:link
+                          },
+                          url: "formation/store",
                           success: function (response) {
+                              $('#addFormacaoModal').modal('hide');
                               list();
                               clearData();
-                              $('#addFormacaoModal').modal('hide');
 
                           },
                           error: function (response) {
@@ -847,6 +907,18 @@
                           }
 
                       });
+                  });
+
+                  function validate(user_id,instituicao,de,ate){
+
+                        if(user_id == '' || instituicao == '' || de == '' || ate == ''){
+
+                            $('#newFormation').addClass('was-validated');
+
+                            return false;
+                        }
+
+                        return true;
                   }
                   
                   function clearData() {
@@ -856,13 +928,46 @@
                       $('#ate').val('');
                       $('#descricao').val('');
                       $('#link').val('');
+                      $('#newFormation').removeClass('was-validated');
                   }
+
+                  function formatDate(data, formato) {
+                      if (formato == 'pt-br') {
+                          return (data.substr(0, 10).split('-').reverse().join('/'));
+                      } else {
+                          return (data.substr(0, 10).split('/').reverse().join('-'));
+                      }
+                  }
+
 
 
               });
               /*********************************************************************
                * Fim Requisições AJAX responsaveis pelos formulários de Formação   *
                *********************************************************************/
+
+              /*********************
+              * Ínicio datapicker   *
+              **********************/
+
+              $.fn.datepicker.dates['en'] = {
+                  days: ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sabado", "Domingo"],
+                  daysShort: ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom"],
+                  daysMin: ["Se", "Te", "Qu", "Qu", "Se", "Sa", "Do"],
+                  months: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+                  monthsShort: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
+                  today: "Hoje",
+                  clear: "Clear",
+                  format: "mm/dd/yyyy",
+                  titleFormat: "MM yyyy", /* Leverages same syntax as 'format' */
+                  weekStart: 0
+              };
+
+              /*********************
+               * Fim datapicker   *
+               **********************/
+
+
 
            });
       </script>
