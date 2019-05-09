@@ -692,13 +692,61 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    FORM
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="#">Editar</a>
-                </div>
+                <form id="formEditFormation" method="post" class="needs-validation" novalidate >
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="instituicaoedit" class="text-default">Instituição</label>
+                            <input type="text" class="form-control" name="instituicaoedit" id="instituicaoedit" value="" required>
+                            <div class="valid-feedback"></div>
+                            <small id="instHelp" class="form-text text-muted">Instituição de ensino</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="formacaoedit" class="text-default">Formação</label>
+                            <input type="text" class="form-control" name="formacaoedit" id="formacaoedit" value="" required>
+                            <div class="valid-feedback"></div>
+                            <small id="formacaoHelp" class="form-text text-muted">Nome da formação</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="deedit" class="text-default">De</label>
+                            <div class="input-group date" data-provide="datepicker">
+                                <input type="text" name="deedit" id="deedit" class="form-control" value="" required>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                            <div class="valid-feedback"></div>
+                            <small id="deHelp" class="form-text text-muted">Início da formação</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="ateedit" class="text-default">Até</label>
+                            <div class="input-group date" data-provide="datepicker">
+                                <input type="text" name="ateedit" id="ateedit" class="form-control" value="" required>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                            <div class="valid-feedback"></div>
+                            <small id="ateHelp" class="form-text text-muted">Término da formação</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="descricaoedit" class="text-default">Descrição</label>
+                            <textarea name="descricaoedit" id="descricaoedit" class="form-control" cols="10" rows="6"></textarea>
+                            <div class="valid-feedback"></div>
+                            <small id="descHelp" class="form-text text-muted">Especifique em detalhes sua formação</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="linkedit" class="text-default">Link</label>
+                            <input type="text" class="form-control" name="linkedit" id="linktdit" value="">
+                            <div class="valid-feedback"></div>
+                            <small id="linkHelp" class="form-text text-muted">link para documentos, sites, apresentações e vídeos externos</small>
+                        </div>
+                        <input type="hidden" id="formation_id" class="formation_id" value="">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <button id="editFormacao" class="btn btn-primary">Editar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -714,9 +762,10 @@
                     </button>
                 </div>
                 <div class="modal-body">Selecione "Excluir" para confirmar esta ação</div>
+                <input type="hidden" id="idFormation" class="idFormation" value="">
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a id="fecharModal" class="btn btn-primary" href="#">Excluir</a>
+                    <a id="delFormation" class="btn btn-primary" href="#">Excluir</a>
                 </div>
             </div>
         </div>
@@ -724,10 +773,10 @@
 
 @push('profile')
       <script>
+
           $( document ).ready(function() {
 
-
-                $("#habilitaPassword").on('click', function () {    
+                $("#habilitaPassword").on('click', function () {
 
                         if($('#habilitaPassword').prop("checked")) {
 
@@ -810,13 +859,11 @@
                   }
               });
 
-
               /*********************************************************************
               * Inicio Requisições AJAX responsaveis pelos formulários de Formação *
               **********************************************************************/
               $(function () {
 
-                  $('#formationAlert').alert('close')
 
                   $.ajaxSetup({
                       headers: {
@@ -848,9 +895,9 @@
                                   formations += "<p class='card-text'>Início: "+formatDate(value.de, 'pt-br')+ " Fim: " +formatDate(value.ate, 'pt-br')+ "</p>";
                                   formations += "<p class='card-text'>"+value.descricao+"</p>";
                                   formations += "<p class='card-text d-flex justify-content-end'>";
-                                  formations += "<button type='button' class='btn btn-outline-primary btn-sm mr-1' data-toggle='modal' data-target='#listFormacaoModal'>Detalhes</button>"
-                                  formations += "<button type='button' class='btn btn-outline-success btn-sm mr-1' data-toggle='modal' data-target='#editFormacaoModal'>Editar</button>"
-                                  formations += "<button type='button' class='btn btn-outline-danger btn-sm' data-toggle='modal' data-target='#delFormacaoModal'>Excluir</button>"
+                                  formations += "<button type='button' class='btn btn-outline-primary btn-sm mr-1' data-toggle='modal' data-target='#listFormacaoModal' onclick='listFormation("+value.id+")'>Detalhes</button>";
+                                  formations += "<button type='button' class='btn btn-outline-success btn-sm mr-1' data-toggle='modal' data-target='#editFormacaoModal' onclick='editFormation("+value.id+")'>Editar</button>";
+                                  formations += "<button type='button' class='btn btn-outline-danger btn-sm' data-toggle='modal' data-target='#delFormacaoModal' onclick='deletFormation("+value.id+")'>Excluir</button>";
                                   formations += "</p>";
                                   formations += "</div>";
                                   formations += "</div>";
@@ -907,6 +954,38 @@
                           }
 
                       });
+                  });
+
+                  $('#delFormation').click(function (e) {
+
+                      e.preventDefault();
+                      var idFormation = $('#idFormation').val();
+
+                      $.ajax({
+                          type: 'GET',
+                          dataType: 'json',
+                          url: "formation/delete/"+idFormation,
+                          success: function (response) {
+                              $('#delFormacaoModal').modal('hide');
+                              list();
+                              console.log(response)
+                          },
+                          error: function (response) {
+                              console.log(response)
+                          }
+                      })
+
+                  });
+
+                  $('#formationTeste').click(function () {
+
+                      console.log('asdadasdas');
+
+                      //var id = $('#delFormation').val();
+
+                      //console.log('id:' + id);
+
+                      //$('#idFormation').val('xxx');
                   });
 
                   function validate(user_id,instituicao,de,ate){
@@ -967,9 +1046,40 @@
                * Fim datapicker   *
                **********************/
 
-
-
            });
+
+          function deletFormation(id){
+              document.getElementById('idFormation').value = id
+          }
+
+          function editFormation(id){
+              $.ajax({
+                  type: 'GET',
+                  dataType: 'json',
+                  url: "formation/edit/"+id,
+                  success: function (response) {
+                      console.log(response)
+                  },
+                  error: function (response) {
+                      console.log(response)
+                  }
+              })
+          }
+
+          function listFormation(id){
+              $.ajax({
+                  type: 'GET',
+                  dataType: 'json',
+                  url: "formation/list/"+id,
+                  success: function (response) {
+                      console.log(response)
+                  },
+                  error: function (response) {
+                      console.log(response)
+                  }
+              })
+          }
+
       </script>
 @endpush
 
