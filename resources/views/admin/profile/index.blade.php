@@ -570,13 +570,19 @@
                         <div class="tab-pane fade" id="pills-interesse" role="tabpanel" aria-labelledby="pills-interesse-tab">INTERESSE</div>
                         <div class="tab-pane fade" id="pills-formation" role="tabpanel" aria-labelledby="pills-formation-tab">
                             <div id="appFormation">
-                                <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#formFormationModal" onclick="hidebtn('edit')">Add</button>
+                                <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#formFormationModal" onclick="hidebtn('edit','1')">Add</button>
                                 <hr>
                                 <div id="listFormations"></div>
                             </div>
                         </div>
 
-                        <div class="tab-pane fade" id="pills-experiencia" role="tabpanel" aria-labelledby="pills-experiencia-tab">EXPERIÊNCIA PROFISSIONAL</div>
+                        <div class="tab-pane fade" id="pills-experiencia" role="tabpanel" aria-labelledby="pills-experiencia-tab">
+                            <div id="appExperiencia">
+                                <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#formExperienciaModal" onclick="hidebtn('edit','2')">Add</button>
+                                <hr>
+                                <div id="listExperiences"></div>
+                            </div>
+                        </div>
 
 
                     </div>
@@ -657,6 +663,83 @@
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                         <button id="cadFormacao" class="btn btn-primary">Salvar</button>
                         <button id="editFormacao" class="btn btn-primary">Editar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Adicionar experiencia modal-->
+    <div class="modal fade" id="formExperienciaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Adicione uma nova experiência ao seu curriculo</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form id="formExperiencia" method="post" class="needs-validation" novalidate >
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="cargo" class="text-default">Cargo</label>
+                            <input type="text" class="form-control" name="cargo" id="cargo" required>
+                            <div class="valid-feedback"></div>
+                            <small id="cargotHelp" class="form-text text-muted">Cargo ocupado na empresa</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="expEmpresa" class="text-default">Empresa</label>
+                            <input type="text" class="form-control" name="expEmpresa" id="expEmpresa" required>
+                            <div class="valid-feedback"></div>
+                            <small id="expEmpresaHelp" class="form-text text-muted">Nome da empresa</small>
+                        </div>
+                         <div class="form-group">
+                            <label for="localidade" class="text-default">Localidade</label>
+                            <input type="text" class="form-control" name="localidade" id="localidade" required>
+                            <div class="valid-feedback"></div>
+                            <small id="localHelp" class="form-text text-muted">local da empresa</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="expDe" class="text-default">De</label>
+                            <div class="input-group date" data-provide="datepicker">
+                                <input type="text" name="expde" id="expde" class="form-control" required>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                            <div class="valid-feedback"></div>
+                            <small id="expDeHelp" class="form-text text-muted">Início da experiência</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="expate" class="text-default">Até</label>
+                            <div class="input-group date" data-provide="datepicker">
+                                <input type="text" name="expate" id="expate" class="form-control" required>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                            <div class="valid-feedback"></div>
+                            <small id="expateHelp" class="form-text text-muted">Término da experiência</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="expdescricao" class="text-default">Descrição</label>
+                            <textarea name="expdescricao" id="expdescricao" class="form-control" cols="10" rows="6"></textarea>
+                            <div class="valid-feedback"></div>
+                            <small id="expdescricaoHelp" class="form-text text-muted">Especifique em detalhes sua experiência</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="esplink" class="text-default">Link</label>
+                            <input type="text" class="form-control" name="esplink" id="esplink">
+                            <div class="valid-feedback"></div>
+                            <small id="esplinkHelp" class="form-text text-muted">link para documentos, sites, apresentações e vídeos externos</small>
+                        </div>
+                        <input type="hidden" id="experience_user_id" class="experience_user_id" value="{{$user->id}}">
+                        <input type="hidden" id="experience_id" class="experience_id" value="">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <button id="cadExperiencia" class="btn btn-primary">Salvar</button>
+                        <button id="editExperiencia" class="btn btn-primary">Editar</button>
                     </div>
                 </form>
             </div>
@@ -793,6 +876,14 @@
 
                               var formations = "";
 
+                              if(response.length == 0){
+
+                                formations = "<h4 class='text-center'>Nenhum registro encontrado</h4>";
+                                 $('#listFormations').html(formations);
+
+                              }else{
+
+
                               $.each(response, function (key, value) {
 
                                   formations += "<div class='card mb-3 cardFormation'>";
@@ -806,6 +897,7 @@
                                   formations += "<p class='card-text mb-0'>"+value.formacao+"</p>";
                                   formations += "<p class='card-text mb-2'>"+year(value.de)+ " - " +year(value.ate)+ "</p>";
                                   formations += "<p class='font-weight-light card-text mb-0'>"+value.descricao+"</p>";
+                                  formations += "<p class='card-text mb-0'>"+value.link+"</p>";
                                   formations += "<p class='card-text d-flex justify-content-end'>";
                                   formations += "<button type='button' class='btn btn-outline-success btn-sm mr-1' data-toggle='modal' data-target='#formFormationModal' onclick='editFormation("+value.id+")'>Editar</button>";
                                   formations += "<button type='button' class='btn btn-outline-danger btn-sm' data-toggle='modal' data-target='#delFormacaoModal' onclick='deletFormation("+value.id+")'>Excluir</button>";
@@ -818,6 +910,7 @@
                               });
 
                               $('#listFormations').html(formations);
+                            }
                           },
                           error: function (response) {
                               console.log(response)
@@ -881,8 +974,6 @@
 
                       if(!validate(instituicao,formacao,de,ate)) return false;
 
-                      //console.log('formation_id:' + formation_id); return false;
-
                       $.ajax({
                           type: 'POST',
                           dataType: 'json',
@@ -945,9 +1036,199 @@
                   }
 
               });
+
               /*********************************************************************
                * Fim Requisições AJAX responsaveis pelos formulários de Formação   *
                *********************************************************************/
+
+
+               /*********************************************************************
+              * Inicio Requisições AJAX responsaveis pelos formulários de experiencias*
+              **********************************************************************/
+              $(function () {
+
+
+                     function listExperiencias() {
+
+                      $.ajax({
+                          type: "GET",
+                          dataType: "json",
+                          url: "experience",
+                          success: function (response) {
+
+                              var experiencias = "";
+
+                              if(response.length == 0){
+
+                                experiencias = "<h4 class='text-center'>Nenhum registro encontrado</h4>";
+                                $('#listExperiences').html(experiencias);
+
+                              }else{
+
+                                  $.each(response, function (key, value) {
+
+                                      experiencias += "<div class='card mb-3 cardFormation'>";
+                                      experiencias += "<div class='row no-gutters'>";
+                                      experiencias += "<div class='col-md-4 text-center mt-4'>";
+                                      experiencias += "<i class='fas fa-university fa-6x'></i>";
+                                      experiencias += "</div>";
+                                      experiencias += "<div class='col-md-8'>";
+                                      experiencias += "<div class='card-body'>";
+                                      experiencias += "<h5 class='card-title mb-0'>"+value.empresa+"</h5>";
+                                      experiencias += "<p class='card-text mb-0'>"+value.cargo+"</p>";
+                                      experiencias += "<p class='card-text mb-0'>"+value.localidade+"</p>";
+                                      experiencias += "<p class='card-text mb-2'>"+year(value.de)+ " - " +year(value.ate)+ "</p>";
+                                      experiencias += "<p class='font-weight-light card-text mb-0'>"+value.descricao+"</p>";
+                                      experiencias += "<p class='font-weight-light card-text mb-0'>"+value.link+"</p>";
+                                      experiencias += "<p class='card-text d-flex justify-content-end'>";
+                                      experiencias += "<button type='button' class='btn btn-outline-success btn-sm mr-1' data-toggle='modal' data-target='#formFormationModal' onclick='editFormation("+value.id+")'>Editar</button>";
+                                      experiencias += "<button type='button' class='btn btn-outline-danger btn-sm' data-toggle='modal' data-target='#delFormacaoModal' onclick='deletFormation("+value.id+")'>Excluir</button>";
+                                      experiencias += "</p>";
+                                      experiencias += "</div>";
+                                      experiencias += "</div>";
+                                      experiencias += "</div>";
+                                      experiencias += "</div>";
+                                      experiencias += "<hr>";
+                                  });
+
+                                  $('#listExperiences').html(experiencias);
+
+                            }
+                          },
+                          error: function (response) {
+
+                              console.log('Erro ao fazer uma requisição a base de dados!');
+                          }
+                      });
+                   }
+                   listExperiencias(); 
+
+
+                   $('#cadExperiencia').click(function (e) {
+
+                      e.preventDefault();
+
+                      var user_id = $('#user_id').val();
+                      var empresa = $('#expempresa').val();
+                      var cargo = $('#cargo').val();
+                      var localidade = $('#localidade').val();
+                      var de = formatDate($('#expde').val());
+                      var ate = formatDate($('#expate').val());
+                      var descricao = $('#expdescricao').val();
+                      var link = $('#explink').val();
+
+                      if(!validate(empresa,cargo,localidade,de,ate)) return false;
+
+                      $.ajax({
+                          type: 'POST',
+                          dataType: 'json',
+                          data: {
+                              user_id:user_id,
+                              empresa:empresa,
+                              cargo:cargo,
+                              localidade:localidade,
+                              de:de,
+                              ate:ate,
+                              descricao:descricao,
+                              link:link
+                          },
+                          url: "experience/store",
+                          success: function (response) {
+                              $('#formExperienceModal').modal('hide');
+                              listExperiencias(); 
+                              clearDataExperience();
+
+                          },
+                          error: function (response) {
+                              console.log('ocorreu um erro');
+                              console.log(response);
+                          }
+
+                      });
+                  });
+
+                  $('#editExperiencia').click(function (e) {
+
+                      e.preventDefault();
+
+                      var formation_id = $("#formation_id").val();
+                      var empresa = $('#expempresa').val();
+                      var cargo = $('#cargo').val();
+                      var localidade = $('#localidade').val();
+                      var de = formatDate($('#expde').val());
+                      var ate = formatDate($('#expate').val());
+                      var descricao = $('#expdescricao').val();
+                      var link = $('#explink').val();
+
+                      if(!validate(empresa,cargo,localidade,de,ate)) return false;
+
+                      $.ajax({
+                          type: 'POST',
+                          dataType: 'json',
+                          data: {
+                              empresa:empresa,
+                              cargo:cargo,
+                              localidade:localidade,
+                              de:de,
+                              ate:ate,
+                              descricao:descricao,
+                              link:link
+                          },
+                          url: "experience/update/"+experience_id,
+                          success: function (response) {
+                              console.log(response)
+
+                              $('#formExperienceModal').modal('hide');
+                              listExperiencias(); 
+                              clearDataExperience();
+
+                          },
+                          error: function (response) {
+                              console.log('ocorreu um erro');
+                              console.log(response);
+                          }
+
+                      });
+                  });
+
+                  $('#delExperiencia').click(function (e) {
+
+                      e.preventDefault();
+                      var idExperiencia = $('#idExperiencia').val();
+
+                      $.ajax({
+                          type: 'GET',
+                          dataType: 'json',
+                          url: "formation/delete/"+idExperiencia,
+                          success: function (response) {
+                              $('#delExperienciaModal').modal('hide');
+                              listExperiencias();
+                              console.log(response)
+                          },
+                          error: function (response) {
+                              console.log(response)
+                          }
+                      })
+
+                  });
+
+                  function validateExperience(empresa,cargo,localidade,de,ate){
+
+                        if(empresa == '' || cargo == '' || localidade == '' || de == '' || ate == ''){
+
+                            $('#formExperience').addClass('was-validated');
+
+                            return false;
+                        }
+
+                        return true;
+                  }
+
+              }); 
+              /*********************************************************************
+               * Fim Requisições AJAX responsaveis pelos formulários de experiecias*
+               *********************************************************************/
+
 
               /*********************
               * Ínicio datapicker   *
@@ -971,12 +1252,12 @@
                **********************/
 
            });
-
-          function deletFormation(id){
+            
+            function deletFormation(id){
               document.getElementById('idFormation').value = id
-          }
+            }  
 
-          function editFormation(id) {
+            function editFormation(id) {
 
               hidebtn('add')
 
@@ -999,30 +1280,7 @@
                       console.log(response)
                   }
               });
-          }
-
-          function hidebtn(btn) {
-
-              console.log(btn)
-
-              if(btn === 'edit'){
-                  clearData();
-                  $('#cadFormacao').show();
-                  $('#editFormacao').hide();
-              }else{
-                  $('#cadFormacao').hide();
-                  $('#editFormacao').show();
-              }
-
-          }
-
-          function formatDate(data, formato) {
-              if (formato == 'pt-br') {
-                  return (data.substr(0, 10).split('-').reverse().join('/'));
-              } else {
-                  return (data.substr(0, 10).split('/').reverse().join('-'));
-              }
-          }
+           }
 
           function clearData() {
               $('#instituicao').val('');
@@ -1033,6 +1291,58 @@
               $('#link').val('');
               $('#formFormation').removeClass('was-validated');
           }
+
+          function clearDataExperience() {
+              $('#empresa').val('');
+              $('#cargo').val('');
+              $('#localidade').val('');
+              $('#de').val('');
+              $('#ate').val('');
+              $('#descricao').val('');
+              $('#link').val('');
+              $('#formExperience').removeClass('was-validated');
+          }              
+
+          //btn = qual botao vai ser escondido
+          //tipo = defini se o botao é para formacao ou experiencia
+          function hidebtn(btn, tipo) {
+
+              console.log(btn, tipo)
+
+              if(tipo === '1'){
+
+                  clearData();
+
+                  if(btn === 'edit'){
+                    $('#cadFormacao').show();
+                    $('#editFormacao').hide();  
+                  }else{
+                    $('#cadFormacao').hide();
+                    $('#editFormacao').show();  
+                  }
+                  
+              }else{
+                  if(btn === 'add'){
+                    $('#cadExperiencia').hide();
+                    $('#editExperiencia').show();  
+                  }else{
+                    $('#cadExperiencia').show();
+                    $('#editExperiencia').hide();  
+                  }
+              }
+
+          }
+    
+
+          function formatDate(data, formato) {
+              if (formato == 'pt-br') {
+                  return (data.substr(0, 10).split('-').reverse().join('/'));
+              } else {
+                  return (data.substr(0, 10).split('/').reverse().join('-'));
+              }
+          }
+
+        
 
           function year(date) {
               return date.split('-')[0];
