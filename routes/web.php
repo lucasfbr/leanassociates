@@ -68,9 +68,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
 
     Route::get('/formation', 'admin\FormationController@index');
     Route::get('/formation/edit/{id}', 'admin\FormationController@edit');
-    Route::get('/formation/update/{id}', 'admin\FormationController@update');
+    Route::post('/formation/update/{id}', 'admin\FormationController@update');
     Route::post('/formation/store', 'admin\FormationController@store');
-    Route::get('/formation/list/{id}', 'admin\FormationController@detail');
     Route::get('/formation/delete/{id}', 'admin\FormationController@delete');
 });
 

@@ -570,7 +570,7 @@
                         <div class="tab-pane fade" id="pills-interesse" role="tabpanel" aria-labelledby="pills-interesse-tab">INTERESSE</div>
                         <div class="tab-pane fade" id="pills-formation" role="tabpanel" aria-labelledby="pills-formation-tab">
                             <div id="appFormation">
-                                <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#addFormacaoModal">Add</button>
+                                <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#formFormationModal" onclick="hidebtn('edit')">Add</button>
                                 <hr>
                                 <div id="listFormations"></div>
                             </div>
@@ -593,7 +593,7 @@
 
 
     <!-- Adicionar formacao modal-->
-    <div class="modal fade" id="addFormacaoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="formFormationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -602,7 +602,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <form id="newFormation" method="post" class="needs-validation" novalidate >
+                <form id="formFormation" method="post" class="needs-validation" novalidate >
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="instituicao" class="text-default">Instituição</label>
@@ -651,99 +651,11 @@
                             <small id="linkHelp" class="form-text text-muted">link para documentos, sites, apresentações e vídeos externos</small>
                         </div>
                         <input type="hidden" id="user_id" class="user_id" value="{{$user->id}}">
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <button id="cadFormacao" class="btn btn-primary">Salvar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Listar formacao modal-->
-    <div class="modal fade" id="listFormacaoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Detalhamento completo de sua formação</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    FORM
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="#">Salvar</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Editar formacao modal-->
-    <div class="modal fade" id="editFormacaoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edite os dados de sua formação</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <form id="formEditFormation" method="post" class="needs-validation" novalidate >
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="instituicaoedit" class="text-default">Instituição</label>
-                            <input type="text" class="form-control" name="instituicaoedit" id="instituicaoedit" value="" required>
-                            <div class="valid-feedback"></div>
-                            <small id="instHelp" class="form-text text-muted">Instituição de ensino</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="formacaoedit" class="text-default">Formação</label>
-                            <input type="text" class="form-control" name="formacaoedit" id="formacaoedit" value="" required>
-                            <div class="valid-feedback"></div>
-                            <small id="formacaoHelp" class="form-text text-muted">Nome da formação</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="deedit" class="text-default">De</label>
-                            <div class="input-group date" data-provide="datepicker">
-                                <input type="text" name="deedit" id="deedit" class="form-control" value="" required>
-                                <div class="input-group-addon">
-                                    <span class="glyphicon glyphicon-th"></span>
-                                </div>
-                            </div>
-                            <div class="valid-feedback"></div>
-                            <small id="deHelp" class="form-text text-muted">Início da formação</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="ateedit" class="text-default">Até</label>
-                            <div class="input-group date" data-provide="datepicker">
-                                <input type="text" name="ateedit" id="ateedit" class="form-control" value="" required>
-                                <div class="input-group-addon">
-                                    <span class="glyphicon glyphicon-th"></span>
-                                </div>
-                            </div>
-                            <div class="valid-feedback"></div>
-                            <small id="ateHelp" class="form-text text-muted">Término da formação</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="descricaoedit" class="text-default">Descrição</label>
-                            <textarea name="descricaoedit" id="descricaoedit" class="form-control" cols="10" rows="6"></textarea>
-                            <div class="valid-feedback"></div>
-                            <small id="descHelp" class="form-text text-muted">Especifique em detalhes sua formação</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="linkedit" class="text-default">Link</label>
-                            <input type="text" class="form-control" name="linkedit" id="linktdit" value="">
-                            <div class="valid-feedback"></div>
-                            <small id="linkHelp" class="form-text text-muted">link para documentos, sites, apresentações e vídeos externos</small>
-                        </div>
                         <input type="hidden" id="formation_id" class="formation_id" value="">
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <button id="cadFormacao" class="btn btn-primary">Salvar</button>
                         <button id="editFormacao" class="btn btn-primary">Editar</button>
                     </div>
                 </form>
@@ -890,13 +802,12 @@
                                   formations += "</div>";
                                   formations += "<div class='col-md-8'>";
                                   formations += "<div class='card-body'>";
-                                  formations += "<h5 class='card-title'>"+value.instituicao+"</h5>";
-                                  formations += "<p class='card-text'>"+value.formacao+"</p>";
-                                  formations += "<p class='card-text'>Início: "+formatDate(value.de, 'pt-br')+ " Fim: " +formatDate(value.ate, 'pt-br')+ "</p>";
-                                  formations += "<p class='card-text'>"+value.descricao+"</p>";
+                                  formations += "<h5 class='card-title mb-0'>"+value.instituicao+"</h5>";
+                                  formations += "<p class='card-text mb-0'>"+value.formacao+"</p>";
+                                  formations += "<p class='card-text mb-2'>"+year(value.de)+ " - " +year(value.ate)+ "</p>";
+                                  formations += "<p class='font-weight-light card-text mb-0'>"+value.descricao+"</p>";
                                   formations += "<p class='card-text d-flex justify-content-end'>";
-                                  formations += "<button type='button' class='btn btn-outline-primary btn-sm mr-1' data-toggle='modal' data-target='#listFormacaoModal' onclick='listFormation("+value.id+")'>Detalhes</button>";
-                                  formations += "<button type='button' class='btn btn-outline-success btn-sm mr-1' data-toggle='modal' data-target='#editFormacaoModal' onclick='editFormation("+value.id+")'>Editar</button>";
+                                  formations += "<button type='button' class='btn btn-outline-success btn-sm mr-1' data-toggle='modal' data-target='#formFormationModal' onclick='editFormation("+value.id+")'>Editar</button>";
                                   formations += "<button type='button' class='btn btn-outline-danger btn-sm' data-toggle='modal' data-target='#delFormacaoModal' onclick='deletFormation("+value.id+")'>Excluir</button>";
                                   formations += "</p>";
                                   formations += "</div>";
@@ -927,7 +838,7 @@
                       var descricao = $('#descricao').val();
                       var link = $('#link').val();
 
-                      if(!validate(user_id,instituicao,formacao,de,ate)) return false;
+                      if(!validate(instituicao,formacao,de,ate)) return false;
 
                       $.ajax({
                           type: 'POST',
@@ -943,7 +854,51 @@
                           },
                           url: "formation/store",
                           success: function (response) {
-                              $('#addFormacaoModal').modal('hide');
+                              $('#formFormationModal').modal('hide');
+                              list();
+                              clearData();
+
+                          },
+                          error: function (response) {
+                              console.log('ocorreu um erro');
+                              console.log(response);
+                          }
+
+                      });
+                  });
+
+                  $('#editFormacao').click(function (e) {
+
+                      e.preventDefault();
+
+                      var formation_id = $("#formation_id").val();
+                      var instituicao = $('#instituicao').val();
+                      var formacao = $('#formacao').val();
+                      var de = formatDate($('#de').val());
+                      var ate = formatDate($('#ate').val());
+                      var descricao = $('#descricao').val();
+                      var link = $('#link').val();
+
+                      if(!validate(instituicao,formacao,de,ate)) return false;
+
+                      //console.log('formation_id:' + formation_id); return false;
+
+                      $.ajax({
+                          type: 'POST',
+                          dataType: 'json',
+                          data: {
+                              instituicao:instituicao,
+                              formacao:formacao,
+                              de:de,
+                              ate:ate,
+                              descricao:descricao,
+                              link:link
+                          },
+                          url: "formation/update/"+formation_id,
+                          success: function (response) {
+                              console.log(response)
+
+                              $('#formFormationModal').modal('hide');
                               list();
                               clearData();
 
@@ -977,48 +932,17 @@
 
                   });
 
-                  $('#formationTeste').click(function () {
+                  function validate(instituicao,formacao,de,ate){
 
-                      console.log('asdadasdas');
+                        if(instituicao == '' || formacao == '' || de == '' || ate == ''){
 
-                      //var id = $('#delFormation').val();
-
-                      //console.log('id:' + id);
-
-                      //$('#idFormation').val('xxx');
-                  });
-
-                  function validate(user_id,instituicao,de,ate){
-
-                        if(user_id == '' || instituicao == '' || de == '' || ate == ''){
-
-                            $('#newFormation').addClass('was-validated');
+                            $('#formFormation').addClass('was-validated');
 
                             return false;
                         }
 
                         return true;
                   }
-                  
-                  function clearData() {
-                      $('#instituicao').val('');
-                      $('#formacao').val('');
-                      $('#de').val('');
-                      $('#ate').val('');
-                      $('#descricao').val('');
-                      $('#link').val('');
-                      $('#newFormation').removeClass('was-validated');
-                  }
-
-                  function formatDate(data, formato) {
-                      if (formato == 'pt-br') {
-                          return (data.substr(0, 10).split('-').reverse().join('/'));
-                      } else {
-                          return (data.substr(0, 10).split('/').reverse().join('-'));
-                      }
-                  }
-
-
 
               });
               /*********************************************************************
@@ -1037,7 +961,7 @@
                   monthsShort: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
                   today: "Hoje",
                   clear: "Clear",
-                  format: "mm/dd/yyyy",
+                  format: "dd/mm/yyyy",
                   titleFormat: "MM yyyy", /* Leverages same syntax as 'format' */
                   weekStart: 0
               };
@@ -1052,33 +976,68 @@
               document.getElementById('idFormation').value = id
           }
 
-          function editFormation(id){
+          function editFormation(id) {
+
+              hidebtn('add')
+
               $.ajax({
                   type: 'GET',
                   dataType: 'json',
-                  url: "formation/edit/"+id,
+                  url: "formation/edit/" + id,
                   success: function (response) {
-                      console.log(response)
+
+                      $('#formation_id').val(response.id);
+                      $('#instituicao').val(response.instituicao);
+                      $('#formacao').val(response.formacao);
+                      $('#de').val(formatDate(response.de, 'pt-br'));
+                      $('#ate').val(formatDate(response.ate, 'pt-br'));
+                      $('#descricao').val(response.descricao);
+                      $('#link').val(response.link);
+
                   },
                   error: function (response) {
                       console.log(response)
                   }
-              })
+              });
           }
 
-          function listFormation(id){
-              $.ajax({
-                  type: 'GET',
-                  dataType: 'json',
-                  url: "formation/list/"+id,
-                  success: function (response) {
-                      console.log(response)
-                  },
-                  error: function (response) {
-                      console.log(response)
-                  }
-              })
+          function hidebtn(btn) {
+
+              console.log(btn)
+
+              if(btn === 'edit'){
+                  clearData();
+                  $('#cadFormacao').show();
+                  $('#editFormacao').hide();
+              }else{
+                  $('#cadFormacao').hide();
+                  $('#editFormacao').show();
+              }
+
           }
+
+          function formatDate(data, formato) {
+              if (formato == 'pt-br') {
+                  return (data.substr(0, 10).split('-').reverse().join('/'));
+              } else {
+                  return (data.substr(0, 10).split('/').reverse().join('-'));
+              }
+          }
+
+          function clearData() {
+              $('#instituicao').val('');
+              $('#formacao').val('');
+              $('#de').val('');
+              $('#ate').val('');
+              $('#descricao').val('');
+              $('#link').val('');
+              $('#formFormation').removeClass('was-validated');
+          }
+
+          function year(date) {
+              return date.split('-')[0];
+          }
+
 
       </script>
 @endpush

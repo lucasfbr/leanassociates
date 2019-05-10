@@ -11,7 +11,9 @@ class FormationController extends Controller
 {
     public function index(){
 
-        $formation = Formation::all();
+        $id = auth()->user()->id;
+
+        $formation = Formation::where('user_id',$id)->get();
 
         return response()->json($formation);
 
@@ -57,19 +59,6 @@ class FormationController extends Controller
             'msg' => $msg
         ]);
 
-    }
-
-    public function detail($id){
-
-        $formation = Formation::find($id);
-
-        if($formation){
-            $status = 200;
-        }else{
-            $status = 404;
-        }
-
-        return response()->json($formation, $status);
     }
 
     public function delete($id){
