@@ -4,9 +4,8 @@
 <div class="container">
     <div class="row justify-content-md-center mt-5">
         <div class="col-xs-12 col-md-6">
-
             <div id="appRegister">
-                <register csrf="{{csrf_token()}}" emailerror="{{$errors->first('email')}}"></register>
+                <register csrf="{{csrf_token()}}" emailerror="{{$errors->first('email')}}" tipo="{{session('tipo')}}"></register>
             </div>
 
         </div>

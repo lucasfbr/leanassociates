@@ -36,7 +36,17 @@
                             <input type="password" class="form-control" v-model="dados.passwordConfirmation" name="password_confirmation" id="password-confirm" required>
                             <div class=""></div>
                         </div>
-                        <button type="submit" @click.prevent="validar()" class="btn btn-secondary">Cadastrar</button>
+
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="termos" v-bind:checked="termos" @click="liberarSubmit">
+                                <label class="form-check-label" for="termos">
+                                    Ao criar sua conta, você está aceitando os <a href="/contrato/">termos de serviço</a> do Lean Associates
+                                </label>
+                            </div>
+                        </div>
+
+                        <button v-bind:disabled="submit" type="submit" @click.prevent="validar()" class="btn btn-secondary btn-block" >Cadastrar</button>
 
                     </form>                                
                 </div>
@@ -53,9 +63,11 @@
                 this.alert.msg = 'O e-mail informado já existe!';
             }
 
+            //console.log('tippo -> ' + this.tipo)
+
 
         },
-        props: ['csrf','emailerror'],
+        props: ['csrf','emailerror','tipo'],
         data(){
             return{
                 dados: {
@@ -72,7 +84,9 @@
                 alert:{
                     status: 'fade',
                     msg: ''
-                }   
+                },
+                termos: '',
+                submit: true
             }
         },
         methods:{
@@ -122,6 +136,17 @@
                 var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 return re.test(email);
             },
+            liberarSubmit(){
+
+                console.log('chegou' +  this.submit);
+
+                if(this.submit === true){
+                    this.submit = false;
+                }else{
+                    this.submit = true;
+                }
+
+            }
         }
 
     }

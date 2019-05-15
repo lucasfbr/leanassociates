@@ -7,8 +7,8 @@
         <h1>Milhares de consultores prontos para</h1>
         <h1>trabalhar no seu projeto</h1>
         <br>
-        <button type="button" class="btn btn-success btn-lg btn-banner mb-2">Publique suas dúvidas</button>
-        <button type="button" class="btn btn-success btn-lg btn-banner mb-2">Trabalhe como consultor</button>
+        <a href="/registerTipo/2"  class="btn btn-success btn-lg btn-banner mb-2">Publique suas dúvidas</a>
+        <a href="/registerTipo/1" class="btn btn-success btn-lg btn-banner mb-2">Trabalhe como consultor</a>
       </div>
   </header>
 
@@ -42,8 +42,8 @@
 
       <div class="row mt-4">
         <div class="col-md-8 mx-auto text-center">
-          <button type="button" class="btn btn-success btn btn-banner mb-2">Publique suas dúvidas</button>
-          <button type="button" class="btn btn-success btn btn-banner mb-2">Trabalhe como consultor</button>
+          <a href="/registerTipo/2" class="btn btn-success btn btn-banner mb-2">Publique suas dúvidas</a>
+          <a href="/registerTipo/1" class="btn btn-success btn btn-banner mb-2">Trabalhe como consultor</a>
         </div>
         </div>
       </div>

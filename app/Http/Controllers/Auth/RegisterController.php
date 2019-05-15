@@ -75,4 +75,12 @@ class RegisterController extends Controller
 
         return $user;
     }
+
+    //serve paara definir que tipo de usuário esta se cadastrando: 1 empresa 2 consultor
+    //logo poderei definir os termos do contrato a serem exibidos
+    public function definirUsuario($tipo){
+
+        return redirect('register')->with('tipo', $tipo);
+
+    }
 }

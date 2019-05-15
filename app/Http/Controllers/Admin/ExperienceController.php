@@ -15,15 +15,6 @@ class ExperienceController extends Controller
         $experience = Experience::where('user_id',$id)->get();
 
         return response()->json($experience);
-        
-        
-
-        /*
-        if($experience)
-        	return response()->json($formation, 200);
-        else{
-        	return response()->json('', 500);
-        }*/
 
     }
 

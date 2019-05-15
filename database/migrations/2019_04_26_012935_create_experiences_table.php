@@ -22,7 +22,7 @@ class CreateExperiencesTable extends Migration
             $table->date('de');
             $table->date('ate');
             $table->text('descricao');
-            $table->string('link')->nullable();;
+            $table->string('link')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

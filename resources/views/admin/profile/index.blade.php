@@ -679,7 +679,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <form id="formExperiencia" method="post" class="needs-validation" novalidate >
+                <form id="formExperience" method="post" class="needs-validation" novalidate >
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="cargo" class="text-default">Cargo</label>
@@ -689,7 +689,7 @@
                         </div>
                         <div class="form-group">
                             <label for="expEmpresa" class="text-default">Empresa</label>
-                            <input type="text" class="form-control" name="expEmpresa" id="expEmpresa" required>
+                            <input type="text" class="form-control" name="expempresa" id="expempresa" required>
                             <div class="valid-feedback"></div>
                             <small id="expEmpresaHelp" class="form-text text-muted">Nome da empresa</small>
                         </div>
@@ -729,7 +729,7 @@
                         </div>
                         <div class="form-group">
                             <label for="esplink" class="text-default">Link</label>
-                            <input type="text" class="form-control" name="esplink" id="esplink">
+                            <input type="text" class="form-control" name="explink" id="explink">
                             <div class="valid-feedback"></div>
                             <small id="esplinkHelp" class="form-text text-muted">link para documentos, sites, apresentações e vídeos externos</small>
                         </div>
@@ -746,21 +746,21 @@
         </div>
     </div>
 
-    <!-- Excluir formacao modal-->
-    <div class="modal fade" id="delFormacaoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Excluir experiencia modal-->
+    <div class="modal fade" id="delExperienciaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Realmente deseja excluir essa formação?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Realmente deseja excluir essa experiência?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <div class="modal-body">Selecione "Excluir" para confirmar esta ação</div>
-                <input type="hidden" id="idFormation" class="idFormation" value="">
+                <input type="hidden" id="idExperience" class="idExperience" value="">
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a id="delFormation" class="btn btn-primary" href="#">Excluir</a>
+                    <a id="delExperience" class="btn btn-primary" href="#">Excluir</a>
                 </div>
             </div>
         </div>
@@ -1070,7 +1070,7 @@
                                       experiencias += "<div class='card mb-3 cardFormation'>";
                                       experiencias += "<div class='row no-gutters'>";
                                       experiencias += "<div class='col-md-4 text-center mt-4'>";
-                                      experiencias += "<i class='fas fa-university fa-6x'></i>";
+                                      experiencias += "<i class='fas fa-building fa-6x'></i>";
                                       experiencias += "</div>";
                                       experiencias += "<div class='col-md-8'>";
                                       experiencias += "<div class='card-body'>";
@@ -1081,8 +1081,8 @@
                                       experiencias += "<p class='font-weight-light card-text mb-0'>"+value.descricao+"</p>";
                                       experiencias += "<p class='font-weight-light card-text mb-0'>"+value.link+"</p>";
                                       experiencias += "<p class='card-text d-flex justify-content-end'>";
-                                      experiencias += "<button type='button' class='btn btn-outline-success btn-sm mr-1' data-toggle='modal' data-target='#formFormationModal' onclick='editFormation("+value.id+")'>Editar</button>";
-                                      experiencias += "<button type='button' class='btn btn-outline-danger btn-sm' data-toggle='modal' data-target='#delFormacaoModal' onclick='deletFormation("+value.id+")'>Excluir</button>";
+                                      experiencias += "<button type='button' class='btn btn-outline-success btn-sm mr-1' data-toggle='modal' data-target='#formExperienciaModal' onclick='editExperience("+value.id+")'>Editar</button>";
+                                      experiencias += "<button type='button' class='btn btn-outline-danger btn-sm' data-toggle='modal' data-target='#delExperienciaModal' onclick='deletExperience("+value.id+")'>Excluir</button>";
                                       experiencias += "</p>";
                                       experiencias += "</div>";
                                       experiencias += "</div>";
@@ -1108,7 +1108,7 @@
 
                       e.preventDefault();
 
-                      var user_id = $('#user_id').val();
+                      var user_id = $('#experience_user_id').val();
                       var empresa = $('#expempresa').val();
                       var cargo = $('#cargo').val();
                       var localidade = $('#localidade').val();
@@ -1117,7 +1117,19 @@
                       var descricao = $('#expdescricao').val();
                       var link = $('#explink').val();
 
-                      if(!validate(empresa,cargo,localidade,de,ate)) return false;
+                      if(!validateExperience(empresa,cargo,localidade,de,ate)) return false;
+
+                      /*console.log(
+                          user_id +' - '
+                          + empresa + ' - '
+                          + cargo + ' - '
+                          + localidade + ' - '
+                          + de + ' - '
+                          + ate + ' - '
+                          + descricao + ' - '
+                          + link + ' - '
+                      );
+                      return false;*/
 
                       $.ajax({
                           type: 'POST',
@@ -1134,7 +1146,7 @@
                           },
                           url: "experience/store",
                           success: function (response) {
-                              $('#formExperienceModal').modal('hide');
+                              $('#formExperienciaModal').modal('hide');
                               listExperiencias(); 
                               clearDataExperience();
 
@@ -1151,7 +1163,7 @@
 
                       e.preventDefault();
 
-                      var formation_id = $("#formation_id").val();
+                      var experience_id = $("#experience_id").val();
                       var empresa = $('#expempresa').val();
                       var cargo = $('#cargo').val();
                       var localidade = $('#localidade').val();
@@ -1160,7 +1172,7 @@
                       var descricao = $('#expdescricao').val();
                       var link = $('#explink').val();
 
-                      if(!validate(empresa,cargo,localidade,de,ate)) return false;
+                      if(!validateExperience(empresa,cargo,localidade,de,ate)) return false;
 
                       $.ajax({
                           type: 'POST',
@@ -1178,7 +1190,7 @@
                           success: function (response) {
                               console.log(response)
 
-                              $('#formExperienceModal').modal('hide');
+                              $('#formExperienciaModal').modal('hide');
                               listExperiencias(); 
                               clearDataExperience();
 
@@ -1191,15 +1203,15 @@
                       });
                   });
 
-                  $('#delExperiencia').click(function (e) {
+                  $('#delExperience').click(function (e) {
 
                       e.preventDefault();
-                      var idExperiencia = $('#idExperiencia').val();
+                      var idExperiencia = $('#idExperience').val();
 
                       $.ajax({
                           type: 'GET',
                           dataType: 'json',
-                          url: "formation/delete/"+idExperiencia,
+                          url: "experience/delete/"+idExperiencia,
                           success: function (response) {
                               $('#delExperienciaModal').modal('hide');
                               listExperiencias();
@@ -1253,9 +1265,13 @@
 
            });
             
-            function deletFormation(id){
+          function deletFormation(id){
               document.getElementById('idFormation').value = id
-            }  
+          }
+
+          function deletExperience(id){
+              document.getElementById('idExperience').value = id
+          }
 
             function editFormation(id) {
 
@@ -1282,6 +1298,32 @@
               });
            }
 
+          function editExperience(id) {
+
+              hidebtn('add')
+
+              $.ajax({
+                  type: 'GET',
+                  dataType: 'json',
+                  url: "experience/edit/" + id,
+                  success: function (response) {
+
+                      $("#experience_id").val(response.id);
+                      $('#expempresa').val(response.empresa);
+                      $('#cargo').val(response.cargo);
+                      $('#localidade').val(response.localidade);
+                      $('#expde').val(formatDate(response.de, 'pt-br'));
+                      $('#expate').val(formatDate(response.ate, 'pt-br'));
+                      $('#expdescricao').val(response.descricao);
+                      $('#explink').val(response.link);
+
+                  },
+                  error: function (response) {
+                      console.log(response)
+                  }
+              });
+          }
+
           function clearData() {
               $('#instituicao').val('');
               $('#formacao').val('');
@@ -1293,13 +1335,13 @@
           }
 
           function clearDataExperience() {
-              $('#empresa').val('');
+              $('#expempresa').val('');
               $('#cargo').val('');
               $('#localidade').val('');
-              $('#de').val('');
-              $('#ate').val('');
-              $('#descricao').val('');
-              $('#link').val('');
+              $('#expde').val('');
+              $('#expate').val('');
+              $('#expdescricao').val('');
+              $('#explink').val('');
               $('#formExperience').removeClass('was-validated');
           }              
 

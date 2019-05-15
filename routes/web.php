@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/teste', function () {
-    return view('teste');
-});
-
 /*Route::get('/email/{id}', function ($id) {
     $user = \App\User::findOrFail($id);
     \Illuminate\Support\Facades\Mail::to($user)->send(new \App\Mail\UserRegistered($user));
@@ -26,6 +22,10 @@ Route::post('/contato', 'site\homeController@contato');
 Route::get('/service', 'site\serviceController@index');
 Route::get('/service/{id}', 'site\serviceController@detalhes');
 Route::get('/sobre', 'site\sobreController@index');
+
+//rota para definir que tipo de usuário esta se cadastrando: 1 consultor 2 empresa
+//servirá para definir os termos do contrato a serem exibidos
+Route::get('/registerTipo/{tipo}', 'Auth\RegisterController@definirUsuario');
 
 Auth::routes();
 
