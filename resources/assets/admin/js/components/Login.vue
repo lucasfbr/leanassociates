@@ -28,12 +28,12 @@
                         <div class=""></div>
                     </div>
                     <button type="submit" @click.prevent="validar($event)" class="btn btn-secondary">Entrar</button>
-                    <a href="/register" class="btn btn-link text-primary">Cadastre-se</a>
                     <a href="/password/reset" class="btn btn-link text-secondary">Esqueceu sua senha?</a>
-
-
                 </form>
-                            
+            </div>
+            <div class="card-footer">
+                <a href="/registerTipo/2" class="btn btn-success btn-banner" title="Se você tem um problema e precisa de uma consultoria, cadastre-se aqui">Cadastro para empresas</a>
+                <a href="/registerTipo/1" class="btn btn-success btn-banner" title="Para você que é consultor, cadastre-se aqui">Cadastro para consultores</a>
             </div>
         </div>
     </div>

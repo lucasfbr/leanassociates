@@ -41,10 +41,11 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="termos" v-bind:checked="termos" @click="liberarSubmit">
                                 <label class="form-check-label" for="termos">
-                                    Ao criar sua conta, você está aceitando os <a href="/contrato/">termos de serviço</a> do Lean Associates
+                                    Ao criar sua conta, você está aceitando os <a :href="url">termos de serviço</a> do Lean Associates
                                 </label>
                             </div>
                         </div>
+                        <input type="hidden" name="role" id="role" :value="tipo">
 
                         <button v-bind:disabled="submit" type="submit" @click.prevent="validar()" class="btn btn-secondary btn-block" >Cadastrar</button>
 
@@ -62,6 +63,8 @@
                 this.alert.status = 'show';
                 this.alert.msg = 'O e-mail informado já existe!';
             }
+
+            this.url = '/term/'+this.tipo;
 
             //console.log('tippo -> ' + this.tipo)
 
@@ -86,7 +89,8 @@
                     msg: ''
                 },
                 termos: '',
-                submit: true
+                submit: true,
+                url: ''
             }
         },
         methods:{

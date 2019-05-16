@@ -22,6 +22,7 @@ Route::post('/contato', 'site\homeController@contato');
 Route::get('/service', 'site\serviceController@index');
 Route::get('/service/{id}', 'site\serviceController@detalhes');
 Route::get('/sobre', 'site\sobreController@index');
+Route::get('/term/{type}', 'site\TermController@index');
 
 //rota para definir que tipo de usuário esta se cadastrando: 1 consultor 2 empresa
 //servirá para definir os termos do contrato a serem exibidos
