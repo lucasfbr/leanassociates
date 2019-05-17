@@ -78,6 +78,14 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::post('/experience/update/{id}', 'admin\ExperienceController@update');
     Route::post('/experience/store', 'admin\ExperienceController@store');
     Route::get('/experience/delete/{id}', 'admin\ExperienceController@delete');
+
+    Route::get('/terms', 'admin\TermController@index')->name('terms');
+    Route::get('/terms/create', 'admin\TermController@create')->name('terms.create');
+    Route::post('/terms/store', 'admin\TermController@store')->name('terms.store');
+    Route::get('/terms/{id}', 'admin\TermController@edit')->name('terms.edit');
+    Route::post('/terms/update/{id}', 'admin\TermController@update')->name('terms.update');
+    Route::get('/terms/detail/{id}', 'admin\TermController@detail')->name('terms.detail');
+    Route::get('/terms/delete/{id}', 'admin\TermController@delete')->name('terms.delete');
     
 });
 

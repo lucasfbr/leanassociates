@@ -17,7 +17,8 @@ class CreateTermsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('content');
-            $table->enum('type', [1,2])->default(1);//0 - consultor; 1 - empresa
+            $table->enum('type', [1,2])->default(1);//1 - consultor; 2 - empresa
+            $table->enum('status', [0,1])->default(0);//0 - desativado; 1 - ativado
             $table->timestamps();
         });
     }

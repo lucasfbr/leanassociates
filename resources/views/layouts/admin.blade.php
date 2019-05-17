@@ -128,6 +128,11 @@
           <span>Como Funciona</span></a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.terms') }}">
+          <i class="fas fa-fw fa-file-contract"></i>
+          <span>Termos do contrato</span></a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.mensagens') }}">
           <i class="fas fa-envelope fa-fw"></i>
           <span>Mensagens</span></a>
