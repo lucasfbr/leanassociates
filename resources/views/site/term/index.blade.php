@@ -9,9 +9,9 @@
       <div class="row justify-content-center">
         <div class="col-8 text-center">
           <p class="">
-            {{$term[0]->content}}
+            {!! $term[0]->content!!}
           </p>
-          <a href="/registerTipo/{{$term[0]->type}}" class="btn btn-success btn-banner mb-2" title="Voltar para o cadastro">Voltar</a>
+          <a href="/registerTipo/{{$term[0]->type}}" class="btn btn-success btn-banner mb-4 mt-4" title="Voltar para o cadastro">Voltar</a>
         </div>
       </div>
       @else

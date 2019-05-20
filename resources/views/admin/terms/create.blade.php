@@ -40,7 +40,7 @@
                       </div>
                       <div class="form-group">
                           <label for="content" class="text-default">Conteúdo</label>
-                          <textarea class="form-control" name="content" id="content" rows="10" required autofocus>{{ old('tipe') }}</textarea>
+                          <textarea class="form-control" name="content" id="editor-texto" rows="10" required autofocus>{{ old('tipe') }}</textarea>
                           <div class="valid-feedback {{$errors->has('content') ? 'invalid-feedback' : ''}}">{{ $errors->first('content') }}</div>
                       </div>
 
@@ -73,4 +73,8 @@
 
   </div>
 
+  @push('ckeditor')
+      <script src="{{ asset('admin/ckeditor/ckeditor.js') }}"></script>
+      <script src="{{ asset('admin/js/script_default.js') }}"></script>
+  @endpush
 @endsection

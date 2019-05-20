@@ -35,7 +35,7 @@
       @endif
 
       @if($servicos->isEmpty())
-          <p class="text-center h4">Nenhum Serviço cadastrado</p>
+          <p class="text-center h4">Nenhum registro cadastrado</p>
       @else
         @foreach($servicos as $key => $servico)
           @if($key === 0 || $key === 3)

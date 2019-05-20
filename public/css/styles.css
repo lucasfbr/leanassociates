@@ -4353,6 +4353,14 @@ section{
     color: #da843b;
 }
 
+.nav-link2{
+    color: #da843b;
+    padding-right: .5rem;
+    padding-left: .5rem;
+    padding-top: .5rem;
+    display: block;
+}
+
 .laranja-destaque{
     background: #8B4513;
 }

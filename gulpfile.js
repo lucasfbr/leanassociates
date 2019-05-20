@@ -24,7 +24,7 @@ elixir((mix) => {
 
    /* mix.copy([
        './node_modules/@fortawesome/fontawesome-free/webfonts'
-    ], 'public/fonts');
+    ], 'public/fonts');*/
 
     mix.styles([
         './node_modules/@fortawesome/fontawesome-free/css/fontawesome.css',
@@ -36,9 +36,10 @@ elixir((mix) => {
     mix.scripts([
         './node_modules/@fortawesome/fontawesome-free/js/all.js',
         './node_modules/startbootstrap-scrolling-nav/vendor/jquery/jquery.min.js',
+        './node_modules/startbootstrap-scrolling-nav/vendor/bootstrap/js/bootstrap.bundle.min.js',
         './node_modules/startbootstrap-scrolling-nav/vendor/jquery-easing/jquery.easing.min.js',
         './node_modules/startbootstrap-scrolling-nav/js/scrolling-nav.js'
-    ],'public/js/scripts.js');*/
+    ],'public/js/scripts.js');
 
     /* COPY ADMIN */
    /* mix.copy([
@@ -54,16 +55,16 @@ elixir((mix) => {
     ], 'public/admin/locales/bootstrap-datepicker.pt-BR.min.js');*/
 
     /* CSS ADMIN */
-   /* mix.styles([
+    mix.styles([
         './node_modules/startbootstrap-sb-admin/vendor/fontawesome-free/css/fontawesome.min.css',
         './node_modules/startbootstrap-sb-admin/vendor/datatables/dataTables.bootstrap4.css',
         './node_modules/startbootstrap-sb-admin/css/sb-admin.css',
         './node_modules/bootstrap-datepicker/css/bootstrap-datepicker.css',
         './resources/assets/admin/css/style-pagina.css',
-    ],'public/admin/css/styles.css');*/
+    ],'public/admin/css/styles.css');
 
     /* JS ADMIN */
-   /* mix.scripts([
+    mix.scripts([
         './node_modules/startbootstrap-sb-admin/vendor/fontawesome-free/js/all.js',
         './node_modules/startbootstrap-sb-admin/vendor/jquery/jquery.min.js',
         './node_modules/startbootstrap-sb-admin/vendor/bootstrap/js/bootstrap.bundle.min.js',
@@ -71,9 +72,10 @@ elixir((mix) => {
         './node_modules/startbootstrap-sb-admin/js/sb-admin.min.js',
         './node_modules/inputmask/dist/jquery.inputmask.bundle.js',
         './node_modules/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
-    ],'public/admin/js/scripts.js');*/
+        './resources/assets/admin/js/principal.js',
+    ],'public/admin/js/scripts.js');
 
-   /* mix.scripts([
+    /*mix.scripts([
         './resources/assets/admin/js/scripts.js',
     ],'public/admin/js/script_default.js');
 

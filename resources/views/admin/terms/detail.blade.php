@@ -4,9 +4,9 @@
 
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <a href="">Dashboard</a>
+      <a href="" class="text-default">Dashboard</a>
     </li>
-    <li class="breadcrumb-item">Termos do contrato</li>
+    <li class="breadcrumb-item"><a href="{{route('admin.terms')}}">Termos do contrato</a></li>
     <li class="breadcrumb-item active">Detalhes</li>
   </ol>
 
@@ -28,7 +28,7 @@
     </div>
     <div class="card-body">
       <h5 class="card-title">{{$term->title}}</h5>
-      <p class="card-text">{{$term->content}}</p>
+      <p class="card-text">{!! $term->content !!}</p>
     </div>
     <div class="card-footer text-muted">
       Data de Criação: {{data_br($term->created_at)}}

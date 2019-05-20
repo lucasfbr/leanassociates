@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="/">Home</a>
+                        <a class="nav-link2" href="/">Home</a>
                     </li>
                     @if(Request::segment(1) == '')
                     <li class="nav-item">
@@ -42,7 +42,7 @@
                     </li>
                     @endif
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="/login">Login</a>
+                        <a class="nav-link2" href="/login">Login</a>
                     </li>
                 </ul>
             </div>

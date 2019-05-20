@@ -53,3 +53,15 @@ footer.sticky-footer{
 .cardFormation{
 	border: 0;
 }
+
+.breadcrumb-item a{
+	color: #da843b;
+}
+
+.dropdown-header{
+	color: #da843b;
+}
+
+.color-icon{
+	color: #6c757d;
+}

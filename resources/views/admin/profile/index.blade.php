@@ -567,7 +567,24 @@
                             </form>
                         </div>
 
-                        <div class="tab-pane fade" id="pills-interesse" role="tabpanel" aria-labelledby="pills-interesse-tab">INTERESSE</div>
+                        <div class="tab-pane fade" id="pills-interesse" role="tabpanel" aria-labelledby="pills-interesse-tab">
+                            <div id="appInteresse">
+                                <h5 class="mb-3">Selecione suas áreas de interesse</h5>
+
+                                <div class="custom-control custom-switch mb-2">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch1" value="1">
+                                    <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+                                </div>
+
+                                <div class="custom-control custom-switch mb-3">
+                                    <input type="checkbox" class="custom-control-input" id="customSwitch2" value="2">
+                                    <label class="custom-control-label" for="customSwitch2">Toggle this switch element</label>
+                                </div>
+
+                                <button type="button" class="btn btn-outline-success btn-sm" onclick="">Salvar</button>
+                            </div>
+                        </div>
+
                         <div class="tab-pane fade" id="pills-formation" role="tabpanel" aria-labelledby="pills-formation-tab">
                             <div id="appFormation">
                                 <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#formFormationModal" onclick="hidebtn('edit','1')">Add</button>
@@ -766,7 +783,28 @@
         </div>
     </div>
 
-@push('profile')
+    <!-- Excluir formacao modal-->
+    <div class="modal fade" id="delFormacaoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Realmente deseja excluir essa formação?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Selecione "Excluir" para confirmar esta ação</div>
+                <input type="hidden" id="idFormation" class="idFormation" value="">
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a id="delFormation" class="btn btn-primary" href="#">Excluir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @push('profile')
       <script>
 
           $( document ).ready(function() {

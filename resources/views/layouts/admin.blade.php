@@ -99,17 +99,20 @@
           <span>Configurações</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <h6 class="dropdown-header">Geral:</h6>
-          <a class="dropdown-item" href="#">Cabeçalho</a>
-          <a class="dropdown-item" href="#">Rodapé</a>
+          <h6 class="dropdown-header"><i class="color-icon fas fa-fw fa-file"></i>Geral</h6>
+          <a class="dropdown-item" href="#" data-toggle="tooltip" data-placement="top" title="Conteudo exibido no cabeçalho do site">Cabeçalho</a>
+          <a class="dropdown-item" href="#" data-toggle="tooltip" data-placement="top" title="Conteudo exibido no rodapé do site">Rodapé</a>
           <div class="dropdown-divider"></div>
-          <h6 class="dropdown-header">Página: Serviços:</h6>
-          <a class="dropdown-item" href="#">Item 1</a>
-          <a class="dropdown-item" href="#">Item 2</a>
+          <h6 class="dropdown-header"><i class="color-icon fas fa-fw fa-file"></i> Serviços</h6>
+          <a class="dropdown-item" href="#" data-toggle="tooltip" data-placement="top" title="Conteudo exibido na home do site">Resumo</a>
+          <a class="dropdown-item" href="{{ route('admin.servicos') }}" data-toggle="tooltip" data-placement="top" title="Conteúdo exibido ao entrar na página 'Serviços'">Página</a>
           <div class="dropdown-divider"></div>
-          <h6 class="dropdown-header">Página: Como funciona</h6>
-          <a class="dropdown-item" href="#">Item 1</a>
-          <a class="dropdown-item" href="#">Item 2</a>
+          <h6 class="dropdown-header"><i class="color-icon fas fa-fw fa-file"></i> Como funciona</h6>
+          <a class="dropdown-item" href="" data-toggle="tooltip" data-placement="top" title="Conteudo exibido na home do site">Resumo</a>
+          <a class="dropdown-item" href="{{ route('admin.comofunciona') }}" data-toggle="tooltip" data-placement="top" title="Conteúdo exibido ao entrar na página 'Como Funciona'">Página</a>
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header"><i class="color-icon fas fa-fw fa-file"></i> Termos de contrato</h6>
+          <a class="dropdown-item" href="{{ route('admin.terms') }}" data-toggle="tooltip" data-placement="top" title="Contratos que serão exibidos para o consultor ou empresa">Página</a>
         </div>
       </li>
       <li class="nav-item">
@@ -117,21 +120,7 @@
           <i class="fas fa-user fa-fw"></i>
           <span>Usuários</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.servicos') }}">
-          <i class="fas fa-fw fa-tasks"></i>
-          <span>Serviços</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.comofunciona') }}">
-          <i class="fas fa-fw fa-question-circle"></i>
-          <span>Como Funciona</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('admin.terms') }}">
-          <i class="fas fa-fw fa-file-contract"></i>
-          <span>Termos do contrato</span></a>
-      </li>
+
       <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.mensagens') }}">
           <i class="fas fa-envelope fa-fw"></i>

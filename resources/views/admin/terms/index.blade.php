@@ -43,10 +43,10 @@
           @foreach($terms as $term)
             <tr>
               <td>{{title_case($term->title)}}</td>
-              <td>{{str_limit($term->content, 150)}}</td>
+              <td>{!! str_limit($term->content, 150)!!}</td>
               <td>{{termTipe($term->type)}}</td>
               <td>{!!termStatus($term->status)!!}</td>
-              <td>
+              <td width="150px">
                 <a class="btn btn-info btn-sm" href='{{url("admin/terms/detail/$term->id")}}' role="button" title="Detalhes">
                   <i class="fas fa-eye"></i>
                 </a>

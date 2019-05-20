@@ -16,6 +16,8 @@ class ProfileController extends Controller
 
         $user = User::find($id);
 
+        //dd($user->profile());
+
         return view('admin.profile.index',compact('user'));
 
     }
