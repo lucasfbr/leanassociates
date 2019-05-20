@@ -6,13 +6,16 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\FormContato as contato;
+use App\Servico;
 
 
 class homeController extends Controller
 {
     public function index(){
 
-        return view('site.index');
+        $servicos =  Servico::offset(0)->limit(4)->get();
+
+        return view('site.index', compact('servicos'));
 
     }
 

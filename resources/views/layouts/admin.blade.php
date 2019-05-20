@@ -104,15 +104,15 @@
           <a class="dropdown-item" href="#" data-toggle="tooltip" data-placement="top" title="Conteudo exibido no rodapé do site">Rodapé</a>
           <div class="dropdown-divider"></div>
           <h6 class="dropdown-header"><i class="color-icon fas fa-fw fa-file"></i> Serviços</h6>
-          <a class="dropdown-item" href="#" data-toggle="tooltip" data-placement="top" title="Conteudo exibido na home do site">Resumo</a>
-          <a class="dropdown-item" href="{{ route('admin.servicos') }}" data-toggle="tooltip" data-placement="top" title="Conteúdo exibido ao entrar na página 'Serviços'">Página</a>
+          <a class="dropdown-item" href="#" data-toggle="tooltip" data-placement="top" title="Titulo e descrição de cabeçalho da página">Titulo/Descrição</a>
+          <a class="dropdown-item" href="{{ route('admin.servicos') }}" data-toggle="tooltip" data-placement="top" title="Conteúdo da página">Conteúdo</a>
           <div class="dropdown-divider"></div>
           <h6 class="dropdown-header"><i class="color-icon fas fa-fw fa-file"></i> Como funciona</h6>
           <a class="dropdown-item" href="" data-toggle="tooltip" data-placement="top" title="Conteudo exibido na home do site">Resumo</a>
-          <a class="dropdown-item" href="{{ route('admin.comofunciona') }}" data-toggle="tooltip" data-placement="top" title="Conteúdo exibido ao entrar na página 'Como Funciona'">Página</a>
+          <a class="dropdown-item" href="{{ route('admin.comofunciona') }}" data-toggle="tooltip" data-placement="top" title="Conteúdo exibido ao entrar na página">Página</a>
           <div class="dropdown-divider"></div>
           <h6 class="dropdown-header"><i class="color-icon fas fa-fw fa-file"></i> Termos de contrato</h6>
-          <a class="dropdown-item" href="{{ route('admin.terms') }}" data-toggle="tooltip" data-placement="top" title="Contratos que serão exibidos para o consultor ou empresa">Página</a>
+          <a class="dropdown-item" href="{{ route('admin.terms') }}" data-toggle="tooltip" data-placement="top" title="Contratos que serão exibidos para o consultor ou empresa">Conteúdo</a>
         </div>
       </li>
       <li class="nav-item">

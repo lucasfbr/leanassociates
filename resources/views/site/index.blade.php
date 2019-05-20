@@ -15,28 +15,28 @@
 <div id="appindex">
   <section id="about" class="bg-cinza ">
     <div class="container">
-      <p class="h4 text-center">Como Funciona?</p>
-      <p class="text-center mb-5 "><a href="/sobre" class="text-success">Saiba mais</a></p>
-      <div class="row text-center">
-        <div class="col-md-3 mx-auto mb-2">
-          <i class="far fa-address-card fa-7x"></i>
-          <p class="h6 mt-2">Publicar</p>
-          <p>Conte-nos em poucas palavras qual o seu problema. É grátis e sem compromisso!</p>
+        <p class="h4 text-center">Como Funciona?</p>
+        <p class="text-center mb-5 "><a href="/sobre" class="text-success">Saiba mais</a></p>
+        <div class="row text-center">
+          <div class="col-md-3 mx-auto mb-2">
+            <i class="far fa-address-card fa-7x"></i>
+            <p class="h6 mt-2">Publicar</p>
+            <p>Conte-nos em poucas palavras qual o seu problema. É grátis e sem compromisso!</p>
         </div>
         <div class="col-md-3 mx-auto mb-2">
-          <i class="fas fa-users fa-7x"></i>
-          <p class="h6 mt-2">Indicação</p>
-          <p>Indicaremos o consultor mais adequado para resolver seu problema</p>
+            <i class="fas fa-users fa-7x"></i>
+            <p class="h6 mt-2">Indicação</p>
+            <p>Indicaremos o consultor mais adequado para resolver seu problema</p>
         </div>
         <div class="col-md-3 mx-auto mb-2">
-          <i class="fas fa-chart-pie fa-7x"></i>
-          <p class="h6 mt-2">Projeto</p>
-          <p>Será enviado um projeto especificando em quais pontos sua empresa pode melhorar</p>
+            <i class="fas fa-chart-pie fa-7x"></i>
+            <p class="h6 mt-2">Projeto</p>
+            <p>Será enviado um projeto especificando em quais pontos sua empresa pode melhorar</p>
         </div>
         <div class="col-md-3 mx-auto mb-2">
-          <i class="fas fa-check-double fa-7x"></i>
-          <p class="h6 mt-2">Aceitar</p>
-          <p>Você aceita o projeto e iniciaremos o trabalho focados em atender seus interesses</p>
+            <i class="fas fa-check-double fa-7x"></i>
+            <p class="h6 mt-2">Aceitar</p>
+            <p>Você aceita o projeto e iniciaremos o trabalho focados em atender seus interesses</p>
         </div>
       </div>
 
@@ -45,8 +45,8 @@
           <a href="/registerTipo/2" class="btn btn-success btn btn-banner mb-2">Publique suas dúvidas</a>
           <a href="/registerTipo/1" class="btn btn-success btn btn-banner mb-2">Trabalhe como consultor</a>
         </div>
-        </div>
       </div>
+    </div>
 
 
   </section>
@@ -55,46 +55,28 @@
     <div class="container">
       <h3 class="text-center mb-5">Serviços de sonsultoria</h3>
       <div class="row text-center">
-        <div class="col-mx-12 col-md-3 mx-auto mb-2">
-          <div class="card">
-            <img src="{{ asset('img/manufatura-lean2.jpg') }}" class="card-img-top img-responsive" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Manufatura lean</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-              <a href="\service\1" class="btn btn-success">Saiba mais</a>
+
+
+      @foreach($servicos as $servico)
+        
+          @if($servicos->isEmpty())
+            <p class="h4">Nenhum registro cadastrado</p>
+          @else
+        
+            <div class="col-mx-12 col-md-3 mx-auto mb-2">
+              <div class="card">
+                <img src='{{ asset("img/$servico->img") }}' class="card-img-top img-responsive" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{$servico->titulo}}</h5>
+                  <p class="card-text">{!! str_limit($servico->descricao, 70) !!}</p>
+                  <a href="\service\{{$servico->id}}" class="btn btn-success">Saiba mais</a>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="col-mx-12 col-md-3 mx-auto mb-2">
-          <div class="card">
-            <img src="{{ asset('img/gestão-de-negocios.jpg') }}" class="card-img-top img-responsive" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Gestão de negócios</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-              <a href="\service\2" class="btn btn-success">Saiba mais</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-mx-12 col-md-3 mx-auto mb-2">
-          <div class="card">
-            <img src="{{ asset('img/gestao-de-qualidade.jpg') }}" class="card-img-top img-responsive" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Gestão da qualidade</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-              <a href="\service\3" class="btn btn-success">Saiba mais</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-mx-12 col-md-3 mx-auto mb-2">
-          <div class="card">
-            <img src="{{ asset('img/gestao-estrategica2.jpg') }}" class="card-img-top img-responsive" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Gestão estratégica</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-              <a href="\service\4" class="btn btn-success">Saiba mais</a>
-            </div>
-          </div>
-        </div>
+          @endif
+
+      @endforeach 
+
       </div>
 
       <div class="row mt-5">
