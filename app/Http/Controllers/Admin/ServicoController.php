@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Servico;
+use App\ServicoContent;
 
 class ServicoController extends Controller
 {
 
     public function index(){
 
-        $servicos = Servico::paginate(6);
+        $servicos = Servico::all;
 
          return view('admin.servicos.index', compact('servicos'));
     }
@@ -25,9 +26,8 @@ class ServicoController extends Controller
     public function store(Request $request){
 
         $this->validate($request,[
-            'titulo' => 'required|max:255',
-            'descricao' => 'required',
-            'img' => 'required|file|image|mimes:jpeg,jpg,png',
+            'title' => 'required|max:255',
+            'content' => 'required',
             ]);
 
         if(Servico::create($request->all())){
@@ -50,9 +50,8 @@ class ServicoController extends Controller
     public function update(Request $request, $id){
 
         $this->validate($request,[
-            'titulo' => 'required|max:255',
-            'descricao' => 'required',
-            'img' => 'file|image|mimes:jpeg,jpg,png',
+            'title' => 'required|max:255',
+            'content' => 'required',
         ]);
 
         $servico = Servico::find($id);
@@ -83,4 +82,80 @@ class ServicoController extends Controller
 
         return redirect()->back()->with('erro','Ocorreu algum erro ao excluir o serviço, tente novamente mais tarde');
     }
+
+
+    public function contentIndex(){
+
+        $servicos = ServicoContent::paginate(6);
+
+         return view('admin.servicos.content.index', compact('servicos'));
+    }
+
+    public function contentCreate(){
+
+        return view('admin.servicos.content.create');
+    }
+
+    public function contentStore(Request $request){
+
+        $this->validate($request,[
+            'titulo' => 'required|max:255',
+            'descricao' => 'required',
+            'img' => 'required|file|image|mimes:jpeg,jpg,png',
+            ]);
+
+        if(ServicoContent::create($request->all())){
+
+            return redirect()->back()->with('sucesso','Serviço cadastrado com sucesso!');
+
+        }
+
+        return redirect()->back()->with('erro','Ocorreu algum erro ao cadastrar o serviço, tente novamente mais tarde');
+        
+    }
+
+    public function contentEdit($id){
+
+        $servico = ServicoContent::find($id);
+
+        return view('admin.servicos.content.edit', compact('servico'));
+    }
+
+    public function contentUpdate(Request $request, $id){
+
+        $this->validate($request,[
+            'titulo' => 'required|max:255',
+            'descricao' => 'required',
+            'img' => 'file|image|mimes:jpeg,jpg,png',
+        ]);
+
+        $servico = ServicoContent::find($id);
+
+        if($servico->update($request->all())){
+
+            return redirect()->back()->with('sucesso','Serviço editado com sucesso!');
+        }
+
+        return redirect()->back()->with('erro','Ocorreu algum erro ao cadastrar o serviço, tente novamente mais tarde');
+    }
+
+    public function contentDetail($id){
+
+        $servico = ServicoContent::find($id);
+
+        return view('admin.servicos.content.detail', compact('servico'));
+
+    }
+
+    public function contentDelete($id){
+
+        $servico = ServicoContent::find($id);
+
+        if($servico->delete()){
+            return redirect()->back()->with('sucesso','Serviço excluído com sucesso!');
+        }
+
+        return redirect()->back()->with('erro','Ocorreu algum erro ao excluir o serviço, tente novamente mais tarde');
+    }
+
 }

@@ -57,6 +57,14 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::get('/servicos/detail/{id}', 'admin\ServicoController@detail')->name('servicos.detail');
     Route::get('/servicos/delete/{id}', 'admin\ServicoController@delete')->name('servicos.delete');
 
+    Route::get('/servicosContent', 'admin\ServicoController@contentIndex')->name('servicosContent');
+    Route::get('/servicosContent/create', 'admin\ServicoController@contentCreate')->name('servicosContent.create');
+    Route::post('/servicosContent/store', 'admin\ServicoController@contentStore')->name('servicosContent.store');
+    Route::get('/servicosContent/{id}', 'admin\ServicoController@contentEdit')->name('servicosContent.edit');
+    Route::post('/servicosContent/update/{id}', 'admin\ServicoController@contentUpdate')->name('servicosContent.update');
+    Route::get('/servicosContent/detail/{id}', 'admin\ServicoController@contentDetail')->name('servicosContent.detail');
+    Route::get('/servicosContent/delete/{id}', 'admin\ServicoController@contentDelete')->name('servicosContent.delete');
+
     Route::get('/comofunciona', 'admin\ComoFuncionaController@index')->name('comofunciona');
     Route::get('/comofunciona/create', 'admin\ComoFuncionaController@create')->name('comofunciona.create');
     Route::post('/comofunciona/store', 'admin\ComoFuncionaController@store')->name('comofunciona.store');

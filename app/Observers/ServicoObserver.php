@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Servico;
+use App\ContentServico;
 use App\Observers\Utils\UploadTrait;
 
 class ServicoObserver
@@ -12,17 +12,17 @@ class ServicoObserver
     protected $field = 'img';
     protected $path = 'img';
 
-    public function creating(Servico $model)
+    public function creating(ContentServico $model)
     {
         //dd($model->titulo);
         //$model->titulo = 'teste2';
         $this->createFile($model);
     }
-    public function deleting(Servico $model)
+    public function deleting(ContentServico $model)
     {
         $this->removeFile($model->img);
     }
-    public function updating(Servico $model)
+    public function updating(ContentServico $model)
     {
         $this->updateFile($model);
     }

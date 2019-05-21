@@ -15,13 +15,9 @@ class CreateServicosTable extends Migration
     {
         Schema::create('servicos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->string('titulo');
-            $table->longText('descricao');
-            $table->string('img');
+            $table->string('title');
+            $table->text('content');
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
         });
     }
