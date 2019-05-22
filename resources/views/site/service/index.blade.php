@@ -4,11 +4,11 @@
 
   <section class="bg-cinza section-servico">
     <div class="container">
-      <p class="h4 text-center mb-5">Serviços</p>
+      <p class="h4 text-center mb-5">{{$serviceHeader[0]->title}}</p>
       <div class="row justify-content-center">
         <div class="col-8 text-center">
           <p class="">
-            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing
+            {!! $serviceHeader[0]->content !!}
           </p>
         </div>
       </div>

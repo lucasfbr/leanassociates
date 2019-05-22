@@ -6,11 +6,9 @@
     <li class="breadcrumb-item">
       <a href="">Dashboard</a>
     </li>
-    <li class="breadcrumb-item"><a href="{{route('admin.servicos')}}">Serviços</a></li>
+    <li class="breadcrumb-item"><a href="{{route('admin.servicosContent')}}">Serviços</a></li>
     <li class="breadcrumb-item">Detalhes</li>
   </ol>
-
-
 
   <div class="card mb-3">
     <div class="card-header">

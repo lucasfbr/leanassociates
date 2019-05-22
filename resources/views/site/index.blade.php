@@ -54,37 +54,38 @@
   <section id="services" class="laranja-fundo">
     <div class="container">
       <h3 class="text-center mb-5">Serviços de sonsultoria</h3>
-      <div class="row text-center">
 
+       @if($servicos->isEmpty())
+            <p class="h4 text-center">Nenhum serviço cadastrado</p>
+       @else
 
-      @foreach($servicos as $servico)
-        
-          @if($servicos->isEmpty())
-            <p class="h4">Nenhum registro cadastrado</p>
-          @else
-        
-            <div class="col-mx-12 col-md-3 mx-auto mb-2">
-              <div class="card">
-                <img src='{{ asset("img/$servico->img") }}' class="card-img-top img-responsive" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">{{$servico->titulo}}</h5>
-                  <p class="card-text">{!! str_limit($servico->descricao, 70) !!}</p>
-                  <a href="\service\{{$servico->id}}" class="btn btn-success">Saiba mais</a>
+          <div class="row text-center">
+
+          @foreach($servicos as $servico)
+
+                <div class="col-mx-12 col-md-3 mx-auto mb-2">
+                  <div class="card">
+                    <img src='{{ asset("img/$servico->img") }}' class="card-img-top img-responsive" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">{{$servico->titulo}}</h5>
+                      <p class="card-text">{!! str_limit($servico->descricao, 70) !!}</p>
+                      <a href="\service\{{$servico->id}}" class="btn btn-success">Saiba mais</a>
+                    </div>
+                  </div>
                 </div>
-              </div>
+
+          @endforeach
+
+          </div>
+
+          <div class="row mt-5">
+            <div class="col-md-8 mx-auto text-center">
+              <a href="/service" class="btn btn-success btn btn-banner">Conheça todos nossos serviços</a>
             </div>
-          @endif
-
-      @endforeach 
-
-      </div>
-
-      <div class="row mt-5">
-        <div class="col-md-8 mx-auto text-center">
-          <a href="/service" class="btn btn-success btn btn-banner">Conheça todos nossos serviços</a>
+          </div>
         </div>
-      </div>
-    </div>
+
+      @endif
 
   </section>
 

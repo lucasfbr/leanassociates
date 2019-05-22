@@ -6,7 +6,7 @@
     <li class="breadcrumb-item">
       <a href="">Dashboard</a>
     </li>
-    <li class="breadcrumb-item"><a href="{{route('admin.servicos')}}">Serviços</a></li>
+    <li class="breadcrumb-item"><a href="{{route('admin.servicosContent')}}">Serviços</a></li>
     <li class="breadcrumb-item">Novo</li>
   </ol>
 
@@ -31,10 +31,9 @@
               </div>
 
               <div class="card-body">       
-                  <form id="cadServico" method="POST" action="{{route('admin.servicos.store')}}" class="needs-validation {{ $errors->any() ? ' was-validated' : '' }}" novalidate 
+                  <form id="cadServico" method="POST" action="{{route('admin.servicosContent.store')}}" class="needs-validation {{ $errors->any() ? ' was-validated' : '' }}" novalidate
                     enctype="multipart/form-data">
                       {{csrf_field()}}
-                      <input type="hidden" name="user_id" id="user_id" value={{auth()->user()->id}}>
                       <div class="form-group">
                           <label for="titulo" class="text-default">Titulo</label>
                           <input type="text" class="form-control" name="titulo" id="titulo" value="{{ old('titulo') }}" required autofocus>

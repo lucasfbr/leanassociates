@@ -36,19 +36,14 @@
                       {{csrf_field()}}
                       <input type="hidden" name="user_id" id="user_id" value={{auth()->user()->id}}>
                       <div class="form-group">
-                          <label for="titulo" class="text-default">Titulo</label>
-                          <input type="text" class="form-control" name="titulo" id="titulo" value="{{ $servico->titulo }}" required autofocus>
-                          <div class="valid-feedback {{$errors->has('titulo') ? 'invalid-feedback' : ''}}">{{ $errors->first('titulo') }}</div>
+                          <label for="title" class="text-default">Titulo</label>
+                          <input type="text" class="form-control" name="title" id="title" value="{{ $servico->title }}" required autofocus>
+                          <div class="valid-feedback {{$errors->has('title') ? 'invalid-feedback' : ''}}">{{ $errors->first('title') }}</div>
                       </div>
                       <div class="form-group">
-                          <label for="descricao" class="text-default">Descrição</label>
-                          <textarea id="editor-texto" class="form-control" name="descricao" id="descricao" cols="30" rows="10" required>{!! $servico->descricao !!}</textarea>
-                         <div class="valid-feedback {{$errors->has('descricao') ? 'invalid-feedback' : ''}}">{{ $errors->first('descricao') }}</div>
-                      </div>
-                      <div class="form-group">
-                          <label for="img" class="text-default">Foto</label>
-                          <input type="file" class="form-control" name="img" id="img" required>
-                          <div class="valid-feedback {{$errors->has('img') ? 'invalid-feedback' : ''}}">{{ $errors->first('img') }}</div>
+                          <label for="content" class="text-default">Descrição</label>
+                          <textarea id="editor-texto" class="form-control" name="content" cols="30" rows="10" required>{!! $servico->content !!}</textarea>
+                         <div class="valid-feedback {{$errors->has('content') ? 'invalid-feedback' : ''}}">{{ $errors->first('content') }}</div>
                       </div>
                       <button type="submit" class="btn btn-secondary">Editar</button>
 

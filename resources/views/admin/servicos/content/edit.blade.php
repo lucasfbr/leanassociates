@@ -6,7 +6,7 @@
     <li class="breadcrumb-item">
       <a href="">Dashboard</a>
     </li>
-    <li class="breadcrumb-item"><a href="{{route('admin.servicos')}}">Serviços</a></li>
+    <li class="breadcrumb-item"><a href="{{route('admin.servicosContent')}}">Serviços</a></li>
     <li class="breadcrumb-item">Editar</li>
   </ol>
 
@@ -31,7 +31,7 @@
               </div>
 
               <div class="card-body">       
-                  <form id="cadServico" method="POST" action='{{url("admin/servicos/update/$servico->id")}}' class="needs-validation {{ $errors->any() ? ' was-validated' : '' }}" novalidate
+                  <form id="cadServico" method="POST" action='{{url("admin/servicosContent/update/$servico->id")}}' class="needs-validation {{ $errors->any() ? ' was-validated' : '' }}" novalidate
                     enctype="multipart/form-data">
                       {{csrf_field()}}
                       <input type="hidden" name="user_id" id="user_id" value={{auth()->user()->id}}>

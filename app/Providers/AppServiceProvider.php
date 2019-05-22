@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Observers\ServicoObserver;
 use App\Observers\ProfileObserver;
-use App\Servico;
+use App\ContentServico;
 use App\Profile;
 
 class AppServiceProvider extends ServiceProvider
@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Servico::observe(ServicoObserver::class);
+        ContentServico::observe(ServicoObserver::class);
         Profile::observe(ProfileObserver::class);
     }
 

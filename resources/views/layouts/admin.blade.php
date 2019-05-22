@@ -104,8 +104,8 @@
           <a class="dropdown-item" href="#" data-toggle="tooltip" data-placement="top" title="Conteudo exibido no rodapé do site">Rodapé</a>
           <div class="dropdown-divider"></div>
           <h6 class="dropdown-header"><i class="color-icon fas fa-fw fa-file"></i> Serviços</h6>
-          <a class="dropdown-item" href="#" data-toggle="tooltip" data-placement="top" title="Titulo e descrição de cabeçalho da página">Titulo/Descrição</a>
-          <a class="dropdown-item" href="{{ route('admin.servicos') }}" data-toggle="tooltip" data-placement="top" title="Conteúdo da página">Conteúdo</a>
+          <a class="dropdown-item" href="{{ route('admin.servicos') }}" data-toggle="tooltip" data-placement="top" title="Titulo e descrição de cabeçalho da página">Titulo/Descrição</a>
+          <a class="dropdown-item" href="{{ route('admin.servicosContent') }}" data-toggle="tooltip" data-placement="top" title="Conteúdo da página">Conteúdo</a>
           <div class="dropdown-divider"></div>
           <h6 class="dropdown-header"><i class="color-icon fas fa-fw fa-file"></i> Como funciona</h6>
           <a class="dropdown-item" href="" data-toggle="tooltip" data-placement="top" title="Conteudo exibido na home do site">Resumo</a>

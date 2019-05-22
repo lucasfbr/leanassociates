@@ -20,7 +20,7 @@
 Route::get('/', 'site\homeController@index');
 Route::post('/contato', 'site\homeController@contato');
 Route::get('/service', 'site\serviceController@index');
-Route::get('/service/{id}', 'site\serviceController@detalhes');
+Route::get('/service/{id}', 'site\serviceController@detail');
 Route::get('/sobre', 'site\sobreController@index');
 Route::get('/term/{type}', 'site\TermController@index');
 

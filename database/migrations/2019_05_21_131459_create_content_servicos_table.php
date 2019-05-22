@@ -15,13 +15,10 @@ class CreateContentServicosTable extends Migration
     {
         Schema::create('content_servicos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('servico_id')->unsigned();
             $table->string('titulo');
             $table->longText('descricao');
             $table->string('img');
             $table->timestamps();
-
-            $table->foreign('servico_id')->references('id')->on('servicos')->onDelete('cascade');
             
         });
     }

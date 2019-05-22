@@ -5,19 +5,25 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Servico;
+use App\ContentServico;
 
 class serviceController extends Controller
 {
     public function index(){
 
-    	$servicos = Servico::all();
+        $serviceHeader = Servico::orderby('created_at','DESC')->take(1)->get();
 
-        return view('site.service.index', compact('servicos'));
+        $servicos = ContentServico::all();
+
+
+        return view('site.service.index', compact(['servicos','serviceHeader']));
     }
 
-    public function detalhes(Request $request){
+    public function detail($id){
 
-        $id = $request->id;
-        return view('site.service.detalhes', compact('id'));
+        $servico = ContentServico::find($id);
+
+        return view('site.service.detalhes', compact('servico'));
+
     }
 }
