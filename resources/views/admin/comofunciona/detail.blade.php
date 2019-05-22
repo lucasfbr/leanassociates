@@ -25,8 +25,10 @@
                 <span id="icone"><i class="{{$comofunciona->img}} fa-7x"></i></span>
             </div>
             <div class="card-body">
-                <h5 class="card-title">{{$comofunciona->titulo}}</h5>
+                <h5 class="card-title">{{ $comofunciona->titulo }}</h5>
                 <p class="card-text">{!! $comofunciona->texto !!}</p>
+                <p class="card-text">{{ $comofunciona->resumo_titulo }}</p>
+                <p class="card-text">{!! $comofunciona->resumo !!}</p>
             </div>
         </div>
       </div>

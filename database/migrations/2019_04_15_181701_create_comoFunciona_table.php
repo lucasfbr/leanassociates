@@ -17,8 +17,9 @@ class CreateComoFuncionaTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('titulo');
-            $table->string('resumo');
             $table->longText('texto');
+            $table->string('titulo_resumo');
+            $table->string('resumo');
             $table->string('img');
             $table->timestamps();
 

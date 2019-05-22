@@ -35,14 +35,27 @@
                     enctype="multipart/form-data">
                       {{csrf_field()}}
                       <input type="hidden" name="user_id" id="user_id" value={{auth()->user()->id}}>
+
+                      <div class="form-group">
+                          <label for="titulo_resumo" class="text-default">Titulo do resumo</label>
+                          <input type="text" class="form-control" name="titulo_resumo" id="titulo_resumo" value="{{ $comofunciona->titulo_resumo }}" required autofocus>
+                          <div class="valid-feedback {{$errors->has('titulo_resumo') ? 'invalid-feedback' : ''}}">{{ $errors->first('titulo_resumo') }}</div>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="resumo" class="text-default">Descrição do resumo</label>
+                          <textarea class="form-control" id="resumo" name="resumo" cols="30" rows="10" required>{{ $comofunciona->resumo }}</textarea>
+                         <div class="valid-feedback {{$errors->has('resumo') ? 'invalid-feedback' : ''}}">{{ $errors->first('resumo') }}</div>
+                      </div>
+
                       <div class="form-group">
                           <label for="titulo" class="text-default">Titulo</label>
                           <input type="text" class="form-control" name="titulo" id="titulo" value="{{ $comofunciona->titulo }}" required autofocus>
                           <div class="valid-feedback {{$errors->has('titulo') ? 'invalid-feedback' : ''}}">{{ $errors->first('titulo') }}</div>
                       </div>
                       <div class="form-group">
-                          <label for="descricao" class="text-default">Descrição</label>
-                          <textarea class="form-control" id="editor-texto" name="texto" id="texto" cols="30" rows="10" required>{{ $comofunciona->texto }}</textarea>
+                          <label for="texto" class="text-default">Texto</label>
+                          <textarea class="form-control" id="editor-texto" name="texto" cols="30" rows="10" required>{{ $comofunciona->texto }}</textarea>
                          <div class="valid-feedback {{$errors->has('texto') ? 'invalid-feedback' : ''}}">{{ $errors->first('texto') }}</div>
                       </div>
                       <div class="form-group">

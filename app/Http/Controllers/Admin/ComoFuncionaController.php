@@ -28,6 +28,8 @@ class ComoFuncionaController extends Controller
             'titulo' => 'required|max:255',
             'texto' => 'required',
             'img' => 'required',
+            'titulo_resumo' => 'required',
+            'resumo' => 'required'
             ]);
 
         if(ComoFunciona::create($request->all())){
@@ -53,7 +55,9 @@ class ComoFuncionaController extends Controller
             'titulo' => 'required|max:255',
             'texto' => 'required',
             'img' => 'required',
-        ]);
+            'titulo_resumo' => 'required',
+            'resumo' => 'required'
+            ]);
 
         $comofunciona = ComoFunciona::find($id);
 

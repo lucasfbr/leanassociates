@@ -35,16 +35,35 @@
                     enctype="multipart/form-data">
                       {{csrf_field()}}
                       <input type="hidden" name="user_id" id="user_id" value={{auth()->user()->id}}>
+
+                      <div class="form-group">
+                          <label for="titulo_resumo" class="text-default">Titulo do resumo</label>
+                          <input type="text" class="form-control" name="titulo_resumo" id="titulo_resumo" value="{{ old('titulo_resumo') }}" required autofocus>
+                          <div class="valid-feedback {{$errors->has('titulo_resumo') ? 'invalid-feedback' : ''}}">{{ $errors->first('titulo_resumo') }}</div>
+                          <small id="tituloResumoHelp" class="form-text text-muted">Titulo do resumo que será exibido na home</small>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="resumo" class="text-default">Descrição do resumo</label>
+                          <textarea class="form-control" id="resumo" name="resumo" cols="30" rows="10" required>{{ old('resumo') }}</textarea>
+                         <div class="valid-feedback {{$errors->has('resumo') ? 'invalid-feedback' : ''}}">{{ $errors->first('resumo') }}</div>
+                         <small id="ResumoHelp" class="form-text text-muted">Conteúdo resumido que será exibido na home, maximo 100 caracteres</small>
+                      </div>
+
                       <div class="form-group">
                           <label for="titulo" class="text-default">Titulo</label>
                           <input type="text" class="form-control" name="titulo" id="titulo" value="{{ old('titulo') }}" required autofocus>
                           <div class="valid-feedback {{$errors->has('titulo') ? 'invalid-feedback' : ''}}">{{ $errors->first('titulo') }}</div>
+                          <small id="tituloHelp" class="form-text text-muted">Titulo que será exibido ao entrar na página: "como funciona"</small>
                       </div>
+
                       <div class="form-group">
-                          <label for="descricao" class="text-default">Descrição</label>
-                          <textarea class="form-control" id="editor-texto" name="texto" id="texto" cols="30" rows="10" required>{{ old('descricao') }}</textarea>
+                          <label for="texto" class="text-default">Texto</label>
+                          <textarea class="form-control" id="editor-texto" name="texto" cols="30" rows="10" required>{{ old('texto') }}</textarea>
                          <div class="valid-feedback {{$errors->has('texto') ? 'invalid-feedback' : ''}}">{{ $errors->first('texto') }}</div>
+                         <small id="DescricaoHelp" class="form-text text-muted">Conteúdo que será exibido ao entrar na página: "como funciona"</small>
                       </div>
+
                       <div class="form-group">
                           <label for="img" class="text-default">Icone</label>
                           <input type="text" class="form-control" name="img" id="img" required>
