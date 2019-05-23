@@ -107,3 +107,7 @@ input#empresa.form-control, input#nome.form-control, input#email.form-control, i
 p#sobre-passo1{
     line-height: 30px;
 }
+
+p.text-empty{
+    color: #ccc;
+}

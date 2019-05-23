@@ -16,23 +16,32 @@
   <section id="about" class="bg-cinza ">
     <div class="container">
         <p class="h4 text-center">Como Funciona?</p>
-        <p class="text-center mb-5 "><a href="/sobre" class="text-success">Saiba mais</a></p>
-        <div class="row text-center">
-            @foreach($comoFunciona as $comofun)
-              <div class="col-md-3 mx-auto mb-2">
-                <i class="{{$comofun->img}} fa-7x"></i>
-                <p class="h6 mt-2">{{$comofun->titulo_resumo}}</p>
-                <p>{{$comofun->resumo}}</p>
-              </div>
-            @endforeach
-        </div>
+        
+        @if(!$comoFunciona->isEmpty())
+          <p class="text-center mb-5 "><a href="/sobre" class="text-success">Saiba mais</a></p>
+        @endif
 
-      <div class="row mt-4">
-        <div class="col-md-8 mx-auto text-center">
-          <a href="/registerTipo/2" class="btn btn-success btn btn-banner mb-2">Publique suas dúvidas</a>
-          <a href="/registerTipo/1" class="btn btn-success btn btn-banner mb-2">Trabalhe como consultor</a>
-        </div>
-      </div>
+        @if($comoFunciona->isEmpty())
+            <p class="h4 text-center text-empty mt-5">Nenhum item cadastrado</p>
+        @else
+          <div class="row text-center">
+              @foreach($comoFunciona as $comofun)
+                <div class="col-md-3 mx-auto mb-2">
+                  <i class="{{$comofun->img}} fa-7x"></i>
+                  <p class="h6 mt-2">{{$comofun->titulo_resumo}}</p>
+                  <p>{{$comofun->resumo}}</p>
+                </div>
+              @endforeach
+          </div>
+       
+
+          <div class="row mt-5">
+            <div class="col-md-8 mx-auto text-center">
+              <a href="/registerTipo/2" class="btn btn-success btn btn-banner mb-2">Publique suas dúvidas</a>
+              <a href="/registerTipo/1" class="btn btn-success btn btn-banner mb-2">Trabalhe como consultor</a>
+            </div>
+          </div>
+        @endif  
     </div>
 
 
@@ -43,7 +52,7 @@
       <h3 class="text-center mb-5">Serviços de sonsultoria</h3>
 
        @if($servicos->isEmpty())
-            <p class="h4 text-center">Nenhum serviço cadastrado</p>
+            <p class="h4 text-center text-empty">Nenhum item cadastrado</p>
        @else
 
           <div class="row text-center">
