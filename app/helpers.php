@@ -54,6 +54,33 @@ function termTipe($tipe)
     return $result;
 }
 
+function order($key){
+
+    $result = array();
+
+    if($key == 0){
+        $result[0] = 'order-1';
+        $result[1] = 'order-2';
+    }
+
+    if($key == 1){
+        $result[0] = 'order-2';
+        $result[1] = 'order-1';
+    }
+
+    if($key == 2){
+        $result[0] = 'order-1';
+        $result[1] = 'order-2';
+    }
+
+    if($key == 3){
+        $result[0] = 'order-2';
+        $result[1] = 'order-1';
+    }
+
+    return $result;
+
+}
 
 
 ?>

@@ -18,27 +18,14 @@
         <p class="h4 text-center">Como Funciona?</p>
         <p class="text-center mb-5 "><a href="/sobre" class="text-success">Saiba mais</a></p>
         <div class="row text-center">
-          <div class="col-md-3 mx-auto mb-2">
-            <i class="far fa-address-card fa-7x"></i>
-            <p class="h6 mt-2">Publicar</p>
-            <p>Conte-nos em poucas palavras qual o seu problema. É grátis e sem compromisso!</p>
+            @foreach($comoFunciona as $comofun)
+              <div class="col-md-3 mx-auto mb-2">
+                <i class="{{$comofun->img}} fa-7x"></i>
+                <p class="h6 mt-2">{{$comofun->titulo_resumo}}</p>
+                <p>{{$comofun->resumo}}</p>
+              </div>
+            @endforeach
         </div>
-        <div class="col-md-3 mx-auto mb-2">
-            <i class="fas fa-users fa-7x"></i>
-            <p class="h6 mt-2">Indicação</p>
-            <p>Indicaremos o consultor mais adequado para resolver seu problema</p>
-        </div>
-        <div class="col-md-3 mx-auto mb-2">
-            <i class="fas fa-chart-pie fa-7x"></i>
-            <p class="h6 mt-2">Projeto</p>
-            <p>Será enviado um projeto especificando em quais pontos sua empresa pode melhorar</p>
-        </div>
-        <div class="col-md-3 mx-auto mb-2">
-            <i class="fas fa-check-double fa-7x"></i>
-            <p class="h6 mt-2">Aceitar</p>
-            <p>Você aceita o projeto e iniciaremos o trabalho focados em atender seus interesses</p>
-        </div>
-      </div>
 
       <div class="row mt-4">
         <div class="col-md-8 mx-auto text-center">

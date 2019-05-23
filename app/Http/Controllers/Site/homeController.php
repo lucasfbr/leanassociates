@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\FormContato as contato;
 use App\ContentServico;
+use App\ComoFunciona;
 
 
 class homeController extends Controller
@@ -15,7 +16,9 @@ class homeController extends Controller
 
         $servicos =  ContentServico::offset(0)->limit(4)->get();
 
-        return view('site.index', compact('servicos'));
+        $comoFunciona = ComoFunciona::offset(0)->limit(4)->get();
+
+        return view('site.index', compact(['servicos','comoFunciona']));
 
     }
 

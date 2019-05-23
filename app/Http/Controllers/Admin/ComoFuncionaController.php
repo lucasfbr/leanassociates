@@ -34,7 +34,7 @@ class ComoFuncionaController extends Controller
 
         if(ComoFunciona::create($request->all())){
 
-            return redirect()->back()->with('sucesso','Registro cadastrado com sucesso!');
+            return redirect('admin/comofunciona')->with('sucesso','Registro cadastrado com sucesso!');
 
         }
 
@@ -63,7 +63,7 @@ class ComoFuncionaController extends Controller
 
         if($comofunciona->update($request->all())){
 
-            return redirect()->back()->with('sucesso','Registro editado com sucesso!');
+            return redirect('admin/comofunciona')->with('sucesso','Registro editado com sucesso!');
         }
 
         return redirect()->back()->with('erro','Ocorreu algum erro ao editar o registro, tente novamente mais tarde');
