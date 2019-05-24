@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFootersTable extends Migration
+class CreateHeadersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateFootersTable extends Migration
      */
     public function up()
     {
-        Schema::create('footers', function (Blueprint $table) {
+        Schema::create('headers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('titulo');
-            $table->string('contato');
-            $table->string('icone');
+            $table->string('logo');
+            $table->string('logo-desc');
+            $table->string('banner');
+            $table->string('banner-desc');
+            $table->enum('status', [0,1])->default(0);//0 - inativo; 1 - ativo
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ class CreateFootersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('footers');
+        Schema::dropIfExists('headers');
     }
 }

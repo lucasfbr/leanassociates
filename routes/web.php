@@ -94,6 +94,21 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::post('/terms/update/{id}', 'admin\TermController@update')->name('terms.update');
     Route::get('/terms/detail/{id}', 'admin\TermController@detail')->name('terms.detail');
     Route::get('/terms/delete/{id}', 'admin\TermController@delete')->name('terms.delete');
+
+    Route::get('/footer', 'admin\FooterController@index')->name('footer');
+    Route::get('/footer/create', 'admin\FooterController@create')->name('footer.create');
+    Route::post('/footer/store', 'admin\FooterController@store')->name('footer.store');
+    Route::get('/footer/{id}', 'admin\FooterController@edit')->name('footer.edit');
+    Route::post('/footer/update/{id}', 'admin\FooterController@update')->name('footer.update');
+    Route::get('/footer/delete/{id}', 'admin\FooterController@delete')->name('footer.delete');
+
+    Route::get('/header', 'admin\HeaderController@index')->name('header');
+    Route::get('/header/create', 'admin\HeaderController@create')->name('header.create');
+    Route::post('/header/store', 'admin\HeaderController@store')->name('header.store');
+    Route::get('/header/{id}', 'admin\HeaderController@edit')->name('header.edit');
+    Route::post('/header/update/{id}', 'admin\HeaderController@update')->name('header.update');
+    Route::get('/header/detail/{id}', 'admin\HeaderController@detail')->name('header.detail');
+    Route::get('/header/delete/{id}', 'admin\HeaderController@delete')->name('header.delete');
     
 });
 

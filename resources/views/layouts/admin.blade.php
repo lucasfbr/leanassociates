@@ -100,8 +100,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <h6 class="dropdown-header"><i class="color-icon fas fa-fw fa-file"></i>Geral</h6>
-          <a class="dropdown-item" href="#" data-toggle="tooltip" data-placement="top" title="Conteudo exibido no cabeçalho do site">Cabeçalho</a>
-          <a class="dropdown-item" href="#" data-toggle="tooltip" data-placement="top" title="Conteudo exibido no rodapé do site">Rodapé</a>
+          <a class="dropdown-item" href="{{route('admin.header')}}" data-toggle="tooltip" data-placement="top" title="Conteudo exibido no cabeçalho do site">Cabeçalho</a>
+          <a class="dropdown-item" href="{{route('admin.footer')}}" data-toggle="tooltip" data-placement="top" title="Conteudo exibido no rodapé do site">Rodapé</a>
           <div class="dropdown-divider"></div>
           <h6 class="dropdown-header"><i class="color-icon fas fa-fw fa-file"></i> Serviços</h6>
           <a class="dropdown-item" href="{{ route('admin.servicos') }}" data-toggle="tooltip" data-placement="top" title="Titulo e descrição de cabeçalho da página">Titulo/Descrição</a>

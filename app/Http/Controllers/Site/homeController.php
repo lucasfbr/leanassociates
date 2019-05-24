@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Footer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
@@ -16,9 +17,13 @@ class homeController extends Controller
 
         $servicos =  ContentServico::offset(0)->limit(4)->get();
 
+        $servicosFooter = ContentServico::all();
+
         $comoFunciona = ComoFunciona::offset(0)->limit(4)->get();
 
-        return view('site.index', compact(['servicos','comoFunciona']));
+        $footer = Footer::all();
+
+        return view('site.index', compact(['servicos','comoFunciona','footer', 'servicosFooter']));
 
     }
 
