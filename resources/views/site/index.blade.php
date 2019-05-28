@@ -4,8 +4,7 @@
 
   <header class="banner img-responsive text-white">
       <div class="container text-center">
-        <h1>Milhares de consultores prontos para</h1>
-        <h1>trabalhar no seu projeto</h1>
+        <h1>{{!empty($header->bannerDescricao) ? $header->bannerDescricao  : 'Nenhum titulo definido para este banner'}}</h1>
         <br>
         <a href="/registerTipo/2"  class="btn btn-success btn-lg btn-banner mb-2">Publique suas dúvidas</a>
         <a href="/registerTipo/1" class="btn btn-success btn-lg btn-banner mb-2">Trabalhe como consultor</a>

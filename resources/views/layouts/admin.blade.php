@@ -194,6 +194,7 @@
   @stack('ckeditor')
   @stack('profile')
   @stack('mask')
+  @stack('header')
 
 </body>
 

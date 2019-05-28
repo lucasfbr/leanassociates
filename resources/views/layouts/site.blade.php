@@ -21,7 +21,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="{{ asset('img/logo-lean2.png') }}" width="40"/><span class="ml-1 text-logo">Lean Associates</span></a>
+            <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="{{ !empty($header->logo) ? asset('img/'.$header->logo) : '' }}" width="40"/><span class="ml-2 text-logo">{{!empty($header->logoDescricao) ? $header->logoDescricao : 'Titulo Site'}}</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -56,7 +56,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 text-center">
-                    <img src="{{ asset('img/logo-lean2.png') }}" class="img-responsive" style="max-width: 80px" />
+                    <img src="{{ !empty($header->logo) ? asset('img/'.$header->logo) : '' }}" class="img-responsive"  style="max-width: 100px"/>
                 </div>
 
                 <div class="col-md-4 text-white">

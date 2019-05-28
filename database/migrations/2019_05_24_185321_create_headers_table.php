@@ -17,9 +17,9 @@ class CreateHeadersTable extends Migration
             $table->increments('id');
             $table->string('titulo');
             $table->string('logo');
-            $table->string('logo-desc');
+            $table->string('logoDescricao');
             $table->string('banner');
-            $table->string('banner-desc');
+            $table->string('bannerDescricao');
             $table->enum('status', [0,1])->default(0);//0 - inativo; 1 - ativo
             $table->timestamps();
         });

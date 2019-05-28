@@ -26,9 +26,9 @@ class HeaderController extends Controller
 
         $this->validate($request,[
             'logo' => 'required',
-            'logo-desc' => 'required',
+            'logoDescricao' => 'required',
             'banner' => 'required',
-            'banner-desc' => 'required'
+            'bannerDescricao' => 'required'
         ]);
 
         if(Header::create($request->all())){
@@ -43,20 +43,36 @@ class HeaderController extends Controller
 
         $header = Header::find($id);
 
-        return view('admin.header.create', compact('header'));
+        return view('admin.header.edit', compact('header'));
 
     }
 
     public function update(Request $request, $id){
 
-        $this->validate($request,[
-            'logo' => 'required',
-            'logo-desc' => 'required',
-            'banner' => 'required',
-            'banner-desc' => 'required'
-        ]);
+        $arrayValidate = [
+            'logoDescricao' => 'required',
+            'bannerDescricao' => 'required'
+        ];
+
+        //se o logo for alterado, adiciona a validação para o logo
+        if($request->file('logo')){
+            $arrayValidate['logo'] = 'file|image|mimes:jpeg,jpg,png';
+        }
+
+        //se o banner for alterado, adiciona a validação para o banner
+        if($request->file('banner')){
+            $arrayValidate['banner'] = 'file|image|mimes:jpeg,jpg,png';
+        }
+
+        $this->validate($request,$arrayValidate);
+
+        if(!$request->input('status')){
+            $request['status'] = '0';
+        }
 
         $header = Header::find($id);
+
+        //dd($request->all());
 
         if($header->update($request->all())){
             return redirect('admin/header')->with('sucesso', 'Registro editado com sucesso!');
@@ -70,7 +86,7 @@ class HeaderController extends Controller
 
         $header = Header::find($id);
 
-        return view('admin.header.create', compact('header'));
+        return view('admin.header.detail', compact('header'));
 
     }
 

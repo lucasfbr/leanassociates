@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\FormContato as contato;
 use App\ContentServico;
 use App\ComoFunciona;
+use App\Header;
 
 
 class homeController extends Controller
@@ -23,7 +24,9 @@ class homeController extends Controller
 
         $footer = Footer::all();
 
-        return view('site.index', compact(['servicos','comoFunciona','footer', 'servicosFooter']));
+        $header = Header::where('status','1')->first();
+
+        return view('site.index', compact(['servicos','comoFunciona','footer','servicosFooter','header']));
 
     }
 
