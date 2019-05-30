@@ -18,9 +18,13 @@ trait UploadMultipleImgTrait
     }
     protected function updateFile($model)
     {
+
         foreach ($this->field as $field) {
+
             if (is_a($model->$field, UploadedFile::class) and $model->$field->isValid()) {
+
                 $previous_file = $model->getOriginal($field);
+
                 $this->upload($model);
                 $this->removeFile($previous_file);
             }
@@ -41,7 +45,9 @@ trait UploadMultipleImgTrait
     }
     protected function upload($model)
     {
+
         foreach ($this->field as $field) {
+
             $extention = $model->$field->extension();
             $name = bin2hex(openssl_random_pseudo_bytes(8));
             $name = $name . '.' . $extention;

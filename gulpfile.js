@@ -16,11 +16,11 @@ require('laravel-elixir-vue-2');
 elixir((mix) => {
 
     //mix.webpack('./resources/assets/site/js/app.js', 'public/js/app.js');
-    mix.webpack('./resources/assets/site/js/index.js', 'public/js/index.js')
+    /*mix.webpack('./resources/assets/site/js/index.js', 'public/js/index.js')
        .webpack('./resources/assets/admin/js/login.js', 'public/admin/js/login.js')
        .webpack('./resources/assets/admin/js/register.js', 'public/admin/js/register.js')
        .webpack('./resources/assets/admin/js/email.js', 'public/admin/js/email.js')
-       .webpack('./resources/assets/admin/js/resetpassword.js', 'public/admin/js/resetpassword.js');
+       .webpack('./resources/assets/admin/js/resetpassword.js', 'public/admin/js/resetpassword.js');*/
 
    /* mix.copy([
        './node_modules/@fortawesome/fontawesome-free/webfonts'
@@ -33,13 +33,13 @@ elixir((mix) => {
         './resources/assets/site/css/style-pagina.css',
     ],'public/css/styles.css');
 
-    mix.scripts([
+    /*mix.scripts([
         './node_modules/@fortawesome/fontawesome-free/js/all.js',
         './node_modules/startbootstrap-scrolling-nav/vendor/jquery/jquery.min.js',
         './node_modules/startbootstrap-scrolling-nav/vendor/bootstrap/js/bootstrap.bundle.min.js',
         './node_modules/startbootstrap-scrolling-nav/vendor/jquery-easing/jquery.easing.min.js',
         './node_modules/startbootstrap-scrolling-nav/js/scrolling-nav.js'
-    ],'public/js/scripts.js');
+    ],'public/js/scripts.js');*/
 
     /* COPY ADMIN */
    /* mix.copy([

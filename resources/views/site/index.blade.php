@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <header class="banner img-responsive text-white">
+  <header class="text-white banner" style="background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url({{ asset("img/$header->banner")}})">
       <div class="container text-center">
         <h1>{{!empty($header->bannerDescricao) ? $header->bannerDescricao  : 'Nenhum titulo definido para este banner'}}</h1>
         <br>
