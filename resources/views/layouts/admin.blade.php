@@ -108,8 +108,7 @@
           <a class="dropdown-item" href="{{ route('admin.servicosContent') }}" data-toggle="tooltip" data-placement="top" title="Conteúdo da página">Conteúdo</a>
           <div class="dropdown-divider"></div>
           <h6 class="dropdown-header"><i class="color-icon fas fa-fw fa-file"></i> Como funciona</h6>
-          <a class="dropdown-item" href="" data-toggle="tooltip" data-placement="top" title="Conteudo exibido na home do site">Resumo</a>
-          <a class="dropdown-item" href="{{ route('admin.comofunciona') }}" data-toggle="tooltip" data-placement="top" title="Conteúdo exibido ao entrar na página">Página</a>
+          <a class="dropdown-item" href="{{ route('admin.comofunciona') }}" data-toggle="tooltip" data-placement="top" title="Conteúdo exibido ao entrar na página">Conteúdo</a>
           <div class="dropdown-divider"></div>
           <h6 class="dropdown-header"><i class="color-icon fas fa-fw fa-file"></i> Termos de contrato</h6>
           <a class="dropdown-item" href="{{ route('admin.terms') }}" data-toggle="tooltip" data-placement="top" title="Contratos que serão exibidos para o consultor ou empresa">Conteúdo</a>

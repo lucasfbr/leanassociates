@@ -12,7 +12,7 @@ trait UploadMultipleImgTrait
         foreach ($this->field as $field) {
 
             if (is_a($model->$field, UploadedFile::class) and $model->$field->isValid()) {
-                $this->upload($model);
+                $this->upload($model, $field);
             }
         }
     }
@@ -25,38 +25,36 @@ trait UploadMultipleImgTrait
 
                 $previous_file = $model->getOriginal($field);
 
-                $this->upload($model);
+                $this->upload($model, $field);
                 $this->removeFile($previous_file);
             }
         }
     }
-    protected function removeFile($logo, $banner)
+    protected function removeFile($field)
     {
         $prefix = Storage::disk(config('filesystems.default'))->getDriver()->getAdapter()->getPathPrefix();
 
-        $logo = $prefix . $this->path . '/' . $logo;
-        $banner = $prefix . $this->path . '/' . $banner;
-        if (file_exists($logo) and !is_dir($logo)) {
-            unlink($logo);
+        $imagem = $prefix . $this->path . '/' . $field;
+
+        if (file_exists($imagem) and !is_dir($imagem)) {
+            unlink($imagem);
         }
-        if (file_exists($banner) and !is_dir($banner)) {
-            unlink($banner);
-        }
+
     }
-    protected function upload($model)
+    protected function upload($model, $field)
     {
 
-        foreach ($this->field as $field) {
+        $extention = $model->$field->extension();
 
-            $extention = $model->$field->extension();
-            $name = bin2hex(openssl_random_pseudo_bytes(8));
-            $name = $name . '.' . $extention;
+        $name = bin2hex(openssl_random_pseudo_bytes(8));
+        $name = $name . '.' . $extention;
 
-            $model->$field->storeAs($this->path, $name);
+        $model->$field->storeAs($this->path, $name);
 
-            //altera o nome do campo img, assim quando voltar para o controller e finalizar
-            //o create, terá o mesmo nome da imagem salva na pasta public/img
-            $model->$field = $name;
-        }
+        //altera o nome do campo img, assim quando voltar para o controller e finalizar
+        //o create, terá o mesmo nome da imagem salva na pasta public/img
+        $model->$field = $name;
+
     }
+
 }

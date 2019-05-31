@@ -23,7 +23,7 @@
 
   <div class="card mb-3">
 
-      <div class="card-header">
+      <div class="card-header col-6">
           <a class="btn btn-success btn-sm" href="{{route('admin.servicos.create')}}" role="button" title="Novo usuário">
               Novo
           </a>
