@@ -569,16 +569,11 @@
 
                         <div class="tab-pane fade" id="pills-interesse" role="tabpanel" aria-labelledby="pills-interesse-tab">
                             <div id="appInteresse">
+
                                 <h5 class="mb-3">Selecione suas áreas de interesse</h5>
 
-                                <div class="custom-control custom-switch mb-2">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitch1" value="1">
-                                    <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
-                                </div>
+                                <div id="listAreasInteresse">
 
-                                <div class="custom-control custom-switch mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitch2" value="2">
-                                    <label class="custom-control-label" for="customSwitch2">Toggle this switch element</label>
                                 </div>
 
                                 <button type="button" class="btn btn-outline-success btn-sm" onclick="">Salvar</button>
@@ -1278,6 +1273,104 @@
               /*********************************************************************
                * Fim Requisições AJAX responsaveis pelos formulários de experiecias*
                *********************************************************************/
+
+              /*********************************************************************
+               * Inicio Requisições AJAX responsaveis pelas areas de interesse      *
+               **********************************************************************/
+
+              $(function () {
+
+
+                  function listAreasInteresse() {
+
+                      $.ajax({
+                          type: "GET",
+                          dataType: "json",
+                          url: "profile/interesse",
+                          success: function (response) {
+
+                              var interesses = "";
+
+                              if(response.length == 0){
+
+                                  interesses = "<h4 class='text-center'>Nenhum registro encontrado</h4>";
+                                  $('#listAreasInteresse').html(interesses);
+
+                              }else{
+
+                                  $.each(response, function (key, value) {
+
+                                      interesses += "<div class='custom-control custom-switch mb-2'>";
+                                      interesses += "<input type=checkbox class=custom-control-input id=servico"+value.id+" value="+value.id+">";
+                                      interesses += "<label class=custom-control-label for=servico"+value.id+">"+value.titulo+"</label>";
+                                      interesses += "</div>";
+
+                                  });
+
+                                  $('#listAreasInteresse').html(interesses);
+
+                              }
+                          },
+                          error: function (response) {
+
+                              console.log('Erro ao fazer uma requisição a base de dados!');
+                          }
+                      });
+                  }
+                  listAreasInteresse();
+
+
+
+                  $('#editExperiencia').click(function (e) {
+
+                      e.preventDefault();
+
+                      var experience_id = $("#experience_id").val();
+                      var empresa = $('#expempresa').val();
+                      var cargo = $('#cargo').val();
+                      var localidade = $('#localidade').val();
+                      var de = formatDate($('#expde').val());
+                      var ate = formatDate($('#expate').val());
+                      var descricao = $('#expdescricao').val();
+                      var link = $('#explink').val();
+
+                      if(!validateExperience(empresa,cargo,localidade,de,ate)) return false;
+
+                      $.ajax({
+                          type: 'POST',
+                          dataType: 'json',
+                          data: {
+                              empresa:empresa,
+                              cargo:cargo,
+                              localidade:localidade,
+                              de:de,
+                              ate:ate,
+                              descricao:descricao,
+                              link:link
+                          },
+                          url: "experience/update/"+experience_id,
+                          success: function (response) {
+                              console.log(response)
+
+                              $('#formExperienciaModal').modal('hide');
+                              listExperiencias();
+                              clearDataExperience();
+
+                          },
+                          error: function (response) {
+                              console.log('ocorreu um erro');
+                              console.log(response);
+                          }
+
+                      });
+                  });
+
+              });
+
+
+              /*********************************************************************
+               * Fim Requisições AJAX responsaveis pelas areas de interesse      *
+               **********************************************************************/
 
 
               /*********************

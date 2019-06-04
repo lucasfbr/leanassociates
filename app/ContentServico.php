@@ -13,4 +13,8 @@ class ContentServico extends Model
      public function servico(){
         return $this->belongsTo(Servico::class);
     }
+
+    public function user(){
+        return $this->belongsToMany(User::class);
+    }
 }

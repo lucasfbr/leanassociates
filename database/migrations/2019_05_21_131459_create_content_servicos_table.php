@@ -21,6 +21,14 @@ class CreateContentServicosTable extends Migration
             $table->timestamps();
             
         });
+
+        Schema::create('content_servico_user', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('user_id')->unsigned();
+            $table->integer('content_servico_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('content_servico_id')->references('id')->on('content_servicos')->onDelete('cascade');
+        });
     }
 
     /**
@@ -30,6 +38,7 @@ class CreateContentServicosTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('content_servico_user');
         Schema::dropIfExists('content_servicos');
     }
 }

@@ -83,4 +83,14 @@ class ProfileController extends Controller
 
         return redirect()->back()->with('erro','Ocorreu algum erro ao editar seu perfil, tente novamente mais tarde');
     }
+
+    public function interesseList(){
+
+        $user = User::find(auth()->user()->id);
+
+        $servicos = $user->contentServico;
+
+        return response()->json($servicos);
+
+    }
 }
