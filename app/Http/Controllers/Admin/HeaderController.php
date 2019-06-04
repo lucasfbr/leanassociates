@@ -31,6 +31,10 @@ class HeaderController extends Controller
             'bannerDescricao' => 'required'
         ]);
 
+        if($request->input('status') == 1){
+            $this->resetStatus();
+        }
+
         if(Header::create($request->all())){
             return redirect('admin/header')->with('sucesso', 'Cadastro realizado com sucesso!');
         }else{
@@ -68,11 +72,11 @@ class HeaderController extends Controller
 
         if(!$request->input('status')){
             $request['status'] = '0';
+        }else{
+            $this->resetStatus();
         }
 
         $header = Header::find($id);
-
-        //dd($request->all());
 
         if($header->update($request->all())){
             return redirect('admin/header')->with('sucesso', 'Registro editado com sucesso!');
@@ -98,6 +102,18 @@ class HeaderController extends Controller
             return redirect('admin/header')->with('sucesso', 'Registro deletado com sucesso!');
         }else{
             return redirect('admin/header')->with('erro', 'Ocorreu algum erro ao deletar o registro, tente novamente mais tarde!');
+        }
+
+    }
+
+    public function resetStatus(){
+
+        $header = Header::where('status','1')->first();
+
+        if($header){
+            $header['status'] = '0';
+            $header->save();
+
         }
 
     }

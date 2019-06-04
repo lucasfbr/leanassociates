@@ -14,13 +14,17 @@ class HeaderObserver
 
     public function creating(Header $model)
     {
-        //dd($model->titulo);
-        //$model->titulo = 'teste2';
         $this->createFile($model);
     }
     public function deleting(Header $model)
     {
-        $this->removeFile($model->logo, $model->banner);
+        foreach ($this->field as $field) {
+
+            //pega o nome orifginal da imagem
+            $previous_file = $model->getOriginal($field);
+            //envia para a Trait removeFile e remove a imagem da pasta
+            $this->removeFile($previous_file);
+        }
     }
     public function updating(Header $model)
     {

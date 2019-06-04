@@ -31,7 +31,7 @@
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
     @if (Auth::check())
-      <a class="navbar-brand mr-1" href="{{ route('admin.home') }}"><img src="{{ asset('img/logo-lean2.png') }}" width="40"/><span class="ml-1 text-default">Lean Associates</span></a>
+      <a class="navbar-brand mr-1" href="{{ route('admin.home') }}"><img src="{{ !empty($header->logo) ? asset('img/'.$header->logo) : '' }}" width="40"/><span class="ml-1 text-default">{{!empty($header->logoDescricao) ? $header->logoDescricao : 'Titulo Site'}}</span></a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
@@ -77,7 +77,7 @@
       </ul>
 
     @else
-      <a class="navbar-brand mr-1" href="/"><img src="{{ asset('img/logo-lean2.png') }}" width="40"/><span class="ml-1 text-default">Lean Associates</span></a>
+      <a class="navbar-brand mr-1" href="/"><img src="{{ !empty($header->logo) ? asset('img/'.$header->logo) : '' }}" width="40"/><span class="ml-1 text-default">{{!empty($header->logoDescricao) ? $header->logoDescricao : 'Titulo Site'}}</span></a>
     @endif
 
   </nav>
