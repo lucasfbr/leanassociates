@@ -572,11 +572,10 @@
 
                                 <h5 class="mb-3">Selecione suas áreas de interesse</h5>
 
-                                <div id="listAreasInteresse">
+                                <div id="listAreasInteresse"></div>
+                                <input type="hidden" name="interesse_user_id" id="interesse_user_id" value="{{$user->id}}">
 
-                                </div>
 
-                                <button type="button" class="btn btn-outline-success btn-sm" onclick="">Salvar</button>
                             </div>
                         </div>
 
@@ -1301,11 +1300,13 @@
                                   $.each(response, function (key, value) {
 
                                       interesses += "<div class='custom-control custom-switch mb-2'>";
-                                      interesses += "<input type=checkbox class=custom-control-input id=servico"+value.id+" value="+value.id+">";
+                                      interesses += "<input type=checkbox class=custom-control-input id=servico"+value.id+" name='servicos[]' value="+value.id+">";
                                       interesses += "<label class=custom-control-label for=servico"+value.id+">"+value.titulo+"</label>";
                                       interesses += "</div>";
 
                                   });
+                                  interesses += "</br>";
+                                  interesses += "<button type='button' class='btn btn-outline-success btn-sm' onclick='editAreasInteresse()'>Salvar</button>";
 
                                   $('#listAreasInteresse').html(interesses);
 
@@ -1318,52 +1319,6 @@
                       });
                   }
                   listAreasInteresse();
-
-
-
-                  $('#editExperiencia').click(function (e) {
-
-                      e.preventDefault();
-
-                      var experience_id = $("#experience_id").val();
-                      var empresa = $('#expempresa').val();
-                      var cargo = $('#cargo').val();
-                      var localidade = $('#localidade').val();
-                      var de = formatDate($('#expde').val());
-                      var ate = formatDate($('#expate').val());
-                      var descricao = $('#expdescricao').val();
-                      var link = $('#explink').val();
-
-                      if(!validateExperience(empresa,cargo,localidade,de,ate)) return false;
-
-                      $.ajax({
-                          type: 'POST',
-                          dataType: 'json',
-                          data: {
-                              empresa:empresa,
-                              cargo:cargo,
-                              localidade:localidade,
-                              de:de,
-                              ate:ate,
-                              descricao:descricao,
-                              link:link
-                          },
-                          url: "experience/update/"+experience_id,
-                          success: function (response) {
-                              console.log(response)
-
-                              $('#formExperienciaModal').modal('hide');
-                              listExperiencias();
-                              clearDataExperience();
-
-                          },
-                          error: function (response) {
-                              console.log('ocorreu um erro');
-                              console.log(response);
-                          }
-
-                      });
-                  });
 
               });
 
@@ -1453,6 +1408,48 @@
                       console.log(response)
                   }
               });
+          }
+
+          function editAreasInteresse() {
+             var servicos = $("#listAreasInteresse input[name='servicos[]']");
+
+             var checkados = 0;
+             var servicosVal = [];
+             servicos.each(function() {
+                 if ($(this).is(':checked')) {
+                     checkados++;
+                     servicosVal.push($(this).val())
+                 }
+             });
+
+             //console.log(user_id + ' - ' +servicosVal)
+
+              if (checkados == 0) {
+                  alert('Selecione uma ou mais áreas de interesse');
+                  return false;
+              } else {
+
+                  $.ajax({
+                      type: 'POST',
+                      dataType: 'json',
+                      url: "profile/interesse/update/" + servicosVal,
+                      success: function (response) {
+                          console.log(response)
+
+                          listAreasInteresse();
+
+
+                      },
+                      error: function (response) {
+                          console.log('ocorreu um erro');
+                          console.log(response);
+                      }
+
+                  });
+              }
+
+             //console.log(checkados)
+
           }
 
           function clearData() {

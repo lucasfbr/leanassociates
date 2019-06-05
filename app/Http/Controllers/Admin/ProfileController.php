@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Profile;
 use App\User;
+use App\ContentServico;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -86,11 +87,19 @@ class ProfileController extends Controller
 
     public function interesseList(){
 
-        $user = User::find(auth()->user()->id);
-
-        $servicos = $user->contentServico;
+        $servicos = ContentServico::all();
 
         return response()->json($servicos);
+
+    }
+
+    public function interesseUpdate($serviços){
+
+        $user = User::find(auth()->user()->id);
+
+        $user->contentServico()->attach($serviços);
+
+        return response()->json(true,200);
 
     }
 }
