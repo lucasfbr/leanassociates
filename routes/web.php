@@ -42,10 +42,12 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::get('/usuarios/detail/{id}', 'admin\UsuarioController@detail')->name('usuarios.detail');
     Route::get('/usuarios/delete/{id}', 'admin\UsuarioController@delete')->name('usuarios.delete');
 
+
     Route::get('/profile', 'admin\ProfileController@index')->name('profile');
     Route::post('/profile/update/{id}', 'admin\ProfileController@update')->name('profile.update');
     Route::get('/profile/interesse', 'admin\ProfileController@interesseList');
     Route::post('/profile/interesse/update/{servicos}', 'admin\ProfileController@interesseUpdate');
+    Route::get('/profile/perfil', 'admin\ProfileController@verificaPerfil');
 
     //Route::post('/formation/store', 'admin\FormationController@store')->name('formation.store');
     //Route::post('/formation/update/{id}', 'admin\FormationController@update')->name('formation.update');

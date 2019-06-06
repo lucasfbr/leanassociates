@@ -130,12 +130,10 @@
     @endif
 
     <div id="content-wrapper">
-    
       <div class="container-fluid">
         
         <!-- Page Content -->
-
-         @yield('content')
+        @yield('content')
 
       </div>
       <!-- /.container-fluid -->
@@ -182,8 +180,70 @@
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="perfilModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Perfil incompleto</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Complete o seu perfil, somente assim você poderá ter acesso a todos os beneficios da plataforma</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="{{route('admin.profile')}}">Atualizar perfil</a>
+        </div>
+      </div>
+    </div>
+  </div>
   
   <script src="{{ asset('admin/js/scripts.js') }}"></script>
+
+  <script>
+      $( document ).ready(function() {
+
+          //0 = perfil incompleto
+          //1 = perfil completo
+          function verificaPerfil() {
+
+              //pega o path da url
+              var url = $(location).attr('pathname');
+
+              if(url != '/admin/profile') {
+
+                  $.ajax({
+                      type: "GET",
+                      dataType: "json",
+                      url: "profile/perfil",
+                      success: function (response) {
+
+                          console.log(response)
+
+                          if (!response.data) {
+                              console.log('exibir modal')
+                              $('#perfilModal').modal();
+
+                          } else {
+                              console.log('não exibir')
+                          }
+
+
+                      },
+                      error: function (response) {
+                          console.log(response)
+                      }
+                  });
+
+              }
+
+          }
+          verificaPerfil()
+
+      });
+  </script>
+
 
   @stack('applogin')
   @stack('appregister')
@@ -194,6 +254,8 @@
   @stack('profile')
   @stack('mask')
   @stack('header')
+
+
 
 </body>
 

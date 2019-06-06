@@ -111,7 +111,21 @@ class ProfileController extends Controller
             return response()->json(['data'=>false,'status'=>500]);
         }
 
+    }
+
+    public function verificaPerfil(){
+
+        $user = User::find(auth()->user()->id);
+
+        if($user->perfil == 1 || $user->role == 0){
+            return response()->json(['data'=>true,'status'=>'200']);
+        }else{
+            return response()->json(['data'=>false,'status'=>'202']);
+        }
+
 
 
     }
+
+
 }
