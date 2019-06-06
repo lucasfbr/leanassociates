@@ -87,19 +87,31 @@ class ProfileController extends Controller
 
     public function interesseList(){
 
+        $user = User::find(auth()->user()->id);
+
+        $checked = $user->contentServico;
+
         $servicos = ContentServico::all();
 
-        return response()->json($servicos);
+        return response()->json(['servicos'=>$servicos, 'checked'=>$checked]);
 
     }
 
-    public function interesseUpdate($serviços){
+    public function interesseUpdate(Request $request, $servicos){
 
         $user = User::find(auth()->user()->id);
 
-        $user->contentServico()->attach($serviços);
+        $servicos = $request->input('servicos');
 
-        return response()->json(true,200);
+        //o metodo sync adiciona os ids enviados e remove os que não existam no array, todos relacionados
+        //ao usuário em questão
+        if($user->contentServico()->sync($servicos)){
+            return response()->json(['data'=>true,'status'=>200]);
+        }else{
+            return response()->json(['data'=>false,'status'=>500]);
+        }
+
+
 
     }
 }

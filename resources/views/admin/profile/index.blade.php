@@ -1277,10 +1277,7 @@
                * Inicio Requisições AJAX responsaveis pelas areas de interesse      *
                **********************************************************************/
 
-              $(function () {
-
-
-                  function listAreasInteresse() {
+              function listAreasInteresse() {
 
                       $.ajax({
                           type: "GET",
@@ -1290,21 +1287,37 @@
 
                               var interesses = "";
 
-                              if(response.length == 0){
+                              if(response.servicos.length == 0){
 
                                   interesses = "<h4 class='text-center'>Nenhum registro encontrado</h4>";
                                   $('#listAreasInteresse').html(interesses);
 
                               }else{
 
-                                  $.each(response, function (key, value) {
+                                  //console.log(response.checked[0].id);
+                                  //+response.checked[key] == value.id ? 'checked' : '' +
+
+                                  //$.each(response.servicos, function (key, value) {
+                                  //});
+                                  response.servicos.forEach(function(value, indice, array){
+
+                                     var servicoChecked = '';
+                                     response.checked.forEach(function(chvalue, chindice, charray){
+
+                                         //console.log(chvalue.id + ' - ' +value.id)
+                                         if(chvalue.id === value.id){
+                                             servicoChecked = 'checked';
+                                         }
+                                     });
+
+                                      console.log(servicoChecked);
 
                                       interesses += "<div class='custom-control custom-switch mb-2'>";
-                                      interesses += "<input type=checkbox class=custom-control-input id=servico"+value.id+" name='servicos[]' value="+value.id+">";
+                                      interesses += "<input type=checkbox class=custom-control-input "+servicoChecked+" id=servico"+value.id+" name='servicos[]' value="+value.id+">";
                                       interesses += "<label class=custom-control-label for=servico"+value.id+">"+value.titulo+"</label>";
                                       interesses += "</div>";
-
                                   });
+
                                   interesses += "</br>";
                                   interesses += "<button type='button' class='btn btn-outline-success btn-sm' onclick='editAreasInteresse()'>Salvar</button>";
 
@@ -1317,10 +1330,10 @@
                               console.log('Erro ao fazer uma requisição a base de dados!');
                           }
                       });
-                  }
-                  listAreasInteresse();
+              }
+              listAreasInteresse();
 
-              });
+
 
 
               /*********************************************************************
@@ -1411,18 +1424,18 @@
           }
 
           function editAreasInteresse() {
-             var servicos = $("#listAreasInteresse input[name='servicos[]']");
+              var servicos = $("#listAreasInteresse input[name='servicos[]']");
 
-             var checkados = 0;
-             var servicosVal = [];
-             servicos.each(function() {
-                 if ($(this).is(':checked')) {
-                     checkados++;
-                     servicosVal.push($(this).val())
-                 }
-             });
+              var checkados = 0;
+              var servicosVal = [];
+              servicos.each(function() {
+                  if ($(this).is(':checked')) {
+                      checkados++;
+                      servicosVal.push($(this).val())
+                  }
+              });
 
-             //console.log(user_id + ' - ' +servicosVal)
+              //console.log(user_id + ' - ' +servicosVal)
 
               if (checkados == 0) {
                   alert('Selecione uma ou mais áreas de interesse');
@@ -1432,23 +1445,76 @@
                   $.ajax({
                       type: 'POST',
                       dataType: 'json',
+                      data: {
+                          servicos:servicosVal
+                      },
                       url: "profile/interesse/update/" + servicosVal,
                       success: function (response) {
-                          console.log(response)
+                          console.log('data='+response.data +' - status='+response.status)
 
-                          listAreasInteresse();
+                          $.ajax({
+                              type: "GET",
+                              dataType: "json",
+                              url: "profile/interesse",
+                              success: function (response) {
+
+                                  var interesses = "";
+
+                                  if(response.servicos.length == 0){
+
+                                      interesses = "<h4 class='text-center'>Nenhum registro encontrado</h4>";
+                                      $('#listAreasInteresse').html(interesses);
+
+                                  }else{
+
+                                      //console.log(response.checked[0].id);
+                                      //+response.checked[key] == value.id ? 'checked' : '' +
+
+                                      //$.each(response.servicos, function (key, value) {
+                                      //});
+                                      response.servicos.forEach(function(value, indice, array){
+
+                                          var servicoChecked = '';
+                                          response.checked.forEach(function(chvalue, chindice, charray){
+
+                                              //console.log(chvalue.id + ' - ' +value.id)
+                                              if(chvalue.id === value.id){
+                                                  servicoChecked = 'checked';
+                                              }
+                                          });
+
+                                          console.log(servicoChecked);
+
+                                          interesses += "<div class='custom-control custom-switch mb-2'>";
+                                          interesses += "<input type=checkbox class=custom-control-input "+servicoChecked+" id=servico"+value.id+" name='servicos[]' value="+value.id+">";
+                                          interesses += "<label class=custom-control-label for=servico"+value.id+">"+value.titulo+"</label>";
+                                          interesses += "</div>";
+                                      });
+
+                                      interesses += "</br>";
+                                      interesses += "<button type='button' class='btn btn-outline-success btn-sm' onclick='editAreasInteresse()'>Salvar</button>";
+
+                                      $('#listAreasInteresse').html(interesses);
+
+                                  }
+                              },
+                              error: function (response) {
+
+                                  console.log('Erro ao fazer uma requisição a base de dados!');
+                              }
+                          });
 
 
                       },
                       error: function (response) {
                           console.log('ocorreu um erro');
-                          console.log(response);
+                          console.log('data='+response.data +' - status='+response.status)
                       }
 
                   });
               }
 
-             //console.log(checkados)
+              //console.log(checkados)
 
           }
 
