@@ -84,7 +84,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
         Route::get('/comofunciona/delete/{id}', 'admin\ComoFuncionaController@delete')->name('comofunciona.delete');
     });
 
-    Route::get('/mensagens', 'admin\MensagemController@index')->name('mensagens');
+    Route::group(['middleware' => 'checkprofile'], function () {
+        Route::get('/mensagens', 'admin\MensagemController@index')->name('mensagens');
+    });
 
     Route::get('/formation', 'admin\FormationController@index');
     Route::get('/formation/edit/{id}', 'admin\FormationController@edit');

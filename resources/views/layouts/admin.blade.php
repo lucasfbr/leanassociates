@@ -228,7 +228,8 @@
                           console.log(response)
 
                           if (!response.data) {
-                              console.log('exibir modal')
+
+                              //console.log('exibir modal')
                               $('#perfilModal').modal();
 
                           } else {
