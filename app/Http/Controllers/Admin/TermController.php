@@ -8,6 +8,7 @@ use App\Term;
 
 class TermController extends Controller
 {
+
     public function index(){
 
     	$terms = Term::paginate(6);

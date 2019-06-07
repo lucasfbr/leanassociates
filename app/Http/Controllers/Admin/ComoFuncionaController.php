@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 use App\ComoFunciona;
+
 
 class ComoFuncionaController extends Controller
 {
-    
+
      public function index(){
 
         $comofunciona = ComoFunciona::paginate(6);

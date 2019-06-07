@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 
 class HeaderController extends Controller
 {
+
     public function index(){
 
         $headers = Header::all();

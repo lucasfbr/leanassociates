@@ -93,6 +93,8 @@
           <span>Dashboard</span>
         </a>
       </li>
+
+      @can('admin')
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-fw fa-folder"></i>
@@ -114,11 +116,15 @@
           <a class="dropdown-item" href="{{ route('admin.terms') }}" data-toggle="tooltip" data-placement="top" title="Contratos que serão exibidos para o consultor ou empresa">Conteúdo</a>
         </div>
       </li>
+      @endcan
+
+      @can('admin')
       <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.usuarios') }}">
           <i class="fas fa-user fa-fw"></i>
           <span>Usuários</span></a>
       </li>
+      @endcan
 
       <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.mensagens') }}">

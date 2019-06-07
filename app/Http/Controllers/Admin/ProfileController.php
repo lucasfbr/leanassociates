@@ -7,7 +7,6 @@ use App\User;
 use App\ContentServico;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -16,8 +15,6 @@ class ProfileController extends Controller
         $id = auth()->user()->id;
 
         $user = User::find($id);
-
-        //dd($user->profile());
 
         return view('admin.profile.index',compact('user'));
 
