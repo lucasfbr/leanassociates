@@ -10,13 +10,15 @@
     </ol>
 
     <div class="row">
+
+        @can('consultor')
           <div class="col-xl-3 col-sm-6 mb-3">
             <div class="card text-white bg-primary o-hidden h-100">
               <div class="card-body">
                 <div class="card-body-icon">
                   <i class="fas fa-fw fa-comments"></i>
                 </div>
-                <div class="mr-5">0 Empresas aguardam retorno!</div>
+                <div class="mr-5">0 Empresas aguardam retorno! - Consultor </div>
               </div>
               <a class="card-footer text-white clearfix small z-1" href="#">
                 <span class="float-left">Detalhes</span>
@@ -32,7 +34,7 @@
                 <div class="card-body-icon">
                   <i class="fas fa-fw fa-comments"></i>
                 </div>
-                <div class="mr-5">0 Consultores aguardam retorno!</div>
+                <div class="mr-5">0 Consultores aguardam retorno! - Consultor</div>
               </div>
               <a class="card-footer text-white clearfix small z-1" href="#">
                 <span class="float-left">Detalhes</span>
@@ -42,13 +44,16 @@
               </a>
             </div>
           </div>
+        @endcan
+
+        @can('cliente')
           <div class="col-xl-3 col-sm-6 mb-3">
             <div class="card text-white bg-warning o-hidden h-100">
               <div class="card-body">
                 <div class="card-body-icon">
                   <i class="fas fa-fw fa-list"></i>
                 </div>
-                <div class="mr-5">0 Tarefas Novas!</div>
+                <div class="mr-5">0 Tarefas Novas! - Cliente</div>
               </div>
               <a class="card-footer text-white clearfix small z-1" href="#">
                 <span class="float-left">Detalhes</span>
@@ -64,7 +69,7 @@
                 <div class="card-body-icon">
                   <i class="fas fa-fw fa-dollar-sign"></i>
                 </div>
-                <div class="mr-5">0 Ordens de Pagamento!</div>
+                <div class="mr-5">0 Ordens de Pagamento! - Cliente</div>
               </div>
               <a class="card-footer text-white clearfix small z-1" href="#">
                 <span class="float-left">Detalhes</span>
@@ -73,9 +78,9 @@
                 </span>
               </a>
             </div>
-          </div>
-        </div>
-
+           </div>
+        @endcan
+    </div>
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-user fa-fw"></i>

@@ -22,7 +22,7 @@ class ProfileController extends Controller
 
     public function update(Request $request, $id){
 
-
+        $msg = '';
 
         $arrayValidate = [
                 'name' => 'required|max:255',
@@ -62,6 +62,8 @@ class ProfileController extends Controller
         }
 
         //executa a validação
+        //dd($arrayValidate);
+
         $this->validate($request,$arrayValidate);
 
         if($request->input('password')){
@@ -76,10 +78,33 @@ class ProfileController extends Controller
         $profile = Profile::find($id);
 
         if($profile->update($dados)){
-            return redirect()->back()->with('sucesso','Perfil editado com sucesso!');
+
+            $user_id = auth()->user()->id;
+
+            $user = User::find($user_id);
+
+            //verifica se formação do usuário foi cadastrada
+            if(($user->formation)->isEmpty()) {
+                $msg .= "Formação incompleta, acesse: <a href=/admin/profile> Link </a> e adicione suas formações!</br>";
+            }
+
+            //verifica se as experiencias  do usuário foram cadastradas
+            if(($user->experience)->isEmpty()) {
+                $msg .= "Experiências proficionais incompletas, acesse: <a href=/admin/profile> Link </a> e complete suas experiências!";
+            }
+
+            if($msg){
+                return redirect()->back()->with('erro',$msg);
+            }else
+
+                if($user->perfil == '0'){
+                    $user['perfil'] = '1';
+                    $user->save();
+                }
+
+                return redirect()->back()->with('sucesso','Perfil editado com sucesso!');
         }
 
-        return redirect()->back()->with('erro','Ocorreu algum erro ao editar seu perfil, tente novamente mais tarde');
     }
 
     public function interesseList(){
@@ -114,13 +139,13 @@ class ProfileController extends Controller
 
         $user = User::find(auth()->user()->id);
 
+
+
         if($user->perfil == 1 || $user->role == 0){
             return response()->json(['data'=>true,'status'=>'200']);
         }else{
             return response()->json(['data'=>false,'status'=>'202']);
         }
-
-
 
     }
 
