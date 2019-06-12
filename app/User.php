@@ -53,4 +53,8 @@ class User extends Authenticatable
     public function contentServico(){
         return $this->belongsToMany(ContentServico::class);
     }
+
+    public function project(){
+        return $this->belongsToMany(Project::class);
+    }
 }

@@ -78,6 +78,7 @@
           </div>
         @endcan
 
+        @cannot('admin')
           <div class="col-xl-6 col-sm-6 mb-3">
             <div class="card text-white bg-warning o-hidden h-100">
               <div class="card-body">
@@ -110,7 +111,9 @@
               </a>
             </div>
           </div>
+        @endcannot
     </div>
+
 
 
     <div class="card mb-3">

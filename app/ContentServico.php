@@ -10,11 +10,15 @@ class ContentServico extends Model
         'titulo','descricao','img'
     ];
 
-     public function servico(){
+    public function servico(){
         return $this->belongsTo(Servico::class);
     }
 
     public function user(){
         return $this->belongsToMany(User::class);
+    }
+
+    public function project(){
+        return $this->belongsTo(Project::class);
     }
 }
