@@ -55,13 +55,13 @@ elixir((mix) => {
     ], 'public/admin/locales/bootstrap-datepicker.pt-BR.min.js');*/
 
     /* CSS ADMIN */
-   /*mix.styles([
+   mix.styles([
         './node_modules/startbootstrap-sb-admin/vendor/fontawesome-free/css/fontawesome.min.css',
         './node_modules/startbootstrap-sb-admin/vendor/datatables/dataTables.bootstrap4.css',
         './node_modules/startbootstrap-sb-admin/css/sb-admin.css',
         './node_modules/bootstrap-datepicker/css/bootstrap-datepicker.css',
         './resources/assets/admin/css/style-pagina.css',
-    ],'public/admin/css/styles.css');*/
+    ],'public/admin/css/styles.css');
 
     /* JS ADMIN */
    /* mix.scripts([

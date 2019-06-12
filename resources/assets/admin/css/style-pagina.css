@@ -50,6 +50,11 @@ footer.sticky-footer{
     font-size: 48px;
 }
 
+.icone-6x{
+	color: #6c757d ;
+	opacity: 0.2;;
+}
+
 .cardFormation{
 	border: 0;
 }

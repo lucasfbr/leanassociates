@@ -11,7 +11,7 @@
 
     <div class="row">
 
-        @can('consultor')
+        @can('admin')
           <div class="col-xl-3 col-sm-6 mb-3">
             <div class="card text-white bg-primary o-hidden h-100">
               <div class="card-body">
@@ -23,8 +23,8 @@
               <a class="card-footer text-white clearfix small z-1" href="#">
                 <span class="float-left">Detalhes</span>
                 <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
-                </span>
+                    <i class="fas fa-angle-right"></i>
+                  </span>
               </a>
             </div>
           </div>
@@ -39,14 +39,11 @@
               <a class="card-footer text-white clearfix small z-1" href="#">
                 <span class="float-left">Detalhes</span>
                 <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
+                    <i class="fas fa-angle-right"></i>
                 </span>
               </a>
             </div>
           </div>
-        @endcan
-
-        @can('cliente')
           <div class="col-xl-3 col-sm-6 mb-3">
             <div class="card text-white bg-warning o-hidden h-100">
               <div class="card-body">
@@ -58,7 +55,7 @@
               <a class="card-footer text-white clearfix small z-1" href="#">
                 <span class="float-left">Detalhes</span>
                 <span class="float-right">
-                  <i class="fas fa-angle-right"></i>
+                    <i class="fas fa-angle-right"></i>
                 </span>
               </a>
             </div>
@@ -74,20 +71,53 @@
               <a class="card-footer text-white clearfix small z-1" href="#">
                 <span class="float-left">Detalhes</span>
                 <span class="float-right">
+                    <i class="fas fa-angle-right"></i>
+                  </span>
+              </a>
+            </div>
+          </div>
+        @endcan
+
+          <div class="col-xl-6 col-sm-6 mb-3">
+            <div class="card text-white bg-warning o-hidden h-100">
+              <div class="card-body">
+                <div class="card-body-icon">
+                  <i class="fas fa-file-alt fa-fw"></i>
+                </div>
+                <div class="mr-5">Meus projetos</div>
+              </div>
+              <a class="card-footer text-white clearfix small z-1" href="#">
+                <span class="float-left">Detalhes</span>
+                <span class="float-right">
                   <i class="fas fa-angle-right"></i>
                 </span>
               </a>
             </div>
-           </div>
-        @endcan
-    </div>
-        <div class="card mb-3">
-          <div class="card-header">
-            <i class="fas fa-user fa-fw"></i>
-            Últimos usuários cadastrados
           </div>
-          <div class="card-body">
-            <div class="table-responsive">
+          <div class="col-xl-6 col-sm-6 mb-3">
+            <div class="card text-white bg-success o-hidden h-100">
+              <div class="card-body">
+                <div class="card-body-icon">
+                  <i class="fas fa-fw fa-envelope"></i>
+                </div>
+                <div class="mr-5">Minhas mensagens</div>
+              </div>
+              <a class="card-footer text-white clearfix small z-1" href="#">
+                <span class="float-left">Detalhes</span>
+                <span class="float-right">
+                  <i class="fas fa-angle-right"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+    </div>
+
+
+    <div class="card mb-3">
+
+      <div class="card-body">
+        @can('admin')
+          <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
@@ -174,7 +204,24 @@
               </table>
             </div>
           </div>
-          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-        </div>
+        @endcan
+        @can('consultor')
+
+        @endcan
+        @can('cliente')
+          <div class="row">
+            <div class="col-md-6">
+              <div class="text-center">
+                <i class="fas fa-fw fa-file-alt fa-6x icone-6x"></i>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <h5>Você ainda não criou seu primeiro projeto.</h5>
+              <p>Vamos começar!</p>
+              <a href="{{url('/admin/project')}}" class="btn btn-secondary">Criar meu primeiro projeto</a>
+            </div>
+          </div>
+        @endcan
+    </div>
 
 @endsection

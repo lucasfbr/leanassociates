@@ -128,6 +128,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
         Route::get('/header/detail/{id}', 'admin\HeaderController@detail')->name('header.detail');
         Route::get('/header/delete/{id}', 'admin\HeaderController@delete')->name('header.delete');
     });
+
+    Route::get('/project', 'admin\ProjectController@index');
 });
 
 
