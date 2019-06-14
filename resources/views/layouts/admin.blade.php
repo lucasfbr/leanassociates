@@ -102,18 +102,18 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <h6 class="dropdown-header"><i class="color-icon fas fa-fw fa-file"></i>Geral</h6>
-          <a class="dropdown-item" href="{{route('admin.header')}}" data-toggle="tooltip" data-placement="top" title="Conteudo exibido no cabeçalho do site">Cabeçalho</a>
-          <a class="dropdown-item" href="{{route('admin.footer')}}" data-toggle="tooltip" data-placement="top" title="Conteudo exibido no rodapé do site">Rodapé</a>
+          <a class="dropdown-item" href="{{route('admin.header')}}" id="head" data-toggle="tooltip" data-placement="top" title="Conteudo exibido no cabeçalho do site">Cabeçalho</a>
+          <a class="dropdown-item" href="{{route('admin.footer')}}" id="foot" data-toggle="tooltip" data-placement="top" title="Conteudo exibido no rodapé do site">Rodapé</a>
           <div class="dropdown-divider"></div>
           <h6 class="dropdown-header"><i class="color-icon fas fa-fw fa-file"></i> Serviços</h6>
-          <a class="dropdown-item" href="{{ route('admin.servicos') }}" data-toggle="tooltip" data-placement="top" title="Titulo e descrição de cabeçalho da página">Titulo/Descrição</a>
-          <a class="dropdown-item" href="{{ route('admin.servicosContent') }}" data-toggle="tooltip" data-placement="top" title="Conteúdo da página">Conteúdo</a>
+          <a class="dropdown-item" href="{{ route('admin.servicos') }}" id="title" data-toggle="tooltip" data-placement="top" title="Titulo e descrição de cabeçalho da página">Titulo/Descrição</a>
+          <a class="dropdown-item" href="{{ route('admin.servicosContent') }}" id="contPag" data-toggle="tooltip" data-placement="top" title="Conteúdo da página">Conteúdo</a>
           <div class="dropdown-divider"></div>
           <h6 class="dropdown-header"><i class="color-icon fas fa-fw fa-file"></i> Como funciona</h6>
-          <a class="dropdown-item" href="{{ route('admin.comofunciona') }}" data-toggle="tooltip" data-placement="top" title="Conteúdo exibido ao entrar na página">Conteúdo</a>
+          <a class="dropdown-item" href="{{ route('admin.comofunciona') }}" id="contComo" data-toggle="tooltip" data-placement="top" title="Conteúdo exibido ao entrar na página">Conteúdo</a>
           <div class="dropdown-divider"></div>
           <h6 class="dropdown-header"><i class="color-icon fas fa-fw fa-file"></i> Termos de contrato</h6>
-          <a class="dropdown-item" href="{{ route('admin.terms') }}" data-toggle="tooltip" data-placement="top" title="Contratos que serão exibidos para o consultor ou empresa">Conteúdo</a>
+          <a class="dropdown-item" href="{{ route('admin.terms') }}" id="terms" data-toggle="tooltip" data-placement="top" title="Contratos que serão exibidos para o consultor ou empresa">Conteúdo</a>
         </div>
       </li>
       @endcan
@@ -210,6 +210,8 @@
   <script>
       $( document ).ready(function() {
 
+          //$("#head, #foot, #title, #contPag, #contComo, #terms").tooltip();
+
           //0 = perfil incompleto
           //1 = perfil completo
           function verificaPerfil() {
@@ -225,15 +227,10 @@
                       url: "profile/perfil",
                       success: function (response) {
 
-                          console.log(response)
-
                           if (!response.data) {
 
                               //console.log('exibir modal')
                               $('#perfilModal').modal();
-
-                          } else {
-                              console.log('não exibir')
                           }
 
 
@@ -257,12 +254,11 @@
   @stack('appemail')
   @stack('appresetpassword')
   @stack('appformation')
+  @stack('appProject')
   @stack('ckeditor')
   @stack('profile')
   @stack('mask')
   @stack('header')
-
-
 
 </body>
 

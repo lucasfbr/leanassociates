@@ -83,19 +83,23 @@ class ProfileController extends Controller
 
             $user = User::find($user_id);
 
-            //verifica se formação do usuário foi cadastrada
-            if(($user->formation)->isEmpty()) {
-                $msg .= "Formação incompleta, acesse: <a href=/admin/profile> Link </a> e adicione suas formações!</br>";
-            }
+            if(auth()->user()->role == 1) {
 
-            //verifica se as experiencias  do usuário foram cadastradas
-            if(($user->experience)->isEmpty()) {
-                $msg .= "Experiências proficionais incompletas, acesse: <a href=/admin/profile> Link </a> e complete suas experiências!";
-            }
+                //verifica se formação do usuário foi cadastrada
+                if (($user->formation)->isEmpty()) {
+                    $msg .= "Formação incompleta, acesse: <a href=/admin/profile> Link </a> e adicione suas formações!</br>";
+                }
 
-            if($msg){
-                return redirect()->back()->with('erro',$msg);
-            }else
+                //verifica se as experiencias  do usuário foram cadastradas
+                if (($user->experience)->isEmpty()) {
+                    $msg .= "Experiências proficionais incompletas, acesse: <a href=/admin/profile> Link </a> e complete suas experiências!";
+                }
+
+                if($msg){
+                    return redirect()->back()->with('erro',$msg);
+                }
+
+            }else{
 
                 if($user->perfil == '0'){
                     $user['perfil'] = '1';
@@ -103,7 +107,10 @@ class ProfileController extends Controller
                 }
 
                 return redirect()->back()->with('sucesso','Perfil editado com sucesso!');
+            }
+
         }
+
 
     }
 
@@ -138,8 +145,6 @@ class ProfileController extends Controller
     public function verificaPerfil(){
 
         $user = User::find(auth()->user()->id);
-
-
 
         if($user->perfil == 1 || $user->role == 0){
             return response()->json(['data'=>true,'status'=>'200']);

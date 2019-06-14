@@ -50,10 +50,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::post('/profile/interesse/update/{servicos}', 'admin\ProfileController@interesseUpdate');
     Route::get('/profile/perfil', 'admin\ProfileController@verificaPerfil');
 
-    //Route::post('/formation/store', 'admin\FormationController@store')->name('formation.store');
-    //Route::post('/formation/update/{id}', 'admin\FormationController@update')->name('formation.update');
-    //Route::post('/formation/delete/{id}', 'admin\FormationController@delete')->name('formation.delete');
-
     Route::group(['middleware' => 'checkrole'], function () {
         Route::get('/servicos', 'admin\ServicoController@index')->name('servicos');
         Route::get('/servicos/create', 'admin\ServicoController@create')->name('servicos.create');
@@ -129,7 +125,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
         Route::get('/header/delete/{id}', 'admin\HeaderController@delete')->name('header.delete');
     });
 
-    Route::get('/project', 'admin\ProjectController@index');
+    Route::group(['middleware' => 'checkprofile'], function () {
+        Route::get('/project', 'admin\ProjectController@index');
+    });
 });
 
 

@@ -16,11 +16,12 @@ require('laravel-elixir-vue-2');
 elixir((mix) => {
 
     //mix.webpack('./resources/assets/site/js/app.js', 'public/js/app.js');
-    /*mix.webpack('./resources/assets/site/js/index.js', 'public/js/index.js')
+    mix.webpack('./resources/assets/site/js/index.js', 'public/js/index.js')
        .webpack('./resources/assets/admin/js/login.js', 'public/admin/js/login.js')
        .webpack('./resources/assets/admin/js/register.js', 'public/admin/js/register.js')
        .webpack('./resources/assets/admin/js/email.js', 'public/admin/js/email.js')
-       .webpack('./resources/assets/admin/js/resetpassword.js', 'public/admin/js/resetpassword.js');*/
+       .webpack('./resources/assets/admin/js/resetpassword.js', 'public/admin/js/resetpassword.js')
+       .webpack('./resources/assets/admin/js/project.js', 'public/admin/js/project.js');
 
    /* mix.copy([
        './node_modules/@fortawesome/fontawesome-free/webfonts'
@@ -52,28 +53,27 @@ elixir((mix) => {
 
     mix.copy([
         './node_modules/bootstrap-datepicker/locales'
-    ], 'public/admin/locales/bootstrap-datepicker.pt-BR.min.js');*/
+    ], 'public/admin/locales/bootstrap-datepicker.pt-BR.min.js');*
 
     /* CSS ADMIN */
    mix.styles([
         './node_modules/startbootstrap-sb-admin/vendor/fontawesome-free/css/fontawesome.min.css',
         './node_modules/startbootstrap-sb-admin/vendor/datatables/dataTables.bootstrap4.css',
         './node_modules/startbootstrap-sb-admin/css/sb-admin.css',
-        './node_modules/bootstrap-datepicker/css/bootstrap-datepicker.css',
+        './node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.css',
         './resources/assets/admin/css/style-pagina.css',
     ],'public/admin/css/styles.css');
 
     /* JS ADMIN */
-   /* mix.scripts([
+    mix.scripts([
         './node_modules/startbootstrap-sb-admin/vendor/fontawesome-free/js/all.js',
         './node_modules/startbootstrap-sb-admin/vendor/jquery/jquery.min.js',
         './node_modules/startbootstrap-sb-admin/vendor/bootstrap/js/bootstrap.bundle.min.js',
         './node_modules/startbootstrap-sb-admin/vendor/jquery-easing/jquery.easing.min.js',
         './node_modules/startbootstrap-sb-admin/js/sb-admin.min.js',
         './node_modules/inputmask/dist/jquery.inputmask.bundle.js',
-        './node_modules/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
-        './resources/assets/admin/js/principal.js',
-    ],'public/admin/js/scripts.js');*/
+        './node_modules/bootstrap-datepicker/js/bootstrap-datepicker.js',
+    ],'public/admin/js/scripts.js');
 
     /*mix.scripts([
         './resources/assets/admin/js/scripts.js',
