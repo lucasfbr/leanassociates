@@ -21,8 +21,14 @@
     </div>
   @endif
 
-  <div id="project">
-    <project></project>
+  <div class="row justify-content-md-center mt-5">
+
+    <div class="col-xs-12 col-md-11">
+      <div id="project">
+        <project></project>
+      </div>
+    </div>
+
   </div>
 
   @push('appProject')
