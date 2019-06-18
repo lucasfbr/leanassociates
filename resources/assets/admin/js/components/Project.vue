@@ -2,78 +2,17 @@
     <div>
         <h1 class="mb-4 text-secondary">Publique seu projeto</h1>
         <transition name="slide-fase1">
-            <div id="fase1" v-if="fase1">
+            <div id="fase1" v-if="fase1" class="mb-5">
                 <h3 class="mb-4 text-secondary">Quais seus problemas? Queremos soluciona-los para você</h3>
                 <p class="text-secondary mb-5">Ao selecionar uma categoria para seu projeto, poderemos encaminha-lo ao consultor mais indicado</p>
                 <div class="row mb-5 text-secondary">
-                    <div class="col-sm-2">
+                    <div class="col-sm-3" v-for="cat in categorias">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Categoria 1</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <h5 class="card-title">{{cat.titulo}}</h5>
                                 <div class="custom-control custom-radio categoria1">
-                                    <input type="radio" id="categoria1" name="categoria" class="custom-control-input">
-                                    <label class="custom-control-label" for="categoria1"></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Categoria 2</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <div class="custom-control custom-radio categoria2">
-                                    <input type="radio" id="categoria2" name="categoria" class="custom-control-input">
-                                    <label class="custom-control-label" for="categoria2"></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Categoria 3</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="categoria3" name="categoria" class="custom-control-input">
-                                    <label class="custom-control-label" for="categoria3"></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Categoria 4</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="categoria4" name="categoria" class="custom-control-input">
-                                    <label class="custom-control-label" for="categoria4"></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Categoria 5</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="categoria5" name="categoria" class="custom-control-input">
-                                    <label class="custom-control-label" for="categoria5"></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Categoria 6</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="categoria6" name="categoria" class="custom-control-input">
-                                    <label class="custom-control-label" for="categoria6"></label>
+                                    <input type="radio" :id="'cat_'+cat.id" name="categoria" v-model="catSelecionada" class="custom-control-input" :value="cat.id">
+                                    <label class="custom-control-label" :for="'cat_'+cat.id"></label>
                                 </div>
                             </div>
                         </div>
@@ -83,38 +22,38 @@
         </transition>
 
         <transition name="slide-fase2">
-            <div id="fase2" v-if="fase2">
+            <div id="fase2" v-if="fase2" class="mb-5">
                 <h3 class="mb-3 text-secondary">Nome do projeto</h3>
                 <p class="text-secondary">O título vai orientar nossa equipe, assim poderemos lhe indicar o melhor profissional</p>
-                <input type="text" class="form-control form-control-lg mb-5" id="titulo" name="titulo" placeholder="Por exemplo: Consultoria Finânceira">
+                <input type="text" class="form-control form-control-lg" id="titulo" name="titulo" v-model="titulo" placeholder="Por exemplo: Consultoria Finânceira">
             </div>
         </transition>
 
         <transition name="slide-fase3">
-            <div id="fase3" v-if="fase3">
+            <div id="fase3" v-if="fase3" class="mb-5">
                 <h3 class="mb-3 text-secondary">Orçamento disponível para o projeto</h3>
                 <p class="text-secondary">O orçamento vai ajudar os consultores a entenderem as dimensões do projeto</p>
-                <select class="form-control form-control-lg mb-5">
-                    <option name="valor">R$5.000 - 10.000</option>
-                    <option name="valor">R$10.000 - 20.000</option>
-                    <option name="valor">R$20.000 - 40.000</option>
-                    <option name="valor">R$40.000 - 80.000</option>
-                    <option name="valor">R$80.000 - 160.000</option>
+                <select class="form-control form-control-lg" name="valor" v-model="valor">
+                    <option value="R$5.000 - 10.000">R$5.000 - 10.000</option>
+                    <option value="R$10.000 - 20.000">R$10.000 - 20.000</option>
+                    <option value="R$20.000 - 40.000">R$20.000 - 40.000</option>
+                    <option value="R$40.000 - 80.000">R$40.000 - 80.000</option>
+                    <option value="R$80.000 - 160.000">R$80.000 - 160.000</option>
                 </select>
             </div>
         </transition>
 
         <transition name="slide-fase3">
-            <div id="fase4" v-if="fase4">
+            <div id="fase4" v-if="fase4" class="mb-5">
                 <h3 class="mb-3 text-secondary">Descrição do projeto</h3>
                 <p class="text-secondary">Descreva seu projeto com o maior número de datalhes possível</p>
-                <textarea class="form-control mb-5" id="descricao" name="descricao" rows="5"></textarea>
+                <textarea class="form-control" id="descricao" name="descricao" v-model="descricao" rows="5"></textarea>
             </div>
         </transition>
 
-        <button class="btn btn-secondary" v-if="cont > 1" @click="voltarFase()">Voltar</button>
-        <button class="btn btn-secondary" v-if="cont < 4" @click="avancarFase()">Próximo</button>
-        <button class="btn btn-success" v-if="cont == 4" @click="">Salvar</button>
+        <button class="btn btn-secondary mb-5" v-if="cont > 1" @click="voltarFase()">Voltar</button>
+        <button class="btn btn-secondary mb-5" v-if="cont < 4" @click="avancarFase()">Próximo</button>
+        <button class="btn btn-success mb-5" v-if="cont == 4" @click="">Salvar</button>
     </div>
 
 </template>
@@ -122,7 +61,17 @@
 <script>
     export default {
         mounted() {
-            
+            this.$http.get('/api/servico').then(response => {
+
+                //console.log(response);
+                this.categorias = response.body;
+                //console.log(this.categorias);
+
+            }, response => {
+
+                console.log('erro!!!!!!')
+
+            });
         },
         props:[],
         data(){
@@ -131,28 +80,36 @@
                 fase1: true,
                 fase2: false,
                 fase3: false,
-                fase4:false
+                fase4:false,
+                categorias: [],
+                catSelecionada:'',
+                titulo: '',
+                valor: '',
+                descricao: '',
             }
         },
         methods:{
             avancarFase(){
 
-                switch (this.cont) {
-                    case 1 :
-                        this.fase1 = false;
-                        this.fase2 = true;
-                        this.cont++;
-                        break;
-                    case 2 :
-                        this.fase2 = false;
-                        this.fase3 = true;
-                        this.cont++;
-                        break;
-                    case 3 :
-                        this.fase3 = false;
-                        this.fase4 = true;
-                        this.cont++;
-                        break;
+                if(this.validar(this.cont)) {
+
+                    switch (this.cont) {
+                        case 1 :
+                            this.fase1 = false;
+                            this.fase2 = true;
+                            this.cont++;
+                            break;
+                        case 2 :
+                            this.fase2 = false;
+                            this.fase3 = true;
+                            this.cont++;
+                            break;
+                        case 3 :
+                            this.fase3 = false;
+                            this.fase4 = true;
+                            this.cont++;
+                            break;
+                    }
                 }
             },
             voltarFase(){
@@ -178,6 +135,32 @@
 
                 }
             },
+            validar(fase){
+
+                if(fase == 1){
+                    if(this.catSelecionada == ''){
+                        return false;
+                    }
+                    return true;
+                }else if(fase == 2){
+                    if(this.titulo == ''){
+                        return false;
+                    }
+                    return true;
+                }else if(fase == 3){
+                    if(this.valor == ''){
+                        return false;
+                    }
+                    return true;
+                }else{
+                    if(this.descricao == ''){
+                        return false;
+                    }
+                    return true;
+                }
+
+
+            }
         }
     }
 </script>
@@ -195,5 +178,9 @@
         /* .slide-fade-leave-active below version 2.1.8 */ {
         transform: translateX(10px);
         opacity: 0;
+    }
+
+    #fase1 .custom-control-label {
+        cursor: pointer;
     }
 </style>

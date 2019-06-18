@@ -157,4 +157,11 @@ class ServicoController extends Controller
         return redirect()->back()->with('erro','Ocorreu algum erro ao excluir o serviço, tente novamente mais tarde');
     }
 
+    public function apiListar(){
+
+        $servicos = ContentServico::orderBy('titulo', 'asc')->get();
+
+        return response()->json($servicos);
+    }
+
 }

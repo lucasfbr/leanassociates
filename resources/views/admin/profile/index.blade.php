@@ -32,6 +32,7 @@
                         <li class="nav-item">
                             <a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="true">Perfil</a>
                         </li>
+                        @if($user->role < 2)
                         <li class="nav-item">
                             <a class="nav-link" id="pills-interesse-tab" data-toggle="pill" href="#pills-interesse" role="tab" aria-controls="pills-interesse" aria-selected="false">Areas de interesse</a>
                         </li>
@@ -41,6 +42,7 @@
                         <li class="nav-item">
                             <a class="nav-link" id="pills-experiencia-tab" data-toggle="pill" href="#pills-experiencia" role="tab" aria-controls="pills-experiencia" aria-selected="false">Experiência Proficional</a>
                         </li>
+                        @endif
                     </ul>
                 </div>
 

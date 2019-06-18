@@ -19,5 +19,7 @@ Route::get('/user', function (Request $request) {
 
 Route::post('contato/registrar', 'site\homeController@contato');
 
+Route::get('servico', 'admin\ServicoController@apiListar');
+
 
 //Route::post('/login', 'Auth\LoginController@login');
