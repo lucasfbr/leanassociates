@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <div v-if="alert.status == 'show'" class="alert alert-danger alert-dismissible" :class="alert.status" role="alert">
+        <div v-if="alert.status == 'show'" class="alert alert-dismissible" :class="alert.status" role="alert">
             {{alert.msg}}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -61,7 +61,12 @@
 
         <button class="btn btn-secondary mb-5" v-if="cont > 1" @click="voltarFase()">Voltar</button>
         <button class="btn btn-secondary mb-5" v-if="cont < 4" @click="avancarFase()">Próximo</button>
-        <button class="btn btn-success mb-5" v-if="cont == 4" @click="avancarFase()">Salvar</button>
+        <button v-show="salvar" class="btn btn-success mb-5" v-if="cont == 4"  @click="avancarFase()">Salvar</button>
+        <button v-show="salvando" class="btn btn-success mb-5" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Salvando...
+        </button>
+
     </div>
 
 </template>
@@ -96,9 +101,11 @@
                 },
                 alert:{
                     status: 'fade',
+                    type: 'alert-danger',
                     msg: '',
-                    ariaHidden: 'false'
-                }
+                },
+                salvar: true,
+                salvando: false
             }
         },
         methods:{
@@ -123,8 +130,10 @@
                             this.cont++;
                             break;
                         case 4 :
-                            this.salvarProjeto();
 
+                            this.salvar = false;
+                            this.salvando = true;
+                            this.salvarProjeto();
                     }
                 }
             },
@@ -201,14 +210,15 @@
 
                 this.$http.post('/api/project/store', this.dados).then(response => {
 
-                    console.log(response);
+                    setTimeout(function () {
+                        window.location.href = "/admin/home"
+                    }, 5000);
 
                 }, response => {
 
                     console.log('erro: '+response.status);
 
                 });
-
 
             }
 
