@@ -25,7 +25,7 @@
 
     <div class="col-xs-12 col-md-11">
       <div id="project">
-        <project></project>
+        <project user_id="{{Auth::user()->id}}"></project>
       </div>
     </div>
 

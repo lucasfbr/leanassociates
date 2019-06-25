@@ -44,8 +44,8 @@
           @foreach($users as $user)
             <tr>
               <td>{{title_case($user->name)}}</td>
-              <td>{{$user->estado}}</td>
-              <td>{{$user->cidade}}</td>
+              <td>{{$user->profile->uf}}</td>
+              <td>{{$user->profile->cidade}}</td>
               <td>{{tipoRole($user->role)}}</td>
               <td>{{data_br($user->created_at)}}</td>
               <td>

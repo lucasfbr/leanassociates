@@ -18,7 +18,7 @@ class CreateProjectsTable extends Migration
             $table->integer('content_service_id')->unsigned();
             $table->string('nome');
             $table->text('descricao');
-            $table->float('valores', 5,2);
+            $table->string('valores');
             $table->timestamps();
 
             $table->foreign('content_service_id')->references('id')->on('content_servicos');

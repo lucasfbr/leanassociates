@@ -1,5 +1,13 @@
 <template>
     <div>
+
+        <div v-if="alert.status == 'show'" class="alert alert-danger alert-dismissible" :class="alert.status" role="alert">
+            {{alert.msg}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
         <h1 class="mb-4 text-secondary">Publique seu projeto</h1>
         <transition name="slide-fase1">
             <div id="fase1" v-if="fase1" class="mb-5">
@@ -11,7 +19,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{cat.titulo}}</h5>
                                 <div class="custom-control custom-radio categoria1">
-                                    <input type="radio" :id="'cat_'+cat.id" name="categoria" v-model="catSelecionada" class="custom-control-input" :value="cat.id">
+                                    <input type="radio" :id="'cat_'+cat.id" name="categoria" v-model="dados.catSelecionada" class="custom-control-input" :value="cat.id">
                                     <label class="custom-control-label" :for="'cat_'+cat.id"></label>
                                 </div>
                             </div>
@@ -25,7 +33,7 @@
             <div id="fase2" v-if="fase2" class="mb-5">
                 <h3 class="mb-3 text-secondary">Nome do projeto</h3>
                 <p class="text-secondary">O título vai orientar nossa equipe, assim poderemos lhe indicar o melhor profissional</p>
-                <input type="text" class="form-control form-control-lg" id="titulo" name="titulo" v-model="titulo" placeholder="Por exemplo: Consultoria Finânceira">
+                <input type="text" class="form-control form-control-lg" id="titulo" name="titulo" v-model="dados.titulo" placeholder="Por exemplo: Consultoria Finânceira">
             </div>
         </transition>
 
@@ -33,7 +41,7 @@
             <div id="fase3" v-if="fase3" class="mb-5">
                 <h3 class="mb-3 text-secondary">Orçamento disponível para o projeto</h3>
                 <p class="text-secondary">O orçamento vai ajudar os consultores a entenderem as dimensões do projeto</p>
-                <select class="form-control form-control-lg" name="valor" v-model="valor">
+                <select class="custom-select custom-select-lg" name="valor" v-model="dados.valor">
                     <option value="R$5.000 - 10.000">R$5.000 - 10.000</option>
                     <option value="R$10.000 - 20.000">R$10.000 - 20.000</option>
                     <option value="R$20.000 - 40.000">R$20.000 - 40.000</option>
@@ -47,13 +55,13 @@
             <div id="fase4" v-if="fase4" class="mb-5">
                 <h3 class="mb-3 text-secondary">Descrição do projeto</h3>
                 <p class="text-secondary">Descreva seu projeto com o maior número de datalhes possível</p>
-                <textarea class="form-control" id="descricao" name="descricao" v-model="descricao" rows="5"></textarea>
+                <textarea class="form-control" id="descricao" name="descricao" v-model="dados.descricao" rows="5"></textarea>
             </div>
         </transition>
 
         <button class="btn btn-secondary mb-5" v-if="cont > 1" @click="voltarFase()">Voltar</button>
         <button class="btn btn-secondary mb-5" v-if="cont < 4" @click="avancarFase()">Próximo</button>
-        <button class="btn btn-success mb-5" v-if="cont == 4" @click="">Salvar</button>
+        <button class="btn btn-success mb-5" v-if="cont == 4" @click="avancarFase()">Salvar</button>
     </div>
 
 </template>
@@ -61,19 +69,16 @@
 <script>
     export default {
         mounted() {
+
+            //this.dados.user = this.user_id;
+
             this.$http.get('/api/servico').then(response => {
-
-                //console.log(response);
                 this.categorias = response.body;
-                //console.log(this.categorias);
-
             }, response => {
-
-                console.log('erro!!!!!!')
-
+                console.log('erro ao buscar as categorias, tente novamente mais tarde!')
             });
         },
-        props:[],
+        props:['user_id'],
         data(){
             return{
                 cont: 1,
@@ -82,10 +87,18 @@
                 fase3: false,
                 fase4:false,
                 categorias: [],
-                catSelecionada:'',
-                titulo: '',
-                valor: '',
-                descricao: '',
+                dados:{
+                    catSelecionada:'',
+                    titulo: '',
+                    valor: '',
+                    descricao: '',
+                    user: this.user_id
+                },
+                alert:{
+                    status: 'fade',
+                    msg: '',
+                    ariaHidden: 'false'
+                }
             }
         },
         methods:{
@@ -109,6 +122,9 @@
                             this.fase4 = true;
                             this.cont++;
                             break;
+                        case 4 :
+                            this.salvarProjeto();
+
                     }
                 }
             },
@@ -136,31 +152,66 @@
                 }
             },
             validar(fase){
-
                 if(fase == 1){
-                    if(this.catSelecionada == ''){
+                    if(this.dados.catSelecionada == ''){
+                        this.alert.msg = 'Selecione uma categoria antes de continuar';
+                        this.exibirAlert();
                         return false;
                     }
+
+                    this.esconderAlert();
                     return true;
+
                 }else if(fase == 2){
-                    if(this.titulo == ''){
+                    if(this.dados.titulo == ''){
+                        this.alert.msg = 'O nome do projeto é obrigatório!';
+                        this.exibirAlert();
                         return false;
                     }
+                    this.esconderAlert();
                     return true;
+
                 }else if(fase == 3){
-                    if(this.valor == ''){
+                    if(this.dados.valor == ''){
+                        this.alert.msg = 'O orçamento disponível para o projeto é obrigatório!';
+                        this.exibirAlert();
                         return false;
                     }
+                    this.esconderAlert();
                     return true;
                 }else{
-                    if(this.descricao == ''){
+                    if(this.dados.descricao == ''){
+                        this.alert.msg = 'A descrição do seu projeto é obrigatória!';
+                        this.exibirAlert();
                         return false;
                     }
+                    this.esconderAlert();
                     return true;
                 }
 
+            },
+            esconderAlert(){
+                this.alert.status = 'fade';
+            },
+            exibirAlert(){
+                this.alert.status = 'show';
+            },
+
+            salvarProjeto(){
+
+                this.$http.post('/api/project/store', this.dados).then(response => {
+
+                    console.log(response);
+
+                }, response => {
+
+                    console.log('erro: '+response.status);
+
+                });
+
 
             }
+
         }
     }
 </script>

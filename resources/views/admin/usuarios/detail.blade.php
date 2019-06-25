@@ -50,11 +50,11 @@
         
                 <tr>
                   <td>{{title_case($user->name)}}</td>
-                   <td>{{data_br($user->created_at)}}</td>
-                  <td>{{data_br($user->created_at)}}</td>
-                  <td>{{tipoRole($user->role)}}</td>
-                  <td>{{data_br($user->created_at)}}</td>
-                  <td>{{data_br($user->created_at)}}</td>
+                   <td>{{$user->email}}</td>
+                  <td>{{$user->profile->whatsapp}}</td>
+                  <td>{{$user->profile->empresa}}</td>
+                  <td>{{$user->profile->cnpj}}</td>
+                  <td>{{$user->profile->site}}</td>
                 </tr>
             
               </tbody>
@@ -74,12 +74,12 @@
               <tbody>
         
                 <tr>
-                  <td>{{title_case($user->name)}}</td>
-                  <td>{{data_br($user->created_at)}}</td>
-                  <td>{{data_br($user->created_at)}}</td>
-                  <td>{{tipoRole($user->role)}}</td>
-                  <td>{{data_br($user->created_at)}}</td>
-                  <td>{{data_br($user->created_at)}}</td>
+                  <td></td>
+                  <td>{{$user->profile->cep}}</td>
+                  <td>{{$user->profile->uf}}</td>
+                  <td>{{$user->profile->cidade}}</td>
+                  <td>{{$user->profile->bairro}}</td>
+                  <td>{{$user->profile->rua}}, {{$user->profile->numero}}</td>
                 </tr>
             
               </tbody>

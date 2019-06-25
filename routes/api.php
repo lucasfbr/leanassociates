@@ -21,5 +21,7 @@ Route::post('contato/registrar', 'site\homeController@contato');
 
 Route::get('servico', 'admin\ServicoController@apiListar');
 
+Route::post('project/store', 'admin\ProjectController@store');
+
 
 //Route::post('/login', 'Auth\LoginController@login');
