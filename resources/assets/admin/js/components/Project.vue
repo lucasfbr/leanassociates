@@ -1,11 +1,8 @@
 <template>
     <div>
 
-        <div v-if="alert.status == 'show'" class="alert alert-dismissible" :class="alert.status" role="alert">
+        <div v-if="alert.status == 'show'" class="alert alert-dismissible" :class="[alert.status, alert.type]" role="alert">
             {{alert.msg}}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
         </div>
 
         <h1 class="mb-4 text-secondary">Publique seu projeto</h1>
@@ -105,7 +102,8 @@
                     msg: '',
                 },
                 salvar: true,
-                salvando: false
+                salvando: false,
+                timer: 11
             }
         },
         methods:{
@@ -202,17 +200,30 @@
             esconderAlert(){
                 this.alert.status = 'fade';
             },
-            exibirAlert(){
+            exibirAlert(type){
+
                 this.alert.status = 'show';
+
+                if(type) {
+                    this.alert.type = type;
+                    this.alert.msg = 'Projeto cadastrado com sucesso! Volte para seu Dashboard ou cadastre um novo projeto';
+                }else{
+                    this.alert.type = 'alert-danger';
+                }
             },
 
             salvarProjeto(){
 
+                var self = this;
+
                 this.$http.post('/api/project/store', this.dados).then(response => {
 
                     setTimeout(function () {
-                        window.location.href = "/admin/home"
-                    }, 5000);
+
+                        self.resetProject();
+                        self.exibirAlert('alert-success');
+
+                    }, 3000);
 
                 }, response => {
 
@@ -220,8 +231,42 @@
 
                 });
 
-            }
+            },
+            resetProject(){
+                this.fase4 = false;
+                this.fase3 = false;
+                this.fase2 = false;
+                this.fase1 = true;
+                this.salvar = true;
+                this.salvando = false;
+                this.cont = 1;
+                this.dados.catSelecionada = '';
+                this.dados.titulo = '';
+                this.dados.valor = '';
+                this.dados.descricao = '';
+            },
+            /*contagemRegressiva(){
 
+                if((this.timer - 1) >= 0){
+                    this.timer = this.timer - 1;
+                    console.log(this.timer)
+                }else{
+                    window.location.href = "/admin/home"
+                }
+
+
+            },
+            startContagem(){
+
+                var self = this;
+
+                setInterval(function () {
+
+                    self.contagemRegressiva();
+
+                }, 1000);
+
+            }*/
         }
     }
 </script>

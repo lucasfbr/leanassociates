@@ -4,9 +4,10 @@
 
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <a href="">Dashboard</a>
+      <a href="{{url('/admin/home')}}">Dashboard</a>
     </li>
-    <li class="breadcrumb-item active">Projeto</li>
+    <li class="breadcrumb-item"><a href="{{url('/admin/project')}}">Projeto</a></li>
+    <li class="breadcrumb-item active">Novo</li>
   </ol>
 
   @if (session('sucesso'))
